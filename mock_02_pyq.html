@@ -74,7 +74,7 @@ body {
 .question-pane {
   flex: 1;
   overflow-y: auto;
-  padding: 16px 20px 80px 20px;
+  padding: 16px 20px 90px 20px;
   background: #ffffff;
 }
 .palette-pane {
@@ -88,7 +88,7 @@ body {
 @media (max-width: 868px) {
   .main-layout { flex-direction: column; height: auto; }
   .palette-pane { width: 100%; border-left: none; border-top: 2px solid #cbd5e1; }
-  .question-pane { padding: 14px 14px 110px 14px; }
+  .question-pane { padding: 14px 14px 120px 14px; }
 }
 @media (max-width: 600px) {
   .top-nav { padding: 8px 10px; }
@@ -262,7 +262,6 @@ body {
 .lg-not-ans { background: var(--red); }
 .lg-not-vis { background: #94a3b8; }
 .lg-review { background: var(--purple); }
-.lg-ans-review { background: var(--purple-green); }
 
 .q-grid {
   display: grid;
@@ -343,10 +342,19 @@ body {
 .sb-val { font-size: 1.3rem; font-weight: 800; }
 .sb-lbl { font-size: 0.78rem; color: #64748b; margin-top: 2px; }
 
-.expl-review-item {
-  border-bottom: 1px solid #e2e8f0;
-  padding: 14px 0;
-  text-align: left;
+/* Solution Box */
+.review-sol-card {
+  margin-top: 20px;
+  padding: 18px;
+  border-radius: 8px;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-left: 6px solid #2563eb;
+  animation: fadeIn 0.2s ease-in;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 </style>
 </head>
@@ -360,20 +368,26 @@ body {
       <p>PYQ Option-Master Series | 75 Questions | 300 Marks</p>
     </div>
   </div>
-  <div class="timer-container">
+
+  <div class="timer-container" id="timerBox">
     <span>⏳ शेष समय:</span>
     <span class="timer-val" id="timeDisplay">90:00</span>
+  </div>
+
+  <div id="reviewHeaderBadge" style="display:none; align-items:center; gap:8px;">
+    <span style="background:#16a34a; color:white; font-weight:700; font-size:0.85rem; padding:5px 12px; border-radius:6px; box-shadow:0 1px 3px rgba(0,0,0,0.2);">🎯 परीक्षा समीक्षा मोड (Full Screen)</span>
+    <button class="btn-cbt" style="background:#2563eb; color:white; padding:5px 12px; font-size:0.82rem; font-weight:700;" onclick="openScoreModal()">📊 स्कोरकार्ड</button>
   </div>
 </header>
 
 <div class="main-layout">
-  <main class="question-pane">
+  <main class="question-pane" id="qScrollArea">
     <div class="q-meta-bar">
       <div>
         <span class="q-badge" id="qSection">प्राचीन भारत</span>
         <span style="font-size:0.85rem; color:#64748b; margin-left:8px;" id="qTopic">विषय</span>
       </div>
-      <div class="marks-info">
+      <div class="marks-info" id="qMarksInfo">
         अंक: <span class="pos">+4</span> | ऋणात्मक: <span class="neg">-1</span>
       </div>
     </div>
@@ -385,13 +399,19 @@ body {
     <div class="options-list" id="optionsContainer">
       <!-- Options injected via JS -->
     </div>
+
+    <!-- Full-screen Review Solution Box -->
+    <div class="review-sol-card" id="reviewSolutionBox" style="display:none;">
+      <div id="solHeader" style="font-weight:800; font-size:1.08rem; margin-bottom:10px;"></div>
+      <div id="solExpText" style="font-size:0.96rem; line-height:1.65; color:#1e293b;"></div>
+    </div>
   </main>
 
   <aside class="palette-pane">
-    <div class="palette-header">
+    <div class="palette-header" id="paletteTitle">
       प्रश्न पैलेट (Question Palette)
     </div>
-    <div class="legend-grid">
+    <div class="legend-grid" id="paletteLegend">
       <div class="legend-item"><span class="legend-icon lg-ans"></span> उत्तर दिया (Answered)</div>
       <div class="legend-item"><span class="legend-icon lg-not-ans"></span> उत्तर नहीं दिया (Not Ans)</div>
       <div class="legend-item"><span class="legend-icon lg-not-vis"></span> नहीं देखा (Not Visited)</div>
@@ -403,7 +423,8 @@ body {
   </aside>
 </div>
 
-<footer class="action-bar">
+<!-- Exam Action Bar -->
+<footer class="action-bar" id="actionBarExam">
   <div class="action-group">
     <button class="btn-cbt btn-save-next" onclick="handleSaveAndNext()">💾 सहेजें और आगे बढ़ें (Save & Next)</button>
     <button class="btn-cbt btn-save-mark" onclick="handleSaveAndMark()">🔖 सहेजें और समीक्षा हेतु चिन्हित करें</button>
@@ -413,9 +434,24 @@ body {
   <button class="btn-cbt btn-submit-test" onclick="handleSubmitConfirmation()">🏁 टेस्ट सबमिट करें (Submit)</button>
 </footer>
 
+<!-- Full-Screen Review Action Bar -->
+<footer class="action-bar" id="actionBarReview" style="display:none; background:#f8fafc;">
+  <div class="action-group">
+    <button class="btn-cbt" style="background:#334155; color:white;" onclick="handlePrevQ()">⬅️ पिछला प्रश्न (Prev)</button>
+    <button class="btn-cbt" style="background:#2563eb; color:white;" onclick="handleNextQ()">अगला प्रश्न (Next) ➡️</button>
+    <button class="btn-cbt" style="background:#f59e0b; color:#000; font-weight:800;" onclick="openScoreModal()">📊 स्कोरकार्ड देखें (Scorecard)</button>
+  </div>
+  <button class="btn-cbt btn-clear-resp" onclick="location.reload()">🔄 टेस्ट पुनः दें (Re-test)</button>
+</footer>
+
+<!-- Scorecard Modal -->
 <div class="modal-backdrop" id="scoreModal">
   <div class="score-card-modal">
-    <h2 style="color:var(--primary); font-size:1.4rem;">🏁 NTA CBT स्कोरकार्ड (Mock Test 02)</h2>
+    <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #e2e8f0; padding-bottom:10px;">
+      <h2 style="color:var(--primary); font-size:1.3rem;">🏆 आधिकारिक परीक्षा परिणाम (Scorecard)</h2>
+      <span style="cursor:pointer; font-size:1.6rem; color:#64748b;" onclick="closeScoreModal()">&times;</span>
+    </div>
+
     <div class="score-big" id="resScore">0 / 300</div>
     <div id="resBadge" style="font-weight:700; margin-bottom:14px;">विश्लेषण</div>
 
@@ -426,13 +462,9 @@ body {
       <div class="sb-box"><div class="sb-val" style="color:#2563eb;" id="resAccuracy">0%</div><div class="sb-lbl">सटीकता</div></div>
     </div>
 
-    <div style="display:flex; gap:10px; justify-content:center; margin-top:20px;">
-      <button class="btn-cbt btn-save-next" onclick="activateReviewMode()">🔍 विस्तृत समाधान देखें (Review Solutions)</button>
-      <button class="btn-cbt btn-clear-resp" onclick="location.reload()">🔄 टेस्ट पुनः दें (Re-test)</button>
-    </div>
-
-    <div id="reviewSolutionsBox" style="display:none; margin-top:20px; border-top:2px solid #e2e8f0; padding-top:16px;">
-      <!-- Full solutions list -->
+    <div style="display:flex; gap:12px; justify-content:center; margin-top:22px; flex-wrap:wrap;">
+      <button class="btn-cbt btn-save-next" style="font-size:1rem; padding:11px 22px; font-weight:800; box-shadow:0 4px 6px rgba(22,163,74,0.3);" onclick="enterFullScreenReview()">🔍 प्रश्न-वार विस्तृत समाधान देखें (Full Screen)</button>
+      <button class="btn-cbt btn-clear-resp" style="font-size:0.95rem; padding:11px 18px;" onclick="location.reload()">🔄 टेस्ट पुनः दें (Re-test)</button>
     </div>
   </div>
 </div>
@@ -448,6 +480,7 @@ userStatus[0] = "not-ans";
 let timeLeft = 90 * 60;
 let timerHandle = null;
 let isSubmitted = false;
+let reviewMode = false;
 
 function init() {
   buildPalette();
@@ -486,19 +519,45 @@ function buildPalette() {
 function updatePaletteUI() {
   for (let i = 0; i < 75; i++) {
     const btn = document.getElementById(`palBtn_${i}`);
-    btn.className = `q-btn status-${userStatus[i]} ${i === curQ ? 'current' : ''}`;
+    if (!btn) continue;
+
+    if (reviewMode) {
+      const user = userAnswers[i];
+      const actual = QUESTIONS[i].ans;
+      btn.className = "q-btn";
+      if (user === actual) {
+        btn.style.background = "#16a34a";
+        btn.style.color = "#ffffff";
+      } else if (user !== null) {
+        btn.style.background = "#dc2626";
+        btn.style.color = "#ffffff";
+      } else {
+        btn.style.background = "#94a3b8";
+        btn.style.color = "#ffffff";
+      }
+      if (i === curQ) {
+        btn.classList.add("current");
+      }
+    } else {
+      btn.className = `q-btn status-${userStatus[i]} ${i === curQ ? 'current' : ''}`;
+    }
   }
 }
 
 function jumpToQuestion(idx) {
-  if (isSubmitted) return;
-  if (userStatus[curQ] === "not-vis") userStatus[curQ] = "not-ans";
+  if (!reviewMode) {
+    if (isSubmitted) return;
+    if (userStatus[curQ] === "not-vis") userStatus[curQ] = "not-ans";
+  }
   curQ = idx;
-  if (userStatus[curQ] === "not-vis") userStatus[curQ] = "not-ans";
+  if (!reviewMode) {
+    if (userStatus[curQ] === "not-vis") userStatus[curQ] = "not-ans";
+  }
   loadQuestion(curQ);
 }
 
 function loadQuestion(idx) {
+  if (idx < 0 || idx >= 75) return;
   curQ = idx;
   const q = QUESTIONS[idx];
   document.getElementById("qSection").textContent = q.section;
@@ -509,27 +568,91 @@ function loadQuestion(idx) {
   container.innerHTML = "";
   const letters = ['A', 'B', 'C', 'D'];
 
+  const userChoice = userAnswers[curQ];
+  const correctChoice = q.ans;
+
   q.opts.forEach((optText, optIdx) => {
     const letCode = letters[optIdx];
-    const isSelected = (userAnswers[curQ] === letCode);
-
     const card = document.createElement("div");
-    card.className = `opt-card ${isSelected ? 'selected' : ''}`;
-    card.onclick = () => selectOption(letCode);
+    card.className = "opt-card";
+
+    if (reviewMode) {
+      if (letCode === correctChoice) {
+        card.style.borderColor = "#16a34a";
+        card.style.background = "#ecfdf5";
+        card.style.color = "#065f46";
+        card.style.fontWeight = "600";
+      } else if (userChoice === letCode && userChoice !== correctChoice) {
+        card.style.borderColor = "#dc2626";
+        card.style.background = "#fef2f2";
+        card.style.color = "#991b1b";
+      } else {
+        card.style.opacity = "0.75";
+      }
+    } else {
+      const isSelected = (userChoice === letCode);
+      if (isSelected) card.classList.add("selected");
+      card.onclick = () => selectOption(letCode);
+    }
+
+    let badgeHtml = "";
+    if (reviewMode) {
+      if (letCode === correctChoice && userChoice === correctChoice) {
+        badgeHtml = `<span style="background:#16a34a; color:white; font-size:0.75rem; padding:2px 8px; border-radius:12px; margin-left:auto; font-weight:700;">✓ आपका सही उत्तर (+4)</span>`;
+      } else if (letCode === correctChoice) {
+        badgeHtml = `<span style="background:#16a34a; color:white; font-size:0.75rem; padding:2px 8px; border-radius:12px; margin-left:auto; font-weight:700;">✓ सही उत्तर</span>`;
+      } else if (userChoice === letCode) {
+        badgeHtml = `<span style="background:#dc2626; color:white; font-size:0.75rem; padding:2px 8px; border-radius:12px; margin-left:auto; font-weight:700;">✗ आपका चयन (गलत -1)</span>`;
+      }
+    }
+
+    let letterStyle = "";
+    if (reviewMode) {
+      if (letCode === correctChoice) letterStyle = "background:#16a34a; color:white;";
+      else if (userChoice === letCode) letterStyle = "background:#dc2626; color:white;";
+    }
 
     card.innerHTML = `
-      <div class="opt-letter">${letCode}</div>
+      <div class="opt-letter" style="${letterStyle}">${letCode}</div>
       <div class="opt-label">${optText}</div>
-      <input type="radio" name="optRadio" value="${letCode}" ${isSelected ? 'checked' : ''} style="display:none;" class="opt-radio-input">
+      ${badgeHtml}
+      <input type="radio" name="optRadio" value="${letCode}" ${userChoice === letCode ? 'checked' : ''} style="display:none;" class="opt-radio-input" ${reviewMode ? 'disabled' : ''}>
     `;
     container.appendChild(card);
   });
 
+  // Review Solution Card
+  const solBox = document.getElementById("reviewSolutionBox");
+  if (reviewMode) {
+    solBox.style.display = "block";
+    const correctOptText = q.opts[letters.indexOf(correctChoice)] || '';
+    const header = document.getElementById("solHeader");
+
+    if (userChoice === correctChoice) {
+      header.style.color = "#15803d";
+      header.innerHTML = `✅ आपका उत्तर सही है! (+4 अंक) | सही विकल्प: (${correctChoice}) - ${correctOptText}`;
+      solBox.style.borderLeftColor = "#16a34a";
+    } else if (userChoice !== null) {
+      header.style.color = "#dc2626";
+      header.innerHTML = `❌ आपका उत्तर गलत है! (-1 अंक) | आपका चयन: (${userChoice}) | सही विकल्प: (${correctChoice}) - ${correctOptText}`;
+      solBox.style.borderLeftColor = "#dc2626";
+    } else {
+      header.style.color = "#475569";
+      header.innerHTML = `⚪ आपने उत्तर नहीं दिया (0 अंक) | सही विकल्प: (${correctChoice}) - ${correctOptText}`;
+      solBox.style.borderLeftColor = "#94a3b8";
+    }
+
+    document.getElementById("solExpText").innerHTML = `<strong>💡 गहन ऐतिहासिक विश्लेषण:</strong><br/>${q.exp}`;
+  } else {
+    solBox.style.display = "none";
+  }
+
   updatePaletteUI();
+  document.getElementById("qScrollArea").scrollTop = 0;
 }
 
 function selectOption(letCode) {
-  if (isSubmitted) return;
+  if (isSubmitted || reviewMode) return;
   userAnswers[curQ] = letCode;
   const letters = ['A', 'B', 'C', 'D'];
   document.querySelectorAll(".opt-card").forEach((card, idx) => {
@@ -546,7 +669,7 @@ function selectOption(letCode) {
 }
 
 function handleSaveAndNext() {
-  if (isSubmitted) return;
+  if (isSubmitted || reviewMode) return;
   if (userAnswers[curQ] !== null) {
     userStatus[curQ] = "ans";
   } else {
@@ -557,7 +680,7 @@ function handleSaveAndNext() {
 }
 
 function handleSaveAndMark() {
-  if (isSubmitted) return;
+  if (isSubmitted || reviewMode) return;
   if (userAnswers[curQ] !== null) {
     userStatus[curQ] = "ans-review";
   } else {
@@ -568,7 +691,7 @@ function handleSaveAndMark() {
 }
 
 function handleMarkForReview() {
-  if (isSubmitted) return;
+  if (isSubmitted || reviewMode) return;
   if (userAnswers[curQ] !== null) {
     userStatus[curQ] = "ans-review";
   } else {
@@ -579,7 +702,7 @@ function handleMarkForReview() {
 }
 
 function handleClearResponse() {
-  if (isSubmitted) return;
+  if (isSubmitted || reviewMode) return;
   userAnswers[curQ] = null;
   userStatus[curQ] = "not-ans";
   document.querySelectorAll(".opt-card").forEach(c => c.classList.remove("selected"));
@@ -634,37 +757,46 @@ function finalizeSubmission() {
   document.getElementById("scoreModal").style.display = "flex";
 }
 
-function activateReviewMode() {
-  const container = document.getElementById("reviewSolutionsBox");
-  container.style.display = "block";
-  container.innerHTML = "<h3 style='margin-bottom:14px; text-align:left; color:#1e3a8a;'>सभी 75 प्रश्नों के विस्तृत ऐतिहासिक समाधान:</h3>";
+function closeScoreModal() {
+  document.getElementById("scoreModal").style.display = "none";
+}
 
-  QUESTIONS.forEach((q, idx) => {
-    const userA = userAnswers[idx];
-    const actualA = q.ans;
-    const isCor = (userA === actualA);
-    const isSkp = (userA === null);
+function openScoreModal() {
+  document.getElementById("scoreModal").style.display = "flex";
+}
 
-    let statusText = isCor ? "✅ सही (+4)" : (isSkp ? "⚪ छोड़ा गया (0)" : "❌ गलत (-1)");
-    let statusColor = isCor ? "#16a34a" : (isSkp ? "#64748b" : "#dc2626");
+function enterFullScreenReview() {
+  closeScoreModal();
+  reviewMode = true;
 
-    const div = document.createElement("div");
-    div.className = "expl-review-item";
-    div.innerHTML = `
-      <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
-        <strong>प्रश्न ${q.num}: [${q.section}]</strong>
-        <span style="font-weight:800; color:${statusColor};">${statusText}</span>
-      </div>
-      <div style="margin-bottom:10px;">${q.q}</div>
-      <div style="margin-bottom:8px; font-size:0.92rem;">
-        <strong>आपका मार्क किया उत्तर:</strong> ${userA ? `(${userA})` : "कोई नहीं"} | <strong>सही उत्तर:</strong> <span style="color:#16a34a; font-weight:800;">(${actualA})</span>
-      </div>
-      <div style="background:#eff6ff; padding:10px; border-radius:6px; border-left:4px solid #2563eb; font-size:0.9rem;">
-        <strong>विस्तृत समाधान:</strong> ${q.exp}
-      </div>
-    `;
-    container.appendChild(div);
-  });
+  // Header adjustments
+  document.getElementById("timerBox").style.display = "none";
+  document.getElementById("reviewHeaderBadge").style.display = "flex";
+
+  // Footer adjustments
+  document.getElementById("actionBarExam").style.display = "none";
+  document.getElementById("actionBarReview").style.display = "flex";
+
+  // Palette adjustments
+  document.getElementById("paletteTitle").textContent = "समीक्षा पैलेट (Review Palette)";
+  document.getElementById("paletteLegend").innerHTML = `
+    <div class="legend-item"><span class="legend-icon" style="background:#16a34a;">✓</span> सही (+4)</div>
+    <div class="legend-item"><span class="legend-icon" style="background:#dc2626;">✗</span> गलत (-1)</div>
+    <div class="legend-item"><span class="legend-icon" style="background:#94a3b8;">⚪</span> अनुत्तरित (0)</div>
+  `;
+
+  document.getElementById("qMarksInfo").innerHTML = "<span style='color:#2563eb; font-weight:700;'>पूर्ण स्क्रीन समीक्षा</span>";
+
+  loadQuestion(0);
+  updatePaletteUI();
+}
+
+function handlePrevQ() {
+  if (curQ > 0) loadQuestion(curQ - 1);
+}
+
+function handleNextQ() {
+  if (curQ < 74) loadQuestion(curQ + 1);
 }
 
 window.onload = init;
