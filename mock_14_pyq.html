@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>CUET PG History (HUQP09) - Mock Test 14 (PYQ Reverse Option Master 2027)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #0b2545;
+  --secondary: #134074;
+  --accent: #f59e0b;
+  --green: #16a34a;
+  --red: #dc2626;
+  --purple: #7c3aed;
+  --purple-green: #6366f1;
+  --grey: #94a3b8;
+  --bg-main: #f1f5f9;
+  --card-bg: #ffffff;
+  --text-main: #0f172a;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+body {
+  font-family: 'Inter', 'Noto Sans Devanagari', -apple-system, sans-serif;
+  background: var(--bg-main);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+header.top-nav {
+  background: var(--primary);
+  color: white;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.nta-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nta-logo-badge {
+  background: linear-gradient(135deg, #7c3aed, #6d28d9);
+  color: white;
+  font-weight: 800;
+  font-size: 0.85rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+.nta-title-block h1 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.nta-title-block p {
+  font-size: 0.75rem;
+  color: #cbd5e1;
+}
+.timer-container {
+  background: rgba(255, 255, 255, 0.12);
+  padding: 6px 12px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.timer-val {
+  color: #fde047;
+  font-family: monospace;
+  font-size: 1.15rem;
+  letter-spacing: 1px;
+}
+
+.main-layout {
+  flex: 1;
+  display: flex;
+  height: calc(100vh - 110px);
+  overflow: hidden;
+}
+
+.question-pane {
+  flex: 1;
+  background: white;
+  padding: 18px 24px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.palette-pane {
+  width: 320px;
+  background: #f8fafc;
+  border-left: 2px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+}
+@media (max-width: 860px) {
+  .main-layout { flex-direction: column; height: auto; overflow: visible; }
+  .palette-pane { width: 100%; border-left: none; border-top: 2px solid #e2e8f0; }
+  .question-pane { height: auto; }
+}
+
+.q-meta-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f1f5f9;
+  margin-bottom: 14px;
+}
+.q-badge {
+  background: var(--secondary);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.marks-info {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #475569;
+}
+.marks-info span.pos { color: var(--green); }
+.marks-info span.neg { color: var(--red); }
+
+.q-text-card {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: #1e293b;
+  margin-bottom: 18px;
+}
+
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.opt-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #ffffff;
+  transition: all 0.15s ease;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.opt-label:hover {
+  border-color: #cbd5e1;
+  background: #f8fafc;
+}
+.opt-label.selected {
+  border-color: #2563eb;
+  background: #eff6ff;
+  color: #1e40af;
+  font-weight: 600;
+}
+.opt-label input[type="radio"] {
+  margin-top: 3px;
+  accent-color: #2563eb;
+  transform: scale(1.15);
+}
+
+.palette-header {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #334155;
+  margin-bottom: 10px;
+}
+.legend-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  font-size: 0.72rem;
+  margin-bottom: 12px;
+  background: white;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+}
+.legend-item { display: flex; align-items: center; gap: 6px; color: #475569; }
+.legend-icon {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  display: inline-block;
+}
+.lg-ans { background: var(--green); }
+.lg-not-ans { background: var(--red); }
+.lg-not-vis { background: #e2e8f0; border: 1px solid #cbd5e1; }
+.lg-marked { background: var(--purple); }
+
+.palette-grid-wrap {
+  flex: 1;
+  overflow-y: auto;
+}
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+}
+.p-btn {
+  aspect-ratio: 1;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 1px solid #cbd5e1;
+  background: #e2e8f0;
+  color: #334155;
+  transition: transform 0.1s;
+}
+.p-btn:hover { transform: scale(1.05); }
+.p-btn.active { outline: 3px solid #2563eb; outline-offset: 1px; }
+.p-btn.ans { background: var(--green); color: white; border-color: var(--green); }
+.p-btn.not-ans { background: var(--red); color: white; border-color: var(--red); }
+.p-btn.marked { background: var(--purple); color: white; border-color: var(--purple); }
+.p-btn.rev-correct { background: var(--green) !important; color: white !important; }
+.p-btn.rev-wrong { background: var(--red) !important; color: white !important; }
+.p-btn.rev-unans { background: #94a3b8 !important; color: white !important; }
+
+.action-bar {
+  background: white;
+  border-top: 2px solid #e2e8f0;
+  padding: 10px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  bottom: 0;
+  z-index: 40;
+  box-shadow: 0 -2px 4px rgba(0,0,0,0.05);
+}
+.action-group { display: flex; gap: 8px; flex-wrap: wrap; }
+.btn-cbt {
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.15s;
+}
+.btn-save-next { background: var(--green); color: white; }
+.btn-save-next:hover { background: #15803d; }
+.btn-save-mark { background: var(--purple-green); color: white; }
+.btn-clear-resp { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; }
+.btn-mark-rev { background: var(--purple); color: white; }
+.btn-submit-test { background: var(--red); color: white; margin-left: auto; }
+.btn-submit-test:hover { background: #b91c1c; }
+
+.explanation-card {
+  margin-top: 14px;
+  padding: 14px 16px;
+  border-radius: 8px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #166534;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  display: none;
+}
+.explanation-card.show { display: block; }
+
+.modal-backdrop {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.score-card-modal {
+  background: white;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 520px;
+  padding: 24px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  text-align: center;
+}
+.score-big {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin: 12px 0 4px 0;
+}
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin: 18px 0;
+}
+.sb-box {
+  padding: 10px 4px;
+  border-radius: 8px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+.sb-val { font-size: 1.3rem; font-weight: 800; }
+.sb-lbl { font-size: 0.75rem; color: #64748b; font-weight: 600; margin-top: 2px; }
+</style>
+</head>
+<body>
+
+<header class="top-nav">
+  <div class="nta-brand">
+    <div class="nta-logo-badge">NTA CBT</div>
+    <div class="nta-title-block">
+      <h1>CUET PG History (HUQP09) - Mock Test 14</h1>
+      <p>2027 NTA Gold Standard Master Mock | PYQ Reverse Option Analysis | 75 Qs | 300 Marks</p>
+    </div>
+  </div>
+
+  <div style="display:flex; align-items:center; gap:8px;">
+    <a href="index.html" style="text-decoration:none; background:rgba(255,255,255,0.18); color:white; padding:5px 10px; border-radius:6px; font-size:0.8rem; font-weight:700; border:1px solid rgba(255,255,255,0.25); display:inline-flex; align-items:center; gap:4px;">🏠 पोर्टल</a>
+    <a href="mock_13_pyq.html" style="text-decoration:none; background:#7c3aed; color:white; padding:5px 10px; border-radius:6px; font-size:0.8rem; font-weight:700; border:1px solid rgba(255,255,255,0.25); display:inline-flex; align-items:center; gap:4px; box-shadow:0 1px 3px rgba(0,0,0,0.2);">⬅️ Mock 13</a>
+    <div class="timer-container" id="timerBox">
+      <span>⏳ समय:</span>
+      <span class="timer-val" id="timeDisplay">105:00</span>
+    </div>
+  </div>
+
+  <div id="reviewHeaderBadge" style="display:none; align-items:center; gap:8px;">
+    <span style="background:#16a34a; color:white; font-weight:700; font-size:0.85rem; padding:5px 12px; border-radius:6px;">🎯 समाधान समीक्षा मोड (Mock 14)</span>
+    <button class="btn-cbt" style="background:#2563eb; color:white; padding:5px 12px; font-size:0.82rem; font-weight:700;" onclick="openScoreModal()">📊 स्कोरकार्ड</button>
+    <a href="mock_13_pyq.html" style="text-decoration:none; background:#7c3aed; color:white; padding:5px 12px; border-radius:6px; font-size:0.82rem; font-weight:700; box-shadow:0 1px 3px rgba(0,0,0,0.2);">⬅️ पिछला टेस्ट (Mock 13)</a>
+  </div>
+</header>
+
+<div class="main-layout">
+  <main class="question-pane" id="qScrollArea">
+    <div class="q-meta-bar">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <span class="q-badge" id="qBadgeNum">प्रश्न 1 / 75</span>
+        <span style="font-size:0.82rem; color:#64748b; font-weight:600;" id="qSectionName">प्राचीन भारत</span>
+      </div>
+      <div class="marks-info" id="qMarksInfo">
+        मार्किंग: <span class="pos">+4.0</span> / <span class="neg">-1.0</span>
+      </div>
+    </div>
+
+    <div class="q-text-card" id="qTextContainer">
+      <!-- Question Content Injected via JS -->
+    </div>
+
+    <div class="options-list" id="optsContainer">
+      <!-- Options Injected via JS -->
+    </div>
+
+    <div class="explanation-card" id="expCard">
+      <div style="font-size:0.82rem; color:#0369a1; background:#e0f2fe; padding:4px 8px; border-radius:4px; margin-bottom:8px; font-weight:700;" id="pyqSourceBadge"></div>
+      <strong>💡 विस्तृत समाधान (Detailed Explanation):</strong><br/>
+      <div id="expText" style="margin-top:6px;"></div>
+    </div>
+  </main>
+
+  <aside class="palette-pane">
+    <div class="palette-header" id="paletteTitle">प्रश्न पैलेट (Question Palette - 75 Questions)</div>
+    <div class="legend-box" id="paletteLegend">
+      <div class="legend-item"><span class="legend-icon lg-ans"></span> उत्तर दिया (Answered)</div>
+      <div class="legend-item"><span class="legend-icon lg-not-ans"></span> उत्तर नहीं दिया (Not Answered)</div>
+      <div class="legend-item"><span class="legend-icon lg-not-vis"></span> देखा नहीं (Not Visited)</div>
+      <div class="legend-item"><span class="legend-icon lg-marked"></span> पुनर्विचार हेतु चिह्नित (Marked)</div>
+    </div>
+    <div class="palette-grid-wrap">
+      <div class="palette-grid" id="paletteGrid">
+        <!-- 75 Palette Buttons Injected via JS -->
+      </div>
+    </div>
+  </aside>
+</div>
+
+<footer class="action-bar" id="actionBarExam">
+  <div class="action-group">
+    <button class="btn-cbt btn-save-next" onclick="handleSaveAndNext()">💾 सेव करें और अगला (Save & Next)</button>
+    <button class="btn-cbt btn-save-mark" onclick="handleSaveAndMarkReview()">📌 सेव व रिव्यू (Save & Mark Review)</button>
+    <button class="btn-cbt btn-clear-resp" onclick="handleClearResponse()">🔄 उत्तर हटाएं (Clear)</button>
+    <button class="btn-cbt btn-mark-rev" onclick="handleMarkForReviewOnly()">🏷️ केवल रिव्यू (Mark Review)</button>
+  </div>
+  <button class="btn-cbt btn-submit-test" onclick="handleSubmitConfirmation()">🏁 टेस्ट सबमिट करें (Submit)</button>
+</footer>
+
+<footer class="action-bar" id="actionBarReview" style="display:none; background:#f8fafc;">
+  <div class="action-group">
+    <button class="btn-cbt" style="background:#334155; color:white;" onclick="handlePrevQ()">⬅️ पिछला प्रश्न (Prev)</button>
+    <button class="btn-cbt" style="background:#2563eb; color:white;" onclick="handleNextQ()">अगला प्रश्न (Next) ➡️</button>
+    <button class="btn-cbt" style="background:#f59e0b; color:#000; font-weight:800;" onclick="openScoreModal()">📊 स्कोरकार्ड देखें (Scorecard)</button>
+  </div>
+  <a href="mock_13_pyq.html" class="btn-cbt" style="text-decoration:none; background:#7c3aed; color:white; font-weight:800; box-shadow:0 2px 4px rgba(124,58,237,0.3);">⬅️ पिछला टेस्ट (Mock 13)</a>
+  <a href="index.html" class="btn-cbt" style="text-decoration:none; background:#0284c7; color:white; font-weight:700;">🏠 सभी टेस्ट पोर्टल</a>
+  <button class="btn-cbt btn-clear-resp" onclick="location.reload()">🔄 टेस्ट पुनः दें (Re-test)</button>
+</footer>
+
+<div class="modal-backdrop" id="scoreModal">
+  <div class="score-card-modal">
+    <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #e2e8f0; padding-bottom:10px;">
+      <h2 style="color:var(--primary); font-size:1.3rem;">🏆 परीक्षा परिणाम (Scorecard - Mock Test 14)</h2>
+      <button onclick="closeScoreModal()" style="background:none; border:none; font-size:1.4rem; cursor:pointer; color:#64748b;">&times;</button>
+    </div>
+
+    <div class="score-big" id="resScore">0 / 300</div>
+    <div id="resBadge" style="font-weight:800; font-size:1rem; margin-bottom:12px;"></div>
+
+    <div class="stat-grid">
+      <div class="sb-box">
+        <div class="sb-val" id="resCorrect" style="color:var(--green);">0</div>
+        <div class="sb-lbl">सही (+4)</div>
+      </div>
+      <div class="sb-box">
+        <div class="sb-val" id="resWrong" style="color:var(--red);">0</div>
+        <div class="sb-lbl">गलत (-1)</div>
+      </div>
+      <div class="sb-box">
+        <div class="sb-val" id="resSkipped" style="color:#64748b;">0</div>
+        <div class="sb-lbl">अनुत्तरित (0)</div>
+      </div>
+      <div class="sb-box">
+        <div class="sb-val" id="resAcc" style="color:var(--secondary);">0%</div>
+        <div class="sb-lbl">सटीकता %</div>
+      </div>
+    </div>
+
+    <div style="display:flex; gap:10px; justify-content:center; margin-top:20px; flex-wrap:wrap;">
+      <button class="btn-cbt" style="background:var(--green); color:white; padding:12px 18px; font-size:0.95rem; font-weight:800;" onclick="enterFullScreenReview()">
+        🔍 विस्तृत समाधान समीक्षा (Review All 75)
+      </button>
+      <a href="mock_13_pyq.html" class="btn-cbt" style="text-decoration:none; background:#7c3aed; color:white; font-size:0.95rem; padding:12px 18px; font-weight:800; box-shadow:0 4px 6px rgba(124,58,237,0.3);">⬅️ पिछला टेस्ट (Mock 13)</a>
+      <a href="index.html" class="btn-cbt" style="text-decoration:none; background:#0284c7; color:white; font-size:0.95rem; padding:12px 18px; font-weight:700;">🏠 पोर्टल</a>
+      <button class="btn-cbt btn-clear-resp" style="padding:12px 18px;" onclick="closeScoreModal()">बंद करें</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const QUESTIONS = [{"num": 1, "section": "प्राचीन भारत (Ancient India)", "type": "single_liner", "topic": "प्राचीन भारत", "pyq_source": "CUET-PG 2022 Q.1 विकल्प (3) 'मेहरगढ़' एवं विकल्प (4) 'बुर्जहोम' के डिस्ट्रेक्टर विश्लेषण व Exam Trap से निर्मित।", "q": "उत्तर प्रदेश के संत कबीर नगर जिले में स्थित वह कौन-सा नवपाषाणिक पुरास्थल है, जिसके पुरातात्विक उत्खनन से भारतीय उपमहाद्वीप में कृषि (विशेषकर धान/चावल की खेती) के प्राचीनतम साक्ष्य (लगभग 9000-8000 ई.पू.) प्राप्त हुए हैं, जिसने मेहरगढ़ (7000 ई.पू.) की प्राचीनता को पीछे छोड़ दिया है?", "opts": ["लहुरादेवा (Lahuradewa)", "कोल्डिहवा (Koldihwa)", "महगड़ा (Mahagara)", "चोपनी मांडो (Chopani Mando)"], "ans": "A", "exp": "लहुरादेवा (संत कबीर नगर, उत्तर प्रदेश) के उत्खनन (प्रो. राकेश तिवारी) से प्राप्त कार्बन डेटिंग के अनुसार लगभग 9000 ई.पू. से 8000 ई.पू. के बीच चावल की व्यवस्थित खेती के प्राचीनतम साक्ष्य मिले हैं।<br/>- अन्य विकल्पों का विश्लेषण:<br/>  • कोल्डिहवा (बेलन घाटी, प्रयागराज): यहाँ से लगभग 6500 ई.पू. के धान की खेती के साक्ष्य मिले थे, जिसे पूर्व में प्राचीनतम माना जाता था।<br/>  • महगड़ा (बेलन घाटी): नवपाषाणिक स्थल जहाँ से पशुबाड़ा (Cattle-pen) और गोलाकार झोपड़ियों के प्रमाण मिले हैं।<br/>  • चोपनी मांडो: पुरापाषाण काल से नवपाषाण काल तक के निरंतर अनुक्रम और मधुमक्खी के छत्ते जैसी झोपड़ियों तथा हस्तनिर्मित मृदभांडों के लिए प्रसिद्ध है।"}, {"num": 2, "section": "प्राचीन भारत (Ancient India)", "type": "single_liner", "topic": "प्राचीन भारत", "pyq_source": "CUET-PG 2023 Q.2 विकल्प 'धौलावीरा' एवं 2025 Q.1 विकल्प (2) के डिस्ट्रेक्टर विश्लेषण से निर्मित।", "q": "हड़प्पा सभ्यता (सिंधु घाटी सभ्यता) का वह एकमात्र नगर कौन-सा है जहाँ नगर के उत्तरी प्रवेश द्वार के पास जिप्सम-निर्मित 10 विशाल वर्णों/प्रतीकों वाला एक विशाल 'शिला-विज्ञापन पट्ट' (Signboard / Rock Inscription) तथा एक भव्य खुला खेल का मैदान (Stadium) प्राप्त हुआ है?", "opts": ["कालीबंगन (Kalibangan)", "धौलावीरा (Dholavira)", "बनावली (Banawali)", "राखीगढ़ी (Rakhigarhi)"], "ans": "B", "exp": "गुजरात के कच्छ जिले में खादिर बेट द्वीप पर मनहर और मानसर नदियों के मध्य स्थित धौलावीरा (खोज: जे.पी. जोशी 1967; विस्तृत उत्खनन: आर.एस. बिष्ट 1990) से 10 विशाल चिह्नों वाला साइनबोर्ड मिला है।<br/>- प्रमुख विशेषताएं:<br/>  • यह नगर सामान्य दो भागों के बजाय 3 भागों (दुर्ग, मध्यम नगर, निचला नगर) में विभाजित था।<br/>  • यहाँ शैलकृत स्थापत्य (Rock-cut architecture) और 16 विशाल जलाशयों (Water Reservoirs) की अद्वितीय जल-प्रबंधन प्रणाली मिली है।<br/>  • कालीबंगन से जुता हुआ खेत, बनावली से मिट्टी का खिलौना हल तथा राखीगढ़ी भारत में स्थित सबसे बड़ा हड़प्पा स्थल है।"}, {"num": 3, "section": "प्राचीन भारत (Ancient India)", "type": "single_liner", "topic": "प्राचीन भारत", "pyq_source": "CUET-PG 2022 Q.28 विकल्प (B) 'गोविकर्तन' के समानांतर रत्निन डिस्ट्रेक्टर 'अक्षवाप' से निर्मित।", "q": "उत्तर-वैदिक कालीन ग्रंथों (शतपथ ब्राह्मण एवं मैत्रायणी संहिता) में उल्लिखित 12 'रत्निनों' (Ratnins) में से 'अक्षवाप' (Akshavapa) नामक पदाधिकारी का मुख्य प्रशासनिक व राजकीय दायित्व क्या था?", "opts": ["राजा का मुख्य सारथी एवं इतिहासकार", "राजा का व्यक्तिगत चिकित्सक एवं पुरोहित", "द्यूत-क्रीड़ा (पासे के खेल) का अध्यक्ष एवं लेखा-जोखा नियंत्रक", "राजकीय अंतःपुर एवं रनिवास का मुख्य संरक्षक"], "ans": "C", "exp": "उत्तर-वैदिक काल में राजसूय यज्ञ के दौरान राजा जिन 12 रत्निनों के घर जाता था, उनमें 'अक्षवाप' पासे के खेल (द्यूत) का अध्यक्ष तथा राज्य के आय-व्यय/लेखा का अधिकारी था।<br/>- अन्य प्रमुख रत्निन:<br/>  • सूत: राजा का रथवान व दरबारी चारण।<br/>  • गोविकर्तन: राजा का आखेटक साथी तथा वन-रक्षक।<br/>  • क्षत्ता: राजमहल का द्वारपाल/प्रतिहारी।<br/>  • भागदुघ: कर एवं राजस्व संग्रहकर्ता।<br/>  • संग्रहीतृ: राजकीय कोषाध्यक्ष।"}, {"num": 4, "section": "प्राचीन भारत (Ancient India)", "type": "single_liner", "topic": "प्राचीन भारत", "pyq_source": "CUET-PG 2024 Q.4 विकल्प (4) 'बृहदारण्यकोपनिषद' एवं 2025 Q.2 के डिस्ट्रेक्टर से निर्मित।", "q": "विदेह के राजा जनक की दार्शनिक सभा में महर्षि याज्ञवल्क्य के साथ 'अक्षर ब्रह्म' और सृष्टि के मूल आधार पर गहन शास्त्रार्थ करने वाली विदुषी 'गार्गी वाचक्नवी' (Gargi Vachaknavi) तथा 'नेति-नेति' (Not this, not that) का दार्शनिक सिद्धांत किस उपनिषद में निहित है?", "opts": ["कठोपनिषद (Katha Upanishad)", "छांदोग्योपनिषद (Chandogya Upanishad)", "श्वेताश्वतरोपनिषद (Svetasvatara Upanishad)", "बृहदारण्यकोपनिषद (Brihadaranyaka Upanishad)"], "ans": "D", "exp": "बृहदारण्यकोपनिषद (शुक्ल यजुर्वेद) सबसे विशाल उपनिषद है। इसमें विदुषी गार्गी और याज्ञवल्क्य का शास्त्रार्थ, याज्ञवल्क्य-मैत्रेयी का संवाद, 'अहं ब्रह्मास्मि' महावाक्य, 'असतो मा सद्गमय' प्रार्थना तथा ब्रह्म की अनिर्वचनीयता हेतु 'नेति-नेति' सिद्धांत वर्णित है।<br/>- अन्य उपनिषद:<br/>  • कठोपनिषद: यम-नचिकेता संवाद।<br/>  • छांदोग्योपनिषद: 'तत्वमसि' महावाक्य (उद्दालक आरुणि-श्वेतकेतु) तथा 3 आश्रमों का प्रथम उल्लेख।<br/>  • श्वेताश्वतरोपनिषद: रुद्र/शिव की भक्ति और सांख्य-योग तत्वों का समन्वय।"}, {"num": 5, "section": "प्राचीन भारत (Ancient India)", "type": "single_liner", "topic": "प्राचीन भारत", "pyq_source": "CUET-PG 2022 Q.8 विकल्प (1) 'अश्मक (अस्सक)' के डिस्ट्रेक्टर विश्लेषण से निर्मित।", "q": "छठी शताब्दी ई.पू. के बौद्ध ग्रंथ 'अंगुत्तर निकाय' तथा जैन ग्रंथ 'भगवती सूत्र' में उल्लिखित 16 महाजनपदों में से दक्षिण भारत में विंध्याचल के दक्षिण गोदावरी नदी घाटी में स्थित एकमात्र महाजनपद कौन-सा था, जिसकी राजधानी 'पोतन' या 'पोटली' (Potana/Podana) थी?", "opts": ["अश्मक / अस्सक (Assaka / Asmaka)", "अवंती (Avanti)", "चेदि (Chedi)", "मत्स्य (Matsya)"], "ans": "A", "exp": "अश्मक (अस्सक) 16 महाजनपदों में एकमात्र ऐसा महाजनपद था जो दक्षिण भारत (दक्षिणापथ) में गोदावरी नदी के तट पर आधुनिक महाराष्ट्र/आंध्र प्रदेश क्षेत्र में स्थित था। इसकी राजधानी पोतन/पोटली थी। कालांतर में अवंती ने इसे अपने साम्राज्य में मिला लिया था।<br/>- अवंती की राजधानी उज्जयिनी (उत्तरी) एवं माहिष्मती (दक्षिणी) थी।<br/>- चेदि की राजधानी शुक्तिमती (बुंदेलखंड) थी।<br/>- मत्स्य की राजधानी विराटनगर (जयपुर, राजस्थान) थी।"}, {"num": 6, "section": "प्राचीन भारत (Ancient India)", "type": "single_liner", "topic": "प्राचीन भारत", "pyq_source": "CUET-PG 2022 Q.11 विकल्प (2) 'रुम्मिनदेई स्तंभ लेख' के आर्थिक शब्दावली डिस्ट्रेक्टर से निर्मित।", "q": "मौर्य सम्राट अशोक के किस एकमात्र अभिलेख में उसकी आर्थिक एवं कर-संबंधी नीतियों (Fiscal Policy) का प्रत्यक्ष प्रमाण मिलता है, जहाँ भगवान बुद्ध के जन्मस्थल लुम्बिनी ग्राम को धार्मिक कर 'बली' (Bali) से मुक्त कर दिया गया और भू-राजस्व 'भाग' (Bhaga) को घटाकर 1/8 कर दिया गया?", "opts": ["निगाली सागर स्तंभ लेख (Nigali Sagar Pillar Inscription)", "रुम्मिनदेई लघु स्तंभ लेख (Rummindei Minor Pillar Inscription)", "रामपुरवा स्तंभ लेख (Rampurva Pillar Inscription)", "सांची स्तंभ लेख (Sanchi Pillar Inscription)"], "ans": "B", "exp": "रुम्मिनदेई (नेपाल तराई) लघु स्तंभ लेख अशोक के राज्याभिषेक के 20वें वर्ष (लगभग 249 ई.पू.) में उत्कीर्ण कराया गया था। इसमें उल्लेख है कि शाक्यमुनि बुद्ध का जन्म यहाँ होने के कारण अशोक ने लुम्बिनी को 'उदबलिक' (धार्मिक कर बली से मुक्त) किया और 'अठभागिय' (भू-राजस्व उपज का 1/8 भाग) निर्धारित किया। यह मौर्य अर्थव्यवस्था और कराधान का प्रामाणिक स्रोत है।"}, {"num": 7, "section": "प्राचीन भारत (Ancient India)", "type": "single_liner", "topic": "प्राचीन भारत", "pyq_source": "CUET-PG 2023 Q.11 बौद्ध दार्शनिक विकल्पों एवं 2026 Q.8 इंडो-ग्रीक डिस्ट्रेक्टर से निर्मित।", "q": "प्रसिद्ध इंडो-ग्रीक (यवन) शासक मिनांडर (Menander / मिलिंद) और विख्यात बौद्ध भिक्षु नागसेन (Nagasena) के बीच हुए गहन दार्शनिक संवादों, आत्मा, कर्म एवं निर्वाण की विवेचना का प्रामाणिक संग्रह किस पालि ग्रंथ में संकलित है?", "opts": ["दीपवंश (Dipavamsa)", "महावंश (Mahavamsa)", "मिलिंदपन्हो (Milinda Panha)", "दिव्यावदान (Divyavadana)"], "ans": "C", "exp": "'मिलिंदपन्हो' (मिलिंद के प्रश्न) पालि भाषा में रचित एक उत्कृष्ट दार्शनिक ग्रंथ है। इसमें साकल (स्यालकोट) के ग्रीक राजा मिनांडर द्वारा पूछे गए गूढ़ प्रश्नों का उत्तर बौद्ध आचार्य नागसेन ने सरल दृष्टांतों से दिया, जिसके बाद मिनांडर ने बौद्ध धर्म स्वीकार कर लिया था।<br/>- दीपवंश और महावंश श्रीलंका के प्रसिद्ध बौद्ध इतिवृत्त हैं।<br/>- दिव्यावदान संस्कृत बौद्ध ग्रंथ है जिसमें अशोक और परवर्ती मौर्यों की कथाएं हैं।"}, {"num": 8, "section": "प्राचीन भारत (Ancient India)", "type": "single_liner", "topic": "प्राचीन भारत", "pyq_source": "CUET-PG 2022 Q.15 एवं 2024 Q.15 गुप्त अभिलेखीय डिस्ट्रेक्टर 'एरण' से निर्मित।", "q": "गुप्त सम्राट भानुगुप्त के 510 ईस्वी के किस प्रसिद्ध प्रस्तर अभिलेख से भारतीय इतिहास में 'सती प्रथा' (Widow Self-Immolation / Sati) का प्रथम निश्चित अभिलेखीय साक्ष्य प्राप्त होता है, जिसमें सेनापति गोपराज की मृत्यु के उपरांत उनकी पत्नी के चिता पर भस्म होने का उल्लेख है?", "opts": ["मंदसौर अभिलेख (Mandsaur Inscription)", "भीतरी स्तंभ अभिलेख (Bhitari Pillar Inscription)", "उदयगिरि गुहा अभिलेख (Udayagiri Cave Inscription)", "एरण प्रस्तर अभिलेख (Eran Stone Inscription)"], "ans": "D", "exp": "मध्य प्रदेश के सागर जिले में बीना नदी के तट पर स्थित एरण से प्राप्त 510 ईस्वी के भानुगुप्त के अभिलेख में सती प्रथा का प्रथम प्रामाणिक अभिलेखीय उल्लेख मिलता है। हूणों के विरुद्ध भीषण संग्राम में भानुगुप्त के वीर सेनापति गोपराज वीरगति को प्राप्त हुए थे, जिसके बाद उनकी पत्नी उनके साथ चिता में सती हो गई थीं।<br/>- भीतरी स्तंभ लेख में स्कंदगुप्त द्वारा हूणों को पराजित करने का वर्णन है।"}, {"num": 9, "section": "प्राचीन भारत (Ancient India)", "type": "single_liner", "topic": "प्राचीन भारत", "pyq_source": "CUET-PG 2023 Q.9 चोल स्थानीय स्वशासन एवं 2026 Q.18 उत्तरमेरुर डिस्ट्रेक्टर से निर्मित।", "q": "चोल कालीन उत्तरमेरुर अभिलेख (प्रांतक प्रथम, 919 एवं 921 ई.) के अनुसार ब्राह्मण बस्तियों (अग्रहार) की स्थानीय ग्राम सभा 'सभा' द्वारा तालाब, उद्यान, स्वर्ण तथा न्याय व्यवस्था के प्रबंधन हेतु गठित कार्यकारी समितियों को क्या कहा जाता था?", "opts": ["वारियम (Variyam)", "नाडु (Nadu)", "कुर्रम (Kurram)", "नगरम (Nagaram)"], "ans": "A", "exp": "चोल स्थानीय स्वशासन में ग्राम सभा (सभा) की कार्यपालिका समितियों को 'वारियम' (Variyam) कहा जाता था। जैसे:<br/>• एरि-वारियम (तालाब व सिंचाई समिति)<br/>• तोट्ट-वारियम (उद्यान समिति)<br/>• पोन-वारियम (स्वर्ण व वित्त समिति)<br/>• न्याय-वारियम (न्यायिक समिति)<br/>वारियम के सदस्यों को 'वारियपेरुमक्कल' कहा जाता था और इनका चुनाव 'कुडुवोलै' (पॉट लॉटरी पद्धति) द्वारा पारदर्शी रीति से होता था।"}, {"num": 10, "section": "प्राचीन भारत (Ancient India)", "type": "match", "topic": "प्राचीन भारत", "pyq_source": "CUET-PG 2025 Q.7 एवं 2026 Q.9 कौटिल्य अर्थशास्त्र के अध्यक्ष डिस्ट्रेक्टरों से निर्मित।", "q": "कौटिल्य के अर्थशास्त्र में उल्लिखित मौर्यकालीन प्रशासनिक अध्यक्षों को उनके कार्य से सुमेलित कीजिए:<br/>\n<table style=\"width:100%; border-collapse:collapse; margin:10px 0;\">\n  <tr style=\"background:#f1f5f9;\"><th style=\"border:1px solid #cbd5e1; padding:6px; font-weight:700;\">सूची-I (मौर्यकालीन अध्यक्ष)</th><th style=\"border:1px solid #cbd5e1; padding:6px; font-weight:700;\">सूची-II (प्रशासनिक विभाग/कार्य)</th></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">a) सीताध्यक्ष (Sitadhyaksha)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">1) माप एवं तौल का नियंत्रक</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">b) पोतवाध्यक्ष (Pautavadhyaksha)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">2) व्यापारिक मार्गों एवं बाजारों का अधीक्षक</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">c) आकराध्यक्ष (Akaradhyaksha)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">3) राजकीय कृषि भूमि एवं खेती का प्रबंधक</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">d) संस्थाध्यक्ष (Samsthadhyaksha)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">4) खानों एवं धातु उद्योग का अध्यक्ष</td></tr>\n</table>\nनीचे दिए गए कूट में से सही उत्तर चुनिए:", "opts": ["a-1, b-3, c-2, d-4", "a-3, b-1, c-4, d-2", "a-3, b-4, c-1, d-2", "a-4, b-1, c-2, d-3"], "ans": "B", "exp": "सही सुमेलन (3, 1, 4, 2) है:<br/>• सीताध्यक्ष: राजकीय कृषि भूमि (सीता) का सर्वोच्च प्रबंधक (3)।<br/>• पोतवाध्यक्ष: माप, तौल और बांटों का राजकीय निरीक्षक (1)।<br/>• आकराध्यक्ष: खानों (Mines) और धातु निष्कर्षण का प्रधान अध्यक्ष (4)।<br/>• संस्थाध्यक्ष: व्यापारिक मंडियों, क्रय-विक्रय केंद्रों व व्यापारिक मार्गों का अधीक्षक (2)।"}, {"num": 11, "section": "प्राचीन भारत (Ancient India)", "type": "match", "topic": "प्राचीन भारत", "pyq_source": "CUET-PG 2023 Q.5 एवं 2025 Q.11 षड्दर्शन प्रणेता डिस्ट्रेक्टरों से निर्मित।", "q": "प्राचीन भारतीय दर्शन की प्रमुख आस्तिक प्रणालियों (षड्दर्शन) को उनके मूल सूत्रकारों से सुमेलित कीजिए:<br/>\n<table style=\"width:100%; border-collapse:collapse; margin:10px 0;\">\n  <tr style=\"background:#f1f5f9;\"><th style=\"border:1px solid #cbd5e1; padding:6px; font-weight:700;\">सूची-I (दर्शन प्रणाली)</th><th style=\"border:1px solid #cbd5e1; padding:6px; font-weight:700;\">सूची-II (मूल प्रणेता / सूत्रकार)</th></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">a) सांख्य दर्शन (Samkhya)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">1) महर्षि कणाद (उलूक)</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">b) न्याय दर्शन (Nyaya)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">2) महर्षि जैमिनी</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">c) वैशेषिक दर्शन (Vaisheshika)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">3) महर्षि गौतम (अक्षपाद)</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">d) पूर्व मीमांसा (Purva Mimamsa)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">4) महर्षि कपिल</td></tr>\n</table>\nनीचे दिए गए कूट में से सही उत्तर चुनिए:", "opts": ["a-4, b-1, c-3, d-2", "a-2, b-3, c-1, d-4", "a-4, b-3, c-1, d-2", "a-3, b-4, c-2, d-1"], "ans": "C", "exp": "सही सुमेलन (4, 3, 1, 2) है:<br/>• सांख्य दर्शन: महर्षि कपिल (द्वैतवादी: प्रकृति और पुरुष का विवेक ज्ञान) (4)।<br/>• न्याय दर्शन: महर्षि गौतम (तर्कशास्त्र एवं 16 प्रमाण-प्रमेय तत्व) (3)।<br/>• वैशेषिक दर्शन: महर्षि कणाद (परमाणुवाद एवं 7 पदार्थ) (1)।<br/>• पूर्व मीमांसा: महर्षि जैमिनी (वेद-प्रतिपादित कर्मकांड एवं धर्म-मीमांसा) (2)।<br/>• उत्तर मीमांसा (वेदांत) के प्रणेता बादरायण थे।"}, {"num": 12, "section": "प्राचीन भारत (Ancient India)", "type": "match", "topic": "प्राचीन भारत", "pyq_source": "CUET-PG 2023 Q.14 विकल्प (B) 'मुजिरिस' एवं दक्षिण भारतीय पत्तन डिस्ट्रेक्टरों से निर्मित।", "q": "संगम कालीन प्राचीन दक्षिण भारतीय पत्तनों एवं व्यापारिक नगरों को उनकी विशिष्ट पहचान से सुमेलित कीजिए:<br/>\n<table style=\"width:100%; border-collapse:collapse; margin:10px 0;\">\n  <tr style=\"background:#f1f5f9;\"><th style=\"border:1px solid #cbd5e1; padding:6px; font-weight:700;\">सूची-I (पत्तन / व्यापारिक नगर)</th><th style=\"border:1px solid #cbd5e1; padding:6px; font-weight:700;\">सूची-II (विशिष्ट ऐतिहासिक पहचान)</th></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">a) मुजिरिस (Muziris)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">1) मोतियों के संचयन व निर्यात का प्रमुख पांड्य पत्तन</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">b) पुहार / कावेरीपट्टनम (Puhar)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">2) चेर साम्राज्य का प्रमुख पश्चिमी तटीय बंदरगाह (रोमन व्यापार केंद्र)</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">c) कोरकई (Korkai)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">3) पेरिप्लस में 'पोडुके' नाम से उल्लिखित रोमन व्यापारिक केंद्र</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">d) अरिकमेडु (Arikamedu)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">4) चोलों का मुख्य पूर्वी तटीय पत्तन एवं कावेरी नदी का मुहाना</td></tr>\n</table>\nनीचे दिए गए कूट में से सही उत्तर चुनिए:", "opts": ["a-1, b-4, c-2, d-3", "a-2, b-1, c-4, d-3", "a-3, b-2, c-1, d-4", "a-2, b-4, c-1, d-3"], "ans": "D", "exp": "सही सुमेलन (2, 4, 1, 3) है:<br/>• मुजिरिस (केरल, पेरियार मुहाना): चेर पत्तन जहाँ रोमन जहाजों से सोना लाकर काली मिर्च (यवनप्रिय) खरीदी जाती थी (2)।<br/>• पुहार (कावेरीपट्टनम): चोलों का प्रमुख बंदरगाह, शिल्पादिकारम का प्रमुख घटना-स्थल (4)।<br/>• कोरकई (ताम्रपर्णी मुहाना): पांड्यों की आरंभिक राजधानी व विश्वविख्यात मोती उत्पादन केंद्र (1)।<br/>• अरिकमेडु (पुडुचेरी): मार्टिमर व्हीलर द्वारा उत्खनित रोमन व्यापारिक बस्ती (एम्फोरा व एरेटाइन बर्तन) (3)।"}, {"num": 13, "section": "प्राचीन भारत (Ancient India)", "type": "match", "topic": "प्राचीन भारत", "pyq_source": "CUET-PG 2022 Q.13-15 एवं 2024 Q.13 अभिलेख डिस्ट्रेक्टरों से निर्मित।", "q": "प्राचीन भारत के प्रसिद्ध ऐतिहासिक अभिलेखों को उनके संबंधित शासक/रचयिता से सुमेलित कीजिए:<br/>\n<table style=\"width:100%; border-collapse:collapse; margin:10px 0;\">\n  <tr style=\"background:#f1f5f9;\"><th style=\"border:1px solid #cbd5e1; padding:6px; font-weight:700;\">सूची-I (अभिलेख)</th><th style=\"border:1px solid #cbd5e1; padding:6px; font-weight:700;\">सूची-II (शासक / रचयिता)</th></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">a) ऐहोल प्रशस्ति (Aihole Inscription)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">1) गौतमी बलश्री (सातवाहन)</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">b) मंदसौर अभिलेख (Mandsaur Inscription)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">2) शक महाक्षत्रप रुद्रदामन प्रथम</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">c) जूनागढ़ शैल अभिलेख (Junagadh Rock Inscription)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">3) रविकीर्ति (चालुक्य नरेश पुलकेशिन द्वितीय)</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">d) नासिक गुहा अभिलेख (Nasik Cave Inscription)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">4) वत्सभट्टि (मालव संवत / कुमारगुप्त प्रथम)</td></tr>\n</table>\nनीचे दिए गए कूट में से सही उत्तर चुनिए:", "opts": ["a-3, b-4, c-2, d-1", "a-3, b-1, c-2, d-4", "a-2, b-4, c-3, d-1", "a-4, b-3, c-1, d-2"], "ans": "A", "exp": "सही सुमेलन (3, 4, 2, 1) है:<br/>• ऐहोल प्रशस्ति (634 ई.): जैन कवि रविकीर्ति द्वारा रचित, जिसमें पुलकेशिन द्वितीय द्वारा हर्ष को पराजित करने का वर्णन है (3)।<br/>• मंदसौर अभिलेख: वत्सभट्टि द्वारा रचित, जिसमें रेशम बुनकरों (तंतुवाय श्रेणी) द्वारा सूर्य मंदिर निर्माण का विवरण है (4)।<br/>• जूनागढ़ शैल अभिलेख (150 ई.): संस्कृत भाषा का पहला विशुद्ध लंबा गद्य अभिलेख, सुदर्शन झील के जीर्णोद्धार का प्रमाण (2)।<br/>• नासिक अभिलेख: राजमाता गौतमी बलश्री द्वारा गौतमीपुत्र शातकर्णी की क्षत्रिय-मर्दन व अद्वितीय ब्राह्मण विजयों का उल्लेख (1)।"}, {"num": 14, "section": "प्राचीन भारत (Ancient India)", "type": "match", "topic": "प्राचीन भारत", "pyq_source": "CUET-PG 2023 Q.11 एवं 2025 Q.14 बौद्ध आचार्य डिस्ट्रेक्टरों से निर्मित।", "q": "प्राचीन बौद्ध दार्शनिक आचार्यों को उनकी अमर कृतियों से सुमेलित कीजिए:<br/>\n<table style=\"width:100%; border-collapse:collapse; margin:10px 0;\">\n  <tr style=\"background:#f1f5f9;\"><th style=\"border:1px solid #cbd5e1; padding:6px; font-weight:700;\">सूची-I (बौद्ध आचार्य)</th><th style=\"border:1px solid #cbd5e1; padding:6px; font-weight:700;\">सूची-II (प्रमुख दार्शनिक रचना)</th></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">a) नागार्जुन (Nagarjuna)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">1) अभिधर्मकोश (Abhidharmakosha)</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">b) असंग (Asanga)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">2) न्यायबिंदु (Nyayabindu)</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">c) वसुबंधु (Vasubandhu)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">3) मूलमाध्यमिककारिका (Mulamadhyamakakarika)</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">d) धर्मकीर्ति (Dharmakirti)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">4) योगाचारभूमिशास्त्र (Yogacarabhumi-sastra)</td></tr>\n</table>\nनीचे दिए गए कूट में से सही उत्तर चुनिए:", "opts": ["a-3, b-1, c-4, d-2", "a-3, b-4, c-1, d-2", "a-4, b-3, c-1, d-2", "a-1, b-4, c-2, d-3"], "ans": "B", "exp": "सही सुमेलन (3, 4, 1, 2) है:<br/>• नागार्जुन: शून्यवाद (माध्यमिक दर्शन) के जनक, 'मूलमाध्यमिककारिका' के रचयिता (3)।<br/>• असंग: विज्ञानवाद (योगाचार दर्शन) के संस्थापक, 'योगाचारभूमिशास्त्र' के प्रणेता (4)।<br/>• वसुबंधु: बौद्ध दर्शन का विश्वकोश माने जाने वाले 'अभिधर्मकोश' के रचयिता (1)।<br/>• धर्मकीर्ति: बौद्ध न्याय व तर्कशास्त्र के प्रकांड विद्वान, 'न्यायबिंदु' और 'प्रमाणवार्तिक' के रचयिता (2)।"}, {"num": 15, "section": "प्राचीन भारत (Ancient India)", "type": "multi_statement", "topic": "प्राचीन भारत", "pyq_source": "CUET-PG 2024 Q.2 एवं 2025 Q.1 हड़प्पा पुरातात्विक डिस्ट्रेक्टर व सूक्ष्म जाल से निर्मित।", "q": "हड़प्पा सभ्यता (सिंधु घाटी सभ्यता) के पुरातात्विक साक्ष्यों एवं शिल्प-उत्पादन के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br/>\nI. नगर नियोजन में सड़कों का एक-दूसरे को समकोण पर काटना (ग्रिड पद्धति) तथा पकी ईंटों से निर्मित ढकी नालियों की सुव्यवस्थित व्यवस्था पाई गई है।<br/>\nII. चन्हूदड़ो एकमात्र ऐसा हड़प्पा स्थल था जहाँ कोई दुर्ग (Citadel) नहीं था और यह मुख्य रूप से मनके बनाने, मुहर निर्माण तथा शंख-शिल्प का प्रमुख केंद्र था।<br/>\nIII. हड़प्पा सभ्यता में भवन निर्माण हेतु उपयोग की जाने वाली पकी ईंटों की लंबाई, चौड़ाई और मोटाई का अनुपात 5:3:1 था तथा इनकी संपूर्ण लिपि को पूर्णतः पढ़ लिया गया है।<br/>\nIV. लोथल में पकी ईंटों से बना 214 × 36 मीटर का विशाल गोदीबाड़ा (डॉकयार्ड) मिला है जो साबरमती की सहायक भोगवा नदी से जुड़ा हुआ था।<br/>\nउपर्युक्त में से कौन-से कथन सही हैं?", "opts": ["केवल I और IV", "केवल II और III", "केवल I, II और IV", "I, II, III और IV सभी"], "ans": "C", "exp": "कथन I, II और IV ऐतिहासिक रूप से पूर्णतः सही हैं।<br/>कथन III गलत है क्योंकि हड़प्पा सभ्यता में मानक ईंटों का अनुपात 4:2:1 (लंबाई:चौड़ाई:मोटाई) था, न कि 5:3:1। इसके अतिरिक्त सिंधु लिपि भावचित्रात्मक (Pictographic/Boustrophedon) है जिसे आज तक प्रामाणिक रूप से पढ़ा नहीं जा सका है।"}, {"num": 16, "section": "प्राचीन भारत (Ancient India)", "type": "multi_statement", "topic": "प्राचीन भारत", "pyq_source": "CUET-PG 2025 Q.8 एवं 2026 Q.9 मौर्य प्रशासन व गुप्तचर डिस्ट्रेक्टर जाल से निर्मित।", "q": "कौटिल्य के 'अर्थशास्त्र' में वर्णित मौर्यकालीन गुप्तचर प्रणाली एवं प्रशासनिक व्यवस्था के संबंध में निम्नलिखित कथनों पर विचार कीजिए:<br/>\nI. गुप्तचरों को अर्थशास्त्र में 'गूढ़पुरुष' कहा गया है और गुप्तचर विभाग का सर्वोच्च प्रधान अधिकारी 'सर्पमहामात्य' कहलाता था।<br/>\nII. एक ही स्थान पर स्थाई रूप से रहकर कार्य करने वाले गुप्तचरों को 'संचारा' कहा जाता था, जबकि विभिन्न राज्यों में भ्रमणशील गुप्तचरों को 'संस्था' कहा जाता था।<br/>\nIII. कौटिल्य ने राज्य के अस्तित्व और संप्रभुता हेतु 'सप्तांग सिद्धांत' (स्वामी, अमात्य, जनपद, दुर्ग, कोष, दंड एवं मित्र) का प्रतिपादन किया।<br/>\nIV. अर्थशास्त्र में 18 तीर्थों (शीर्षस्थ पदाधिकारियों) और 27 अध्यक्षों (विभागाध्यक्षों) का सुव्यवस्थित विवरण मिलता है।<br/>\nउपर्युक्त में से कौन-से कथन सही हैं?", "opts": ["केवल I, III और IV", "केवल II और IV", "केवल I और III", "I, II, III और IV सभी"], "ans": "A", "exp": "कथन I, III और IV सही हैं।<br/>कथन II में ऐतिहासिक जाल (trap) है: कौटिल्य के अनुसार एक स्थान पर संगठित रहकर कार्य करने वाले गुप्तचर 'संस्था' (कापटिक, उदास्थित, गृहपतिक, वैदेहक, तापस) कहलाते थे, जबकि विभिन्न स्थानों पर भ्रमण करने वाले गुप्तचर 'संचारा' (सत्री, तीक्ष्ण, रसद, परिव्राजिका) कहलाते थे। अतः यह कथन परस्पर उलटा लिखा गया है।"}, {"num": 17, "section": "प्राचीन भारत (Ancient India)", "type": "multi_statement", "topic": "प्राचीन भारत", "pyq_source": "CUET-PG 2022 Q.15, 2024 Q.16 गुप्तकालीन भूमि अनुदान व सामंतवाद डिस्ट्रेक्टरों से निर्मित।", "q": "गुप्त एवं उत्तर-गुप्त कालीन भूमि अनुदानों (Land Grants) तथा कृषि अर्थव्यवस्था के संबंध में निम्नलिखित कथनों पर विचार कीजिए:<br/>\nI. धार्मिक एवं शैक्षिक प्रयोजनों हेतु ब्राह्मणों को दिए जाने वाले कर-मुक्त भूमि अनुदान को 'अग्रहार' (Agrahara) या 'ब्रह्मदेय' कहा जाता था, जो प्रायः वंशानुगत होते थे।<br/>\nII. 'अक्षय नीवी' (Akshaya Nivi) एक ऐसा स्थाई भूमि बंदोबस्त या दान था, जिसके मूलधन को बेचे बिना केवल उसके वार्षिक ब्याज/उपज का ही उपभोग किया जा सकता था।<br/>\nIII. बंजर अथवा अप्रयुक्त भूमि को कृषि योग्य बनाने हेतु दी जाने वाली राजकीय छूट को अभिलेखों में 'भूमि छिद्र न्याय' (Bhumichhidranyaya) कहा गया है।<br/>\nIV. इस काल में किसानों से बेगार या निःशुल्क श्रम कराने की प्रथा प्रचलित थी, जिसे अभिलेखों में 'विष्टि' (Vishti) कहा गया है और यह राज्य का एक प्रकार का कर माना जाता था।<br/>\nउपर्युक्त में से कौन-से कथन सही हैं?", "opts": ["केवल I और II", "केवल II, III और IV", "केवल I, III और IV", "I, II, III और IV सभी"], "ans": "D", "exp": "चारों कथन (I, II, III, IV) प्रामाणिक ऐतिहासिक तथ्य हैं। गुप्त काल में भूमि अनुदानों के विस्तार और सामंती अधिकारों (प्रशासनिक व न्यायिक उन्मुक्तियां) के हस्तांतरण ने प्रारंभिक मध्यकालीन भारतीय सामंतवाद (Feudalism) की पृष्ठभूमि तैयार की थी।"}, {"num": 18, "section": "प्राचीन भारत (Ancient India)", "type": "chronology", "topic": "प्राचीन भारत", "pyq_source": "CUET-PG 2023 Q.10 एवं 2026 Q.8 प्राचीन पश्चिमोत्तर आक्रांताओं के डिस्ट्रेक्टरों से निर्मित।", "q": "प्राचीन भारत के पश्चिमोत्तर सीमांत पर घटित निम्नलिखित युगांतरकारी घटनाओं को सही कालक्रमानुसार व्यवस्थित कीजिए:<br/>\n1. यवन (इंडो-ग्रीक / डिमेट्रियस व मिनांडर) का पश्चिमोत्तर भारत पर आक्रमण<br/>\n2. मकदूनिया के शासक सिकंदर (अलेक्जेंडर) का पंजाब व सिंध पर आक्रमण<br/>\n3. हूणों (तोरमाण एवं मिहिरकुल) का गुप्त साम्राज्य पर भीषण आक्रमण<br/>\n4. कुषाणों (कनिष्क प्रथम) द्वारा पेशावर व मथुरा में साम्राज्य की स्थापना<br/>\nनीचे दिए गए कूट का प्रयोग कर सही उत्तर चुनिए:", "opts": ["1, 2, 4, 3", "2, 1, 4, 3", "2, 4, 1, 3", "4, 2, 1, 3"], "ans": "B", "exp": "सही कालक्रम 2, 1, 4, 3 है:<br/>• 2. सिकंदर का भारत आक्रमण (326 ई.पू.)<br/>• 1. इंडो-ग्रीक (यवन) शासकों का आक्रमण (लगभग 190-180 ई.पू. - मौर्योत्तर काल)<br/>• 4. कनिष्क प्रथम का राज्यारोहण व कुषाण साम्राज्य (78 ईस्वी - प्रथम शताब्दी ईस्वी)<br/>• 3. हूणों का गुप्त साम्राज्य पर आक्रमण (लगभग 455 ईस्वी - कुमारगुप्त प्रथम/स्कंदगुप्त काल)"}, {"num": 19, "section": "प्राचीन भारत (Ancient India)", "type": "chronology", "topic": "प्राचीन भारत", "pyq_source": "CUET-PG 2022 Q.9, 2024 Q.18 विदेशी राजदूत व बौद्ध तीर्थयात्री डिस्ट्रेक्टरों से निर्मित।", "q": "प्राचीन भारत में विभिन्न राजवंशों के काल में आए निम्नलिखित विदेशी यात्रियों एवं राजदूतों के आगमन को सही कालक्रमानुसार व्यवस्थित कीजिए:<br/>\n1. चीनी बौद्ध भिक्षु ह्वेनसांग (Xuanzang) का भारत आगमन<br/>\n2. यूनानी राजदूत मेगस्थनीज (Megasthenes) का पाटलिपुत्र आगमन<br/>\n3. चीनी यात्री इत्सिंग (Yijing) का नालंदा व ताम्रलिप्ति आगमन<br/>\n4. चीनी तीर्थयात्री फाहियान (Faxian) का भारत भ्रमण<br/>\nनीचे दिए गए कूट का प्रयोग कर सही उत्तर चुनिए:", "opts": ["2, 1, 4, 3", "4, 2, 1, 3", "2, 4, 1, 3", "4, 1, 2, 3"], "ans": "C", "exp": "सही कालक्रम 2, 4, 1, 3 है:<br/>• 2. मेगस्थनीज (लगभग 302 ई.पू. - मौर्य सम्राट चंद्रगुप्त मौर्य का दरबार)<br/>• 4. फाहियान (399-414 ईस्वी - गुप्त सम्राट चंद्रगुप्त द्वितीय 'विक्रमादित्य' का शासन)<br/>• 1. ह्वेनसांग (629-645 ईस्वी - पुष्यभूति नरेश हर्षवर्धन का शासनकाल)<br/>• 3. इत्सिंग (671-695 ईस्वी - उत्तर-हर्ष काल/प्रारंभिक मध्यकाल)"}, {"num": 20, "section": "प्राचीन भारत (Ancient India)", "type": "chronology", "topic": "प्राचीन भारत", "pyq_source": "CUET-PG 2022 Q.6, 2023 Q.7 बौद्ध संगीति डिस्ट्रेक्टरों से निर्मित।", "q": "प्राचीन भारत में बौद्ध धर्म के इतिहास में आयोजित चार प्रमुख बौद्ध संगीतियों को उनके आयोजन के सही कालक्रमानुसार व्यवस्थित कीजिए:<br/>\n1. पाटलिपुत्र में मोग्गलिपुत्त तिस्स की अध्यक्षता में तृतीय बौद्ध संगीति<br/>\n2. राजगृह की सप्तपर्णी गुफा में महाकश्यप की अध्यक्षता में प्रथम बौद्ध संगीति<br/>\n3. कुंडलवन (कश्मीर) में वसुमित्र एवं अश्वघोष की अध्यक्षता में चतुर्थ बौद्ध संगीति<br/>\n4. वैशाली में सर्वकामिन (सब्बकामी) की अध्यक्षता में द्वितीय बौद्ध संगीति<br/>\nनीचे दिए गए कूट का प्रयोग कर सही उत्तर चुनिए:", "opts": ["2, 1, 4, 3", "4, 2, 1, 3", "1, 2, 4, 3", "2, 4, 1, 3"], "ans": "D", "exp": "सही कालक्रम 2, 4, 1, 3 है:<br/>• 2. प्रथम बौद्ध संगीति (483 ई.पू. - राजगृह, शासक: अजातशत्रु, अध्यक्ष: महाकश्यप)<br/>• 4. द्वितीय बौद्ध संगीति (383 ई.पू. - वैशाली, शासक: कालाशोक, अध्यक्ष: सब्बकामी/सर्वकामिन)<br/>• 1. तृतीय बौद्ध संगीति (लगभग 250 ई.पू. - पाटलिपुत्र, शासक: अशोक, अध्यक्ष: मोग्गलिपुत्त तिस्स)<br/>• 3. चतुर्थ बौद्ध संगीति (72/78 ईस्वी - कुंडलवन कश्मीर, शासक: कनिष्क, अध्यक्ष: वसुमित्र, उपाध्यक्ष: अश्वघोष)"}, {"num": 21, "section": "प्राचीन भारत (Ancient India)", "type": "assertion_reason", "topic": "प्राचीन भारत", "pyq_source": "CUET-PG 2024 Q.3 एवं 2026 Q.3 द्वितीय नगरीकरण व लौह प्रौद्योगिकी डिस्ट्रेक्टर से निर्मित।", "q": "नीचे दो कथन दिए गए हैं, एक को अभिकथन (A) और दूसरे को कारण (R) कहा गया है:<br/>\nअभिकथन (A): छठी शताब्दी ईस्वी पूर्व में मध्य गंगा घाटी में द्वितीय नगरीकरण (Second Urbanization) तथा 16 महाजनपदों के उदय की प्रक्रिया तीव्र गति से संपन्न हुई।<br/>\nकारण (R): मध्य गंगा मैदान में लौह अयस्क के प्रचुर भंडारों तथा लोहे के भारी कृषि उपकरणों (जैसे फाल एवं कुल्हाड़ियों) के व्यापक प्रयोग ने घने वनों की कटाई और बड़े पैमाने पर अधिशेष उत्पादन (Agricultural Surplus) को संभव बनाया।<br/>\nउपर्युक्त कथनों के आलोक में निम्नलिखित में से सही विकल्प का चयन कीजिए:", "opts": ["(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।", "(A) और (R) दोनों सही हैं परंतु (R), (A) की सही व्याख्या नहीं है।", "(A) सही है परंतु (R) गलत है।", "(A) गलत है परंतु (R) सही है।"], "ans": "A", "exp": "(A) और (R) दोनों सही हैं तथा (R), (A) की सही व्याख्या है। मध्य गंगा घाटी के दलदली और घने जंगलों को साफ करने में लोहे के औजारों (उत्तर वैदिक 'कृष्ण अयस') ने निर्णायक भूमिका निभाई। कृषि में अधिशेष उत्पादन ने गैर-कृषि व्यवसायों, व्यापार-वाणिज्य, मुद्रा अर्थव्यवस्था (आहत सिक्के) तथा नगरों व महाजनपद राज्यों के उदय की भौतिक आधारशिला रखी।"}, {"num": 22, "section": "प्राचीन भारत (Ancient India)", "type": "assertion_reason", "topic": "प्राचीन भारत", "pyq_source": "CUET-PG 2022 Q.12 एवं 2024 Q.11 सातवाहन समाज व नासिक अभिलेख डिस्ट्रेक्टर से निर्मित।", "q": "नीचे दो कथन दिए गए हैं, एक को अभिकथन (A) और दूसरे को कारण (R) कहा गया है:<br/>\nअभिकथन (A): सातवाहन शासक गौतमीपुत्र शातकर्णी ने स्वयं को 'अद्वितीय ब्राह्मण' (एकब्राह्मण) तथा क्षत्रियों के दर्प का दमन करने वाला घोषित किया।<br/>\nकारण (R): सातवाहन राजवंश के राजाओं के नामों में अपनी माताओं (जैसे गौतमी, वशिष्ठी) के नाम जोड़ने की व्यापक प्रथा थी यद्यपि उनका राजसिंहासन पितृवंशीय (Patrilineal) उत्तराधिकार पर ही आधारित था।<br/>\nउपर्युक्त कथनों के आलोक में निम्नलिखित में से सही विकल्प का चयन कीजिए:", "opts": ["(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।", "(A) और (R) दोनों सही हैं परंतु (R), (A) की सही व्याख्या नहीं है।", "(A) सही है परंतु (R) गलत है।", "(A) गलत है परंतु (R) सही है।"], "ans": "B", "exp": "अभिकथन (A) और कारण (R) दोनों स्वतंत्र रूप से ऐतिहासिक दृष्टि से सत्य हैं। नासिक गुहा प्रशस्ति में गौतमीपुत्र शातकर्णी को 'एकब्राह्मण' और 'क्षत्रियदपमानमर्दन' कहा गया है। सातवाहन शासकों में मातृनाम (Metronymics) की परंपरा थी (जैसे गौतमीपुत्र, वशिष्ठीपुत्र) किंतु सिंहासन का उत्तराधिकार सदैव ज्येष्ठ पुत्र को मिलता था (पितृसत्तात्मक)। परंतु माताओं का नाम धारण करना उसके अद्वितीय ब्राह्मण होने या क्षत्रियों के दर्प दमन का कारण नहीं है। अतः (R), (A) की सही व्याख्या नहीं है।"}, {"num": 23, "section": "प्राचीन भारत (Ancient India)", "type": "assertion_reason", "topic": "प्राचीन भारत", "pyq_source": "CUET-PG 2023 Q.15, 2025 Q.15 गुप्त काल 'स्वर्ण युग' बहस एवं सामंतवाद डिस्ट्रेक्टर से निर्मित।", "q": "नीचे दो कथन दिए गए हैं, एक को अभिकथन (A) और दूसरे को कारण (R) कहा गया है:<br/>\nअभिकथन (A): गुप्त काल को भारतीय इतिहास में संस्कृत साहित्य, शास्त्रीय कला, विज्ञान, गणित तथा मंदिर स्थापत्य के चरमोत्कर्ष के कारण 'स्वर्ण युग' (Golden Age) की संज्ञा दी जाती है।<br/>\nकारण (R): गुप्त काल में भारतीय समाज में सामंतवादी प्रवृत्तियों (Feudal Tendencies) का पूर्ण अभाव था और इस युग में सभी प्रकार के बेगार (विष्टि) तथा अस्पृश्यता को कानूनन समाप्त कर दिया गया था।<br/>\nउपर्युक्त कथनों के आलोक में निम्नलिखित में से सही विकल्प का चयन कीजिए:", "opts": ["(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।", "(A) और (R) दोनों सही हैं परंतु (R), (A) की सही व्याख्या नहीं है।", "(A) सही है परंतु (R) गलत है।", "(A) गलत है परंतु (R) सही है।"], "ans": "C", "exp": "अभिकथन (A) सत्य है, क्योंकि गुप्त काल में कालिदास, वराहमिहिर, आर्यभट, दशावतार मंदिर (देवगढ़) और अजंता गुफा चित्रों के माध्यम से भारतीय शास्त्रीय संस्कृति अपने शिखर पर पहुंची।<br/>परंतु कारण (R) सर्वथा असत्य है। गुप्त काल में ही बड़े पैमाने पर भूमि अनुदानों के माध्यम से भारतीय सामंतवाद (Indian Feudalism) की शुरुआत हुई। इस काल में 'विष्टि' (बेगार) का व्यापक प्रचलन था और चीनी यात्री फाहियान के विवरणानुसार समाज में चांडालों (अस्पृश्यों) की स्थिति अत्यंत दयनीय थी।"}, {"num": 24, "section": "मध्यकालीन भारत (Medieval India)", "type": "single_liner", "topic": "मध्यकालीन भारत", "pyq_source": "CUET-PG 2022 Q.24 एवं 2024 Q.25 सल्तनत कालीन प्रशासनिक विभाग डिस्ट्रेक्टरों से निर्मित।", "q": "दिल्ली सल्तनत के किस सुल्तान ने राजस्व अधिकारियों (आमिलों, मुकद्दमों, पटवारियों) पर बकाया लगान की वसूली (Arrears Realization) और भ्रष्टाचार के दमन हेतु एक पृथक विभाग 'दीवान-ए-मुस्तखराज' (Diwan-i-Mustakhraj) की स्थापना की थी?", "opts": ["अलाउद्दीन खिलजी (Alauddin Khalji)", "गियासुद्दीन बलबन (Ghiyasuddin Balban)", "मुहम्मद बिन तुगलक (Muhammad bin Tughlaq)", "फिरोज शाह तुगलक (Firoz Shah Tughlaq)"], "ans": "A", "exp": "अलाउद्दीन खिलजी ने राजस्व व्यवस्था में व्यापक सुधार किए। उसने मध्यस्थों (खूत, मुकद्दम, चौधरी) के विशेषाधिकार समाप्त किए और राज्य के बकाए लगान की सख्ती से वसूली हेतु 'दीवान-ए-मुस्तखराज' नामक पृथक विभाग बनाया।<br/>- अन्य प्रमुख विभाग:<br/>  • दीवान-ए-वकूफ (व्यय नियंत्रक): जलालुद्दीन खिलजी।<br/>  • दीवान-ए-अमीर-कोही (कृषि विकास): मुहम्मद बिन तुगलक।<br/>  • दीवान-ए-बंदगान (दास विभाग) एवं दीवान-ए-खैरात (दान विभाग): फिरोज शाह तुगलक।"}, {"num": 25, "section": "मध्यकालीन भारत (Medieval India)", "type": "single_liner", "topic": "मध्यकालीन भारत", "pyq_source": "CUET-PG 2023 Q.24 एवं 2025 Q.27 गुलाम वंश डिस्ट्रेक्टर से निर्मित।", "q": "दिल्ली सल्तनत के तुर्की अमीर वर्ग के 40 वफादार गुलाम सरदारों के विख्यात गुट 'तुर्कान-ए-चहलगानी' (चालीसा दल) का गठन सुल्तान शमसुद्दीन इल्तुतमिश ने किया था, परंतु इस गुट के षड्यंत्रों को कुचलने और इसे पूर्णतः नष्ट करने का श्रेय किस सुल्तान को जाता है?", "opts": ["कुतुबुद्दीन ऐबक (Qutbuddin Aibak)", "गियासुद्दीन बलबन (Ghiyasuddin Balban)", "नासिरुद्दीन महमूद (Nasiruddin Mahmud)", "मुइज्जुद्दीन कैकुबाद (Muizuddin Kaikubad)"], "ans": "B", "exp": "इल्तुतमिश ने सल्तनत को स्थायित्व प्रदान करने हेतु अपने 40 वफादार तुर्की दासों का गुट 'तुर्कान-ए-चहलगानी' बनाया था। इल्तुतमिश की मृत्यु के बाद यह गुट सुल्तान-निर्माता (King-maker) बनकर निरंकुश हो गया। बलबन (जो स्वयं चालीसा का सदस्य था) ने सुल्तान बनने के बाद राजत्व की प्रतिष्ठा और शक्ति की पुनर्स्थापना हेतु चालीसा के प्रमुख अमीरों (जैसे शेर खां) को समाप्त कर इस संस्था का पूर्ण विनाश कर दिया।"}, {"num": 26, "section": "मध्यकालीन भारत (Medieval India)", "type": "single_liner", "topic": "मध्यकालीन भारत", "pyq_source": "CUET-PG 2023 Q.26 विकल्प (C) 'हक-ए-शर्ब' के डिस्ट्रेक्टर विश्लेषण से निर्मित।", "q": "दिल्ली सल्तनत के किस सुल्तान ने इस्लामी कानून (शरीयत) के उलेमाओं से वैधानिक अनुमति प्राप्त कर राज्य द्वारा निर्मित नहरों के पानी का उपयोग करने वाले किसानों पर उपज का 10% (1/10 भाग) 'हक-ए-शर्ब' (Haqq-i-Sharb / सिंचाई कर) लगाया था?", "opts": ["अलाउद्दीन खिलजी (Alauddin Khalji)", "गियासुद्दीन तुगलक (Ghiyasuddin Tughlaq)", "फिरोज शाह तुगलक (Firoz Shah Tughlaq)", "सिकंदर लोदी (Sikandar Lodi)"], "ans": "C", "exp": "फिरोज शाह तुगलक दिल्ली सल्तनत का पहला सुल्तान था जिसने बड़े पैमाने पर नहरों (यमुना-हिसार, सतलज-घग्घर आदि) का जाल बिछाया। उलेमा की स्वीकृति से उसने राजकीय नहरों से सिंचित भूमि पर उपज का 1/10 भाग 'हक-ए-शर्ब' (सिंचाई कर) लगाया। उसने 24 गैर-शरिया करों (आबवाब) को समाप्त कर केवल चार कर (खराज, खुम्स, जजिया, जकात) लागू रखे।"}, {"num": 27, "section": "मध्यकालीन भारत (Medieval India)", "type": "single_liner", "topic": "मध्यकालीन भारत", "pyq_source": "CUET-PG 2024 Q.27 एवं 2026 Q.28 विजयनगर प्रशासनिक शब्दावली डिस्ट्रेक्टर से निर्मित।", "q": "विजयनगर साम्राज्य की ग्रामीण प्रशासनिक व्यवस्था के अंतर्गत प्रत्येक स्वतंत्र ग्राम में कानून-व्यवस्था, भूमि अभिलेख और लगान प्रबंधन हेतु नियुक्त किए जाने वाले 12 वंशानुगत अधिकारियों के समूह को क्या कहा जाता था, जिन्हें वेतन के बदले कर-मुक्त 'मान्यम' भूमि दी जाती थी?", "opts": ["नायंकर (Nayankara)", "महामंडलेश्वर (Mahamandaleshwara)", "गौड़ा (Gauda)", "आयंगार (Ayagar)"], "ans": "D", "exp": "विजयनगर साम्राज्य में ग्रामीण स्वायत्त शासन 'आयंगार व्यवस्था' (Ayagar System) पर आधारित था। इसके तहत प्रत्येक ग्राम में 12 अधिकारी नियुक्त होते थे (जैसे गौड़ा/ग्राम प्रमुख, करणम/पटवारी, तलयारी/चौकीदार आदि)। ये पद वंशानुगत होते थे और इन्हें राज्य की ओर से कर-मुक्त लगान वाली 'मान्यम' भूमि दी जाती थी। नायंकर व्यवस्था प्रांतीय सैन्य सामंतों से संबंधित थी जिन्हें 'अमरम' भूमि मिलती थी।"}, {"num": 28, "section": "मध्यकालीन भारत (Medieval India)", "type": "single_liner", "topic": "मध्यकालीन भारत", "pyq_source": "CUET-PG 2026 Q.34 विकल्प 'अल-तमगा' एवं 2025 Q.31 जागीर डिस्ट्रेक्टर से निर्मित।", "q": "मुग़ल सम्राट जहाँगीर ने मनसबदारों के विशेष अनुग्रह और धार्मिक/पारिवारिक संरक्षण हेतु एक नई प्रकार की स्थायी और अहस्तांतरणीय जागीर की शुरुआत की, जिसे मुहरबंद शाही फरमान द्वारा प्रदान किया जाता था और इसे क्या कहा जाता था?", "opts": ["अल-तमगा जागीर (Al-Tamgha Jagir)", "वतन जागीर (Watan Jagir)", "तनख्वाह जागीर (Tankhwah Jagir)", "मशरूत जागीर (Mashrut Jagir)"], "ans": "A", "exp": "मुग़ल सम्राट जहाँगीर ने 'अल-तमगा जागीर' (Al-Tamgha Jagir) प्रारंभ की। यह शाही लाल मुहर (तमगा) द्वारा दी जाने वाली ऐसी जागीर थी जो वंशानुगत और अहस्तांतरणीय होती थी तथा केवल उन अमीर परिवारों को मिलती थी जिन पर सम्राट की विशेष कृपा होती थी।<br/>- वतन जागीर: राजपूत व स्थानीय राजाओं की अपनी पैतृक रियासती भूमि।<br/>- तनख्वाह जागीर: सामान्य मनसबदारों को वेतन के बदले दी जाने वाली हस्तांतरणीय जागीर।<br/>- मशरूत जागीर: किसी विशिष्ट सैन्य या प्रशासनिक शर्त से जुड़ी जागीर।"}, {"num": 29, "section": "मध्यकालीन भारत (Medieval India)", "type": "single_liner", "topic": "मध्यकालीन भारत", "pyq_source": "CUET-PG 2023 Q.29 एवं 2025 Q.30 मुग़ल भू-राजस्व डिस्ट्रेक्टर से निर्मित।", "q": "मुग़ल सम्राट अकबर के शासनकाल के 24वें वर्ष (1580 ई.) में उसके वित्त मंत्री राजा टोडरमल ने विगत 10 वर्षों (1570 से 1580) के विभिन्न फसलों के उत्पादन और स्थानीय मूल्यों के औसत के आधार पर जो वैज्ञानिक भू-राजस्व बंदोबस्त लागू किया, उसे किस नाम से जाना जाता है?", "opts": ["कनकूत प्रणाली (Kankut System)", "आईन-ए-दहसाला / जब्ती बंदोबस्त (Ain-i-Dahsala / Zabti Bandobast)", "नस्क या गल्ला-बख्शी (Nasaq or Ghalla-Bakhshi)", "बटाई प्रणाली (Batai System)"], "ans": "B", "exp": "1580 ईस्वी में अकबर के प्रसिद्ध वित्त मंत्री राजा टोडरमल और ख्वाजा शाह मंसूर ने 'आईन-ए-दहसाला' (दहसाला प्रणाली) लागू की। इसमें पिछले 10 वर्षों के औसत उत्पादन का एक-तिहाई (1/3) भाग लगान के रूप में नकद (दसतूर-उल-अमल) निर्धारित किया गया। भूमि की पैमाइश बांस की कड़ियों वाली जरीब से की गई और भूमि को पोलज, परौती, चाचर और बंजर में वर्गीकृत किया गया।"}, {"num": 30, "section": "मध्यकालीन भारत (Medieval India)", "type": "single_liner", "topic": "मध्यकालीन भारत", "pyq_source": "CUET-PG 2022 Q.31 एवं 2024 Q.31 भक्ति दर्शन डिस्ट्रेक्टर से निर्मित।", "q": "15वीं-16वीं शताब्दी के किस वैष्णव भक्ति संत एवं दार्शनिक ने 'शुद्धाद्वैत' (Shuddhadvaita / Pure Non-dualism) दर्शन का प्रतिपादन किया और श्रीकृष्ण की बाललीला की सेवा-उपासना हेतु 'पुष्टिमार्ग' (Path of Divine Grace) की स्थापना की?", "opts": ["रामानुजाचार्य (Ramanujacharya)", "माध्वाचार्य (Madhvacharya)", "वल्लभाचार्य (Vallabhacharya)", "निम्बार्काचार्य (Nimbarkacharya)"], "ans": "C", "exp": "महाप्रभु वल्लभाचार्य (1479-1531) ने 'शुद्धाद्वैत' दर्शन की स्थापना की। उनके अनुसार ब्रह्म माया के संबंध के बिना ही विशुद्ध रूप से सच्चिदानंद है और जगत ब्रह्म का ही वास्तविक विस्तार है। उन्होंने ईश्वर के पूर्ण अनुग्रह को 'पुष्टि' कहा और 'पुष्टिमार्ग' की नींव रखी। सूरदास व अन्य अष्टछाप कवि पुष्टिमार्ग से ही जुड़े थे।<br/>- रामानुजाचार्य: विशिष्टाद्वैत (श्री संप्रदाय)<br/>- माध्वाचार्य: द्वैतवाद (ब्रह्म संप्रदाय)<br/>- निम्बार्काचार्य: द्वैताद्वैत (सनक संप्रदाय)।"}, {"num": 31, "section": "मध्यकालीन भारत (Medieval India)", "type": "single_liner", "topic": "मध्यकालीन भारत", "pyq_source": "CUET-PG 2024 Q.28 एवं 2026 Q.29 मध्यकालीन मुद्राशास्त्र डिस्ट्रेक्टर से निर्मित।", "q": "शेरशाह सूरी द्वारा प्रारंभ की गई तथा मुग़ल काल में परिष्कृत त्रि-धात्विक मुद्रा प्रणाली में चांदी के मानक 'रुपया' (लगभग 178 ग्रेन) और तांबे के मानक सिक्के 'दाम' (लगभग 380 ग्रेन) के बीच विनिमय का आधिकारिक वैधानिक अनुपात क्या था?", "opts": ["1 रुपया = 16 दाम", "1 रुपया = 32 दाम", "1 रुपया = 48 दाम", "1 रुपया = 64 दाम"], "ans": "D", "exp": "शेरशाह सूरी ने 178 ग्रेन का विशुद्ध चांदी का 'रुपया' तथा लगभग 380 ग्रेन का तांबे का 'दाम' चलाया। अबुल फजल की 'आईन-ए-अकबरी' के अनुसार अकबर के समय में 1 चांदी के रुपये का आधिकारिक विनिमय दर 64 तांबे के 'दाम' के बराबर निर्धारित था। दैनिक सामान्य लेन-देन दाम में ही होता था।"}, {"num": 32, "section": "मध्यकालीन भारत (Medieval India)", "type": "single_liner", "topic": "मध्यकालीन भारत", "pyq_source": "CUET-PG 2023 Q.32 एवं 2025 Q.33 मुग़ल स्थापत्य डिस्ट्रेक्टर से निर्मित।", "q": "मुग़ल स्थापत्य कला में संगमरमर के श्वेत धरातल पर बहुमूल्य और रंगीन पत्थरों (जैसे अकीक, लाजवर्द, जेड) को तराशकर फूल-पत्तियों और ज्यामितीय बेल-बूटों की पच्चीकारी करने की इतालवी कला 'पित्रा-दूरा' (Pietra Dura) का भारत में प्रथम पूर्ण और भव्य प्रयोग किस मकबरे में मिलता है?", "opts": ["हुमायूं का मकबरा, दिल्ली (Humayun's Tomb)", "एतमादुद्दौला का मकबरा, आगरा (Tomb of Itimad-ud-Daulah)", "ताजमहल, आगरा (Taj Mahal)", "बीबी का मकबरा, औरंगाबाद (Bibi Ka Maqbara)"], "ans": "B", "exp": "नूरजहाँ ने अपने पिता मिर्जा ग्यास बेग (एतमादुद्दौला) की स्मृति में 1622-1628 ई. के मध्य आगरा में यमुना तट पर यह मकबरा बनवाया। यह मुग़ल काल की पहली ऐसी इमारत है जो पूर्णतः बेदाग सफेद संगमरमर से बनी है और जिसकी दीवारों पर 'पित्रा-दूरा' (पर्चिनकारी) का सर्वप्रथम व्यापक एवं उत्कृष्ट प्रयोग किया गया था।"}, {"num": 33, "section": "मध्यकालीन भारत (Medieval India)", "type": "match", "topic": "मध्यकालीन भारत", "pyq_source": "CUET-PG 2022 Q.24, 2024 Q.24 सल्तनत प्रशासनिक विभाग डिस्ट्रेक्टरों से निर्मित।", "q": "दिल्ली सल्तनत के केंद्रीय प्रशासनिक विभागों को उनके संबंधित कार्य से सुमेलित कीजिए:<br/>\n<table style=\"width:100%; border-collapse:collapse; margin:10px 0;\">\n  <tr style=\"background:#f1f5f9;\"><th style=\"border:1px solid #cbd5e1; padding:6px; font-weight:700;\">सूची-I (सल्तनत कालीन विभाग)</th><th style=\"border:1px solid #cbd5e1; padding:6px; font-weight:700;\">सूची-II (विभागीय उत्तरदायित्व)</th></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">a) दीवान-ए-अर्ज (Diwan-i-Arz)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">1) राजकीय पत्राचार एवं शाही फरमानों का मसौदा तैयार करना</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">b) दीवान-ए-रसालत (Diwan-i-Risalat)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">2) सैन्य भर्ती, सैनिकों का निरीक्षण एवं सेना का संगठन</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">c) दीवान-ए-इंशा (Diwan-i-Insha)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">3) कृषि भूमि का विस्तार एवं किसानों को सौंधर (तकावी) ऋण वितरण</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">d) दीवान-ए-कोही (Diwan-i-Kohi)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">4) विदेशी राजदूतों, राजनयिक पत्राचार एवं धार्मिक/धर्मादा मामलों की देखरेख</td></tr>\n</table>\nनीचे दिए गए कूट में से सही उत्तर चुनिए:", "opts": ["a-2, b-4, c-1, d-3", "a-1, b-3, c-2, d-4", "a-2, b-1, c-4, d-3", "a-4, b-2, c-3, d-1"], "ans": "A", "exp": "सही सुमेलन (2, 4, 1, 3) है:<br/>• दीवान-ए-अर्ज: बलबन द्वारा स्थापित सैन्य विभाग, प्रमुख आरिज-ए-मुमालिक (2)।<br/>• दीवान-ए-रसालत: विदेशी राजनयिक मामले एवं धार्मिक अपीलें (4)।<br/>• दीवान-ए-इंशा: शाही पत्राचार एवं गुप्त आदेश विभाग, प्रमुख दबीर-ए-खास (1)।<br/>• दीवान-ए-कोही: मुहम्मद बिन तुगलक द्वारा स्थापित कृषि विभाग (3)।"}, {"num": 34, "section": "मध्यकालीन भारत (Medieval India)", "type": "match", "topic": "मध्यकालीन भारत", "pyq_source": "CUET-PG 2023 Q.23, 2025 Q.24 मध्यकालीन ग्रंथ डिस्ट्रेक्टरों से निर्मित।", "q": "मध्यकालीन भारत के प्रसिद्ध इतिहास-ग्रंथों को उनके लेखकों से सुमेलित कीजिए:<br/>\n<table style=\"width:100%; border-collapse:collapse; margin:10px 0;\">\n  <tr style=\"background:#f1f5f9;\"><th style=\"border:1px solid #cbd5e1; padding:6px; font-weight:700;\">सूची-I (ऐतिहासिक ग्रंथ)</th><th style=\"border:1px solid #cbd5e1; padding:6px; font-weight:700;\">सूची-II (रचयिता / लेखक)</th></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">a) तबकात-ए-नासिरी (Tabaqat-i-Nasiri)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">1) जियाउद्दीन बरनी (Ziauddin Barani)</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">b) तारीख-ए-फिरोजशाही (Tarikh-i-Firozshahi)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">2) मिन्हाज-उस-सिराज (Minhaj-us-Siraj)</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">c) फुतूह-उस-सलातीन (Futuh-us-Salatin)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">3) इब्न बतूता (Ibn Battuta)</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">d) किताब-उल-रेहला (Kitab-ur-Rehla)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">4) ख्वाजा अब्दुल्लाह मलिक इसामी (Isami)</td></tr>\n</table>\nनीचे दिए गए कूट में से सही उत्तर चुनिए:", "opts": ["a-1, b-2, c-4, d-3", "a-2, b-1, c-4, d-3", "a-2, b-4, c-1, d-3", "a-3, b-1, c-2, d-4"], "ans": "B", "exp": "सही सुमेलन (2, 1, 4, 3) है:<br/>• तबकात-ए-नासिरी: मिन्हाज-उस-सिराज (नासिरुद्दीन महमूद को समर्पित, गुलाम वंश का प्रामाणिक स्रोत) (2)।<br/>• तारीख-ए-फिरोजशाही: जियाउद्दीन बरनी (बलबन से फिरोज तुगलक के 6ठे वर्ष तक का इतिहास) (1)।<br/>• फुतूह-उस-सलातीन: इसामी (बहमनी सुल्तान अलाउद्दीन बहमन शाह को समर्पित, पद्य रूप में इतिहास) (4)।<br/>• किताब-उल-रेहला: मोरक्को के यात्री इब्न बतूता का यात्रा वृत्तांत (मुहम्मद बिन तुगलक कालीन भारत का जीवंत चित्रण) (3)।"}, {"num": 35, "section": "मध्यकालीन भारत (Medieval India)", "type": "match", "topic": "मध्यकालीन भारत", "pyq_source": "CUET-PG 2024 Q.30, 2026 Q.33 मुग़ल प्रशासनिक पद डिस्ट्रेक्टरों से निर्मित।", "q": "मुग़ल साम्राज्य के शीर्ष प्रशासनिक पदाधिकारियों को उनके मुख्य दायित्वों से सुमेलित कीजिए:<br/>\n<table style=\"width:100%; border-collapse:collapse; margin:10px 0;\">\n  <tr style=\"background:#f1f5f9;\"><th style=\"border:1px solid #cbd5e1; padding:6px; font-weight:700;\">सूची-I (मुग़ल पदाधिकारी)</th><th style=\"border:1px solid #cbd5e1; padding:6px; font-weight:700;\">सूची-II (प्रशासनिक दायित्व)</th></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">a) मीर बख्शी (Mir Bakshi)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">1) धार्मिक अनुदानों (मदद-ए-माश) एवं वक्फ का सर्वोच्च अधिकारी</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">b) मीर सामां / खान-ए-सामां (Mir Saman)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">2) सैन्य विभाग का प्रमुख, मनसबदारों की भर्ती, सरखत व वेतन प्रमाण-पत्र जारीकर्ता</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">c) सदर-उस-सुदूर (Sadr-us-Sudur)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">3) जन-साधारण के नैतिक आचरण का निरीक्षक तथा बाजारों में माप-तौल का नियंत्रक</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">d) मुहतसिब (Muhtasib)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">4) शाही हरम, महलों तथा शाही कारखानों का सर्वोच्च प्रबंधक</td></tr>\n</table>\nनीचे दिए गए कूट में से सही उत्तर चुनिए:", "opts": ["a-2, b-3, c-1, d-4", "a-4, b-2, c-1, d-3", "a-2, b-4, c-1, d-3", "a-1, b-4, c-2, d-3"], "ans": "C", "exp": "सही सुमेलन (2, 4, 1, 3) है:<br/>• मीर बख्शी: सैन्य विभाग का प्रमुख, दाग व चेहरा का सत्यापन और मनसबदारों के वेतन प्रमाण पत्र (सरखत) जारी करना (2)।<br/>• मीर सामां: शाही कारखानों, हरम की आवश्यकताओं और घरेलू साज-सज्जा का सर्वोच्च प्रभारी (4)।<br/>• सदर-उस-सुदूर: धार्मिक मामलों का मुख्य सलाहकार, उलेमा को कर-मुक्त भूमि (मदद-ए-माश/सुयूरगल) का वितरक (1)।<br/>• मुहतसिब: औरंगजेब द्वारा सशक्त किया गया सार्वजनिक नैतिकता व शरीयत आचरण का निरीक्षक (3)।"}, {"num": 36, "section": "मध्यकालीन भारत (Medieval India)", "type": "match", "topic": "मध्यकालीन भारत", "pyq_source": "CUET-PG 2022 Q.27, 2025 Q.29 बहमनी व दक्कन सल्तनत डिस्ट्रेक्टरों से निर्मित।", "q": "बहमनी साम्राज्य के विघटन के उपरांत उदित दक्कन की पांच स्वतंत्र सल्तनतों को उनके संस्थापक राजवंशों से सुमेलित कीजिए:<br/>\n<table style=\"width:100%; border-collapse:collapse; margin:10px 0;\">\n  <tr style=\"background:#f1f5f9;\"><th style=\"border:1px solid #cbd5e1; padding:6px; font-weight:700;\">सूची-I (दक्कन की सल्तनत)</th><th style=\"border:1px solid #cbd5e1; padding:6px; font-weight:700;\">सूची-II (संस्थापक राजवंश)</th></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">a) बीजापुर (Bijapur)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">1) कुतुबशाही वंश (Qutb Shahi Dynasty)</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">b) गोलकुंडा (Golkonda)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">2) आदिलशाही वंश (Adil Shahi Dynasty)</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">c) अहमदनगर (Ahmadnagar)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">3) बरीदशाही वंश (Barid Shahi Dynasty)</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">d) बीदर (Bidar)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">4) निजामशाही वंश (Nizam Shahi Dynasty)</td></tr>\n</table>\nनीचे दिए गए कूट में से सही उत्तर चुनिए:", "opts": ["a-2, b-4, c-1, d-3", "a-1, b-2, c-4, d-3", "a-4, b-1, c-2, d-3", "a-2, b-1, c-4, d-3"], "ans": "D", "exp": "सही सुमेलन (2, 1, 4, 3) है:<br/>• बीजापुर: 1489 ई. में यूसुफ आदिलशाह द्वारा स्थापित 'आदिलशाही वंश' (2)।<br/>• गोलकुंडा: 1512 ई. में कुली कुतुबशाह द्वारा स्थापित 'कुतुबशाही वंश' (1)।<br/>• अहमदनगर: 1490 ई. में मलिक अहमद द्वारा स्थापित 'निजामशाही वंश' (4)।<br/>• बीदर: 1492 ई. में कासिम बरीद द्वारा स्थापित 'बरीदशाही वंश' (3)।"}, {"num": 37, "section": "मध्यकालीन भारत (Medieval India)", "type": "match", "topic": "मध्यकालीन भारत", "pyq_source": "CUET-PG 2023 Q.35, 2026 Q.36 अष्टप्रधान पद डिस्ट्रेक्टरों से निर्मित।", "q": "छत्रपति शिवाजी महाराज की मंत्रिपरिषद 'अष्टप्रधान' के पदाधिकारियों को उनके आधिकारिक कर्तव्यों से सुमेलित कीजिए:<br/>\n<table style=\"width:100%; border-collapse:collapse; margin:10px 0;\">\n  <tr style=\"background:#f1f5f9;\"><th style=\"border:1px solid #cbd5e1; padding:6px; font-weight:700;\">सूची-I (अष्टप्रधान पद)</th><th style=\"border:1px solid #cbd5e1; padding:6px; font-weight:700;\">सूची-II (शासकीय दायित्व)</th></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">a) पेशवा (Peshwa / मुख्य प्रधान)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">1) राज्य के आय-व्यय का लेखा-जोखा (वित्त मंत्री)</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">b) अमात्य / मजूमदार (Amatya / Mazumdar)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">2) राजा के दैनिक कार्यों, दरबार की घटनाओं व गुप्तचर विभाग का प्रभारी</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">c) वाकयानवीस / मंत्री (Waqia-Navis)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">3) विदेश मामलों का मंत्री एवं अन्य राज्यों के साथ कूटनीतिक संबंध</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">d) सुमंत / दबीर (Sumant / Dabir)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">4) संपूर्ण राज्य का प्रधानमंत्री, सामान्य प्रशासन व राजा की अनुपस्थिति में कार्यवाहक</td></tr>\n</table>\nनीचे दिए गए कूट में से सही उत्तर चुनिए:", "opts": ["a-4, b-1, c-2, d-3", "a-1, b-4, c-2, d-3", "a-4, b-2, c-1, d-3", "a-3, b-1, c-4, d-2"], "ans": "A", "exp": "सही सुमेलन (4, 1, 2, 3) है:<br/>• पेशवा (मुख्य प्रधान): राजा के बाद प्रशासन का सर्वोच्च पद, समस्त सामान्य प्रशासन का निरीक्षक (4)।<br/>• अमात्य (मजूमदार): राज्य का वित्त मंत्री, समस्त आय-व्यय की जांच और लेखा-परीक्षण (1)।<br/>• वाकयानवीस (मंत्री): गृह मंत्री के समान, दरबारी कार्यवृत्त, राजा की दिनचर्या व गुप्तचर व्यवस्था (2)।<br/>• सुमंत (दबीर): विदेश मंत्री, पड़ोसी राज्यों के साथ संधि-विग्रह व कूटनीतिक पत्र-व्यवहार (3)।"}, {"num": 38, "section": "मध्यकालीन भारत (Medieval India)", "type": "multi_statement", "topic": "मध्यकालीन भारत", "pyq_source": "CUET-PG 2023 Q.25, 2025 Q.26 खिलजी बाजार नियंत्रण डिस्ट्रेक्टर व सूक्ष्म जाल से निर्मित।", "q": "अलाउद्दीन खिलजी की बाजार नियंत्रण प्रणाली (Market Control Regulations) के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br/>\nI. उसने दिल्ली में विभिन्न वस्तुओं के क्रय-विक्रय हेतु पृथक बाजार स्थापित किए, जिनमें 'सराय-ए-अदल' वस्त्र, शर्करा, जड़ी-बूटियों और मेवों का मुख्य बाजार था।<br/>\nII. गल्ला-मंडी (खाद्यान्न बाजार) का सर्वोच्च नियंत्रक 'शहना-ए-मंडी' कहलाता था, जिसकी सहायता हेतु गुप्तचर (बरीद एवं मुनहियान) नियुक्त किए गए थे।<br/>\nIII. बाजार में अनाजों के मूल्य व्यापारियों द्वारा मांग और आपूर्ति के आधार पर स्वतंत्र रूप से तय किए जाते थे और सुल्तान ने मूल्यों पर कोई राजकीय सीमा नहीं लगाई थी।<br/>\nIV. व्यापारियों और दुकानदारों द्वारा कम तोलने पर उतना ही मांस उनके शरीर से काट लेने का कठोर दंड निर्धारित था।<br/>\nउपर्युक्त में से कौन-से कथन सही हैं?", "opts": ["केवल I और II", "केवल II, III और IV", "केवल I, II और IV", "I, II, III और IV सभी"], "ans": "C", "exp": "कथन I, II और IV ऐतिहासिक रूप से पूर्णतः सही हैं।<br/>कथन III में ऐतिहासिक जाल (trap) है: अलाउद्दीन की नीति का मूल उद्देश्य ही 'मूल्य-नियंत्रण' (Price Fixation) था। उसने प्रत्येक वस्तु का मूल्य राज्यादेश द्वारा तय किया था और आपूर्ति-मांग के आधार पर स्वतंत्र मूल्य निर्धारण की अनुमति बिल्कुल नहीं थी। अकाल में भी अनाज के तय मूल्य नहीं बढ़े थे।"}, {"num": 39, "section": "मध्यकालीन भारत (Medieval India)", "type": "multi_statement", "topic": "मध्यकालीन भारत", "pyq_source": "CUET-PG 2022 Q.29, 2024 Q.29 अकबर की धार्मिक नीति व मजहर डिस्ट्रेक्टर से निर्मित।", "q": "मुग़ल सम्राट अकबर की धार्मिक नीति एवं वैचारिक विकास के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br/>\nI. अकबर ने 1575 ईस्वी में फतेहपुर सीकरी में विभिन्न धर्मों के दार्शनिकों के साथ शास्त्रार्थ हेतु 'इबादतखाना' (House of Worship) की स्थापना की।<br/>\nII. 1579 ईस्वी में जारी किए गए 'मजहर' (Mahzar) का मसौदा राजा टोडरमल एवं बीरबल द्वारा तैयार किया गया था और इसने अकबर को कुरान से भी उच्च सर्वोच्च धार्मिक शक्ति प्रदान कर दी।<br/>\nIII. अकबर ने सभी धर्मों के प्रति सहिष्णुता और सार्वभौमिक शांति की अवधारणा 'सुलह-ए-कुल' (Universal Peace) को राजकीय नीति का आधार बनाया।<br/>\nIV. 1582 ईस्वी में अकबर ने सभी धर्मों के नैतिक व दार्शनिक सत्यों का समन्वय कर 'तौहीद-ए-इलाही' (दीन-ए-इलाही) की शुरुआत की, जिसे स्वीकार करने वाला एकमात्र प्रमुख हिंदू दरबारी बीरबल था।<br/>\nउपर्युक्त में से कौन-से कथन सही हैं?", "opts": ["केवल I और III", "केवल I, III और IV", "केवल II और IV", "I, II, III और IV सभी"], "ans": "B", "exp": "कथन I, III और IV सत्य हैं।<br/>कथन II में ऐतिहासिक जाल (trap) है: 'मजहर' (Infallibility Decree) का मसौदा शेख मुबारक (अबुल फजल व फैजी के पिता) ने तैयार किया था, न कि टोडरमल व बीरबल ने। इसके अलावा मजहर ने अकबर को कुरान से ऊपर नहीं बनाया, बल्कि इस्लामी शरीयत के दायरे में मुजतहिदों के परस्पर विरोधी मतों में से किसी एक को जनहित में चुनने का अधिकार 'इमाम-ए-आदिल' के रूप में दिया था।"}, {"num": 40, "section": "मध्यकालीन भारत (Medieval India)", "type": "multi_statement", "topic": "मध्यकालीन भारत", "pyq_source": "CUET-PG 2023 Q.28, 2025 Q.31 मनसबदारी व्यवस्था के तकनीकी डिस्ट्रेक्टरों से निर्मित।", "q": "मुग़ल साम्राज्य की मनसबदारी व्यवस्था (Mansabdari System) के संबंध में निम्नलिखित कथनों पर विचार कीजिए:<br/>\nI. मनसबदारी व्यवस्था सैन्य और असैन्य (प्रशासनिक) दोनों सेवाओं का एक एकीकृत पदानुक्रम थी, जिसमें प्रत्येक अधिकारी को एक विशिष्ट 'मनसब' (दर्जा/पद) प्राप्त था।<br/>\nII. प्रत्येक मनसब में दो संख्यात्मक पद होते थे: 'जात' (Zat), जो मनसबदार की व्यक्तिगत प्रतिष्ठा और मूल वेतन तय करता था; तथा 'सवार' (Sawar), जो उसके द्वारा रखे जाने वाले घुड़सवारों की संख्या निर्धारित करता था।<br/>\nIII. सम्राट जहाँगीर ने मनसबदारों के जात दर्जे में वृद्धि किए बिना उनके सवार दर्जे में अतिरिक्त घुड़सवार रखने हेतु 'दो-अस्पा सीह-अस्पा' (Du-aspa Sih-aspa) प्रणाली प्रारंभ की।<br/>\nIV. शाहजहाँ के शासनकाल में जागीरों की अनुमानित आय (जमा) और वास्तविक वसूली (हासिल) में अंतर को पाटने हेतु 'महवार पैमाना' (Month-scale System / 8-महीना, 6-महीना अनुपात) लागू किया गया।<br/>\nउपर्युक्त में से कौन-से कथन सही हैं?", "opts": ["केवल I और II", "केवल I, II और III", "केवल II, III और IV", "I, II, III और IV सभी"], "ans": "D", "exp": "चारों कथन (I, II, III, IV) प्रामाणिक मुग़ल इतिहास के अकादमिक सत्य हैं। अकबर द्वारा व्यवस्थित मनसबदारी में जहाँगीर ने सैन्य विस्तार हेतु 'दो-अस्पा सीह-अस्पा' तथा शाहजहाँ ने जागीर संकट को प्रबंधित करने हेतु 'महवार पैमाना' (महीना अनुपात) जोड़ा था।"}, {"num": 41, "section": "मध्यकालीन भारत (Medieval India)", "type": "chronology", "topic": "मध्यकालीन भारत", "pyq_source": "CUET-PG 2022 Q.21, 2024 Q.22 दिल्ली सल्तनत राजवंश डिस्ट्रेक्टरों से निर्मित।", "q": "दिल्ली सल्तनत पर शासन करने वाले निम्नलिखित प्रमुख राजवंशों को उनके सही ऐतिहासिक कालक्रमानुसार व्यवस्थित कीजिए:<br/>\n1. खिलजी वंश (खिलजी क्रांति - जलालुद्दीन एवं अलाउद्दीन)<br/>\n2. ममलुक / गुलाम वंश (कुतुबुद्दीन ऐबक, इल्तुतमिश, बलबन)<br/>\n3. सैयद वंश (खिज्र खां एवं मुबारक शाह)<br/>\n4. तुगलक वंश (गियासुद्दीन, मुहम्मद बिन तुगलक, फिरोज तुगलक)<br/>\nनीचे दिए गए कूट का प्रयोग कर सही उत्तर चुनिए:", "opts": ["1, 2, 4, 3", "2, 1, 4, 3", "2, 4, 1, 3", "4, 2, 1, 3"], "ans": "B", "exp": "सही कालक्रम 2, 1, 4, 3 है:<br/>• 2. ममलुक/गुलाम वंश (1206 - 1290 ईस्वी)<br/>• 1. खिलजी वंश (1290 - 1320 ईस्वी)<br/>• 4. तुगलक वंश (1320 - 1414 ईस्वी)<br/>• 3. सैयद वंश (1414 - 1451 ईस्वी)<br/>(इसके बाद लोदी वंश ने 1451 से 1526 ईस्वी तक शासन किया)।"}, {"num": 42, "section": "मध्यकालीन भारत (Medieval India)", "type": "chronology", "topic": "मध्यकालीन भारत", "pyq_source": "CUET-PG 2023 Q.27, 2025 Q.28 मुग़ल साम्राज्य के निर्णायक युद्ध डिस्ट्रेक्टरों से निर्मित।", "q": "मुग़ल साम्राज्य के उत्थान और सत्ता-संघर्ष से जुड़े निम्नलिखित ऐतिहासिक युद्धों को सही कालक्रमानुसार व्यवस्थित कीजिए:<br/>\n1. खानवा का ऐतिहासिक युद्ध (बाबर और राणा सांगा)<br/>\n2. पानीपत का प्रथम युद्ध (बाबर और इब्राहिम लोदी)<br/>\n3. सामूगढ़ का युद्ध (औरंगजेब और दारा शिकोह के मध्य निर्णायक उत्तराधिकार युद्ध)<br/>\n4. चौसा का युद्ध (शेरशाह सूरी और हुमायूं)<br/>\nनीचे दिए गए कूट का प्रयोग कर सही उत्तर चुनिए:", "opts": ["2, 4, 1, 3", "1, 2, 4, 3", "2, 1, 4, 3", "4, 2, 1, 3"], "ans": "C", "exp": "सही कालक्रम 2, 1, 4, 3 है:<br/>• 2. पानीपत का प्रथम युद्ध (21 अप्रैल 1526 - मुग़ल साम्राज्य की नींव)<br/>• 1. खानवा का युद्ध (16 मार्च 1527 - बाबर द्वारा जिहाद का नारा व तमगा कर की समाप्ति)<br/>• 4. चौसा का युद्ध (26 जून 1539 - शेरशाह द्वारा हुमायूं की पराजय व 'शेरशाह' की पदवी)<br/>• 3. सामूगढ़ का युद्ध (29 मई 1658 - दारा शिकोह की निर्णायक पराजय व औरंगजेब का राज्यारोहण)"}, {"num": 43, "section": "मध्यकालीन भारत (Medieval India)", "type": "chronology", "topic": "मध्यकालीन भारत", "pyq_source": "CUET-PG 2022 Q.30, 2024 Q.32 मुग़ल दरबार में विदेशी यात्री डिस्ट्रेक्टरों से निर्मित।", "q": "मुग़ल सम्राटों के दरबार में आने वाले निम्नलिखित यूरोपीय यात्रियों एवं राजदूतों के आगमन को सही कालक्रमानुसार व्यवस्थित कीजिए:<br/>\n1. कैप्टन विलियम हॉकिन्स (हेक्टर जहाज से जहाँगीर के आगरा दरबार में आगमन)<br/>\n2. राल्फ फिच (फतेहपुर सीकरी व आगरा में अकबर के दरबार का भ्रमण)<br/>\n3. फ्रांस्वा बर्नियर (फ्रांसीसी चिकित्सक, शाहजहाँ व औरंगजेब का शासनकाल)<br/>\n4. सर थॉमस रो (ब्रिटिश सम्राट जेम्स प्रथम का अधिकृत राजदूत, जहाँगीर का दरबार)<br/>\nनीचे दिए गए कूट का प्रयोग कर सही उत्तर चुनिए:", "opts": ["1, 2, 4, 3", "2, 4, 1, 3", "4, 2, 1, 3", "2, 1, 4, 3"], "ans": "D", "exp": "सही कालक्रम 2, 1, 4, 3 है:<br/>• 2. राल्फ फिच (1583-1591 ईस्वी - अकबर के शासनकाल में फतेहपुर सीकरी आया)<br/>• 1. कैप्टन विलियम हॉकिन्स (1608-1611 ईस्वी - जहाँगीर के दरबार में, जिसे 400 का मनसब व 'इंग्लिश खां' उपाधि मिली)<br/>• 4. सर थॉमस रो (1615-1619 ईस्वी - जहाँगीर के दरबार में ब्रिटिश व्यापारिक फरमान प्राप्त करने वाला राजदूत)<br/>• 3. फ्रांस्वा बर्नियर (1656-1668 ईस्वी - शाहजहाँ/औरंगजेब काल, 'ट्रैवल्स इन द मुग़ल एम्पायर' का लेखक)"}, {"num": 44, "section": "मध्यकालीन भारत (Medieval India)", "type": "assertion_reason", "topic": "मध्यकालीन भारत", "pyq_source": "CUET-PG 2023 Q.24, 2025 Q.25 तुगलक योजनाएं डिस्ट्रेक्टर से निर्मित।", "q": "नीचे दो कथन दिए गए हैं, एक को अभिकथन (A) और दूसरे को कारण (R) कहा गया है:<br/>\nअभिकथन (A): सुल्तान मुहम्मद बिन तुगलक ने अपनी राजधानी को दिल्ली से दक्कन में देवगिरि (दौलताबाद) स्थानांतरित करने का युगांतरकारी निर्णय लिया।<br/>\nकारण (R): दक्कन और सुदूर दक्षिण भारत के नए विजित क्षेत्रों पर सीधा प्रशासनिक नियंत्रण स्थापित करने तथा दिल्ली पर बार-बार होने वाले मंगोल आक्रमणों के खतरे से साम्राज्य के केंद्र को सुरक्षित रखने हेतु दौलताबाद अधिक केंद्रीय और सुरक्षित भौगोलिक स्थिति में था।<br/>\nउपर्युक्त कथनों के आलोक में निम्नलिखित में से सही विकल्प का चयन कीजिए:", "opts": ["(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।", "(A) और (R) दोनों सही हैं परंतु (R), (A) की सही व्याख्या नहीं है।", "(A) सही है परंतु (R) गलत है।", "(A) गलत है परंतु (R) सही है।"], "ans": "A", "exp": "(A) और (R) दोनों सही हैं तथा (R), (A) की सही व्याख्या है। मुहम्मद बिन तुगलक के काल में सल्तनत का विस्तार पहली बार सुदूर दक्षिण तक हुआ था। दिल्ली से दक्कन पर नियंत्रण रखना कठिन था और उत्तर-पश्चिम से मंगोल आक्रमणों का निरंतर भय था। अतः दौलताबाद को साम्राज्य का केंद्र बनाकर दक्षिण पर नियंत्रण रखना उसकी रणनीतिक योजना थी, यद्यपि दिल्ली की जनता को बलपूर्वक स्थानांतरित करने से यह योजना विफल हो गई।"}, {"num": 45, "section": "मध्यकालीन भारत (Medieval India)", "type": "assertion_reason", "topic": "मध्यकालीन भारत", "pyq_source": "CUET-PG 2024 Q.26, 2026 Q.31 शेरशाह सूरी प्रशासनिक विरासत डिस्ट्रेक्टर से निर्मित।", "q": "नीचे दो कथन दिए गए हैं, एक को अभिकथन (A) और दूसरे को कारण (R) कहा गया है:<br/>\nअभिकथन (A): मध्यकालीन भारतीय प्रशासनिक इतिहास में शेरशाह सूरी को मुग़ल सम्राट अकबर का प्रत्यक्ष 'अग्रदूत' (Precursor of Akbar) स्वीकार किया जाता है।<br/>\nकारण (R): शेरशाह द्वारा स्थापित भू-राजस्व की जब्ती व पैमाइश प्रणाली, पट्टा एवं कबूलियत, मानक चांदी का रुपया, डाक-चौकी व्यवस्था तथा साम्राज्य का सरकार व परगना में सुदृढ़ प्रशासनिक विभाजन अकबर द्वारा व्यापक स्तर पर अपनाया एवं परिष्कृत किया गया।<br/>\nउपर्युक्त कथनों के आलोक में निम्नलिखित में से सही विकल्प का चयन कीजिए:", "opts": ["(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।", "(A) और (R) दोनों सही हैं परंतु (R), (A) की सही व्याख्या नहीं है।", "(A) सही है परंतु (R) गलत है।", "(A) गलत है परंतु (R) सही है।"], "ans": "A", "exp": "(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है। प्रसिद्ध इतिहासकार के.आर. कानूनगो के अनुसार अकबर की महान प्रशासनिक व्यवस्था की नींव शेरशाह सूरी के 5 वर्षीय शासन में ही रखी जा चुकी थी। टोडरमल ने शेरशाह के अधीन ही अपने राजस्व प्रशिक्षण की शुरुआत की थी। शेरशाह के सिक्के, सड़कें (सड़क-ए-आजम), सरायें और प्रशासनिक तंत्र अकबर के साम्राज्य निर्माण के मुख्य आधार बने।"}, {"num": 46, "section": "मध्यकालीन भारत (Medieval India)", "type": "assertion_reason", "topic": "मध्यकालीन भारत", "pyq_source": "CUET-PG 2022 Q.32, 2025 Q.34 मराठा कराधान व्यवस्था डिस्ट्रेक्टर से निर्मित।", "q": "नीचे दो कथन दिए गए हैं, एक को अभिकथन (A) और दूसरे को कारण (R) कहा गया है:<br/>\nअभिकथन (A): छत्रपति शिवाजी महाराज द्वारा पड़ोसी मुग़ल और दक्कनी सल्तनतों के क्षेत्रों से वसूला जाने वाला 'चौथ' (Chauth) एक ऐसा कर था जो उन पड़ोसी राज्यों के नागरिकों को मराठा नागरिकता और आंतरिक कानूनी सुरक्षा प्रदान करता था।<br/>\nकारण (R): 'चौथ' विजित या पड़ोसी क्षेत्रों के भू-राजस्व का एक-चौथाई (25%) हिस्सा था, जिसे मराठों द्वारा उन क्षेत्रों पर सैन्य आक्रमण या लूटपाट न करने (Non-aggression protection) के एवज में वसूला जाता था।<br/>\nउपर्युक्त कथनों के आलोक में निम्नलिखित में से सही विकल्प का चयन कीजिए:", "opts": ["(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।", "(A) और (R) दोनों सही हैं परंतु (R), (A) की सही व्याख्या नहीं है।", "(A) सही है परंतु (R) गलत है।", "(A) गलत है परंतु (R) सही है।"], "ans": "D", "exp": "अभिकथन (A) सर्वथा गलत है, क्योंकि 'चौथ' देने वाले पड़ोसी राज्यों को मराठा स्वराज्य की नागरिकता या आंतरिक सुरक्षा नहीं मिलती थी; यह केवल मराठा सेना द्वारा उन पर आक्रमण न करने का एक प्रकार का 'सुरक्षा कर' (Protection tax) था।<br/>कारण (R) बिल्कुल सही है। चौथ पड़ोसी मुग़ल व दक्कनी सूबों से उनके भू-राजस्व का 25% वसूला जाता था ताकि मराठे उन क्षेत्रों को नष्ट न करें। इसके अतिरिक्त शिवाजी 'सरदेशमुखी' (10%) महाराष्ट्र के वंशानुगत सरदेशमुख होने के नाते वसूलते थे।"}, {"num": 47, "section": "आधुनिक भारत (Modern India)", "type": "single_liner", "topic": "आधुनिक भारत", "pyq_source": "CUET-PG 2022 Q.47 एवं 2024 Q.48 ब्रिटिश भू-राजस्व डिस्ट्रेक्टरों से निर्मित।", "q": "1793 ईस्वी में लॉर्ड कॉर्नवालिस द्वारा बंगाल, बिहार और उड़ीसा में लागू किए गए 'स्थाई बंदोबस्त' (इस्तमरारी/ज़मींदारी) के अंतर्गत वह कौन-सा कठोर नियम था, जिसके अनुसार यदि कोई जमींदार निर्धारित तिथि के सूर्यास्त तक सरकारी खजाने में निश्चित लगान जमा नहीं कराता था, तो उसकी पूरी जमींदारी नीलाम कर दी जाती थी?", "opts": ["सूर्यास्त कानून (Sunset Law)", "इजारेदारी कानून (Ijaredari Law)", "खूंटकट्टी अधिनियम (Khuntkatti Act)", "दस्तक प्रणाली (Dastak System)"], "ans": "A", "exp": "1793 के स्थाई बंदोबस्त (Permanent Settlement) में 1794 में 'सूर्यास्त कानून' (Sunset Law) जोड़ा गया। इसके अनुसार यदि जमींदार तय की गई तिमाही तिथि के सूर्यास्त तक ईस्ट इंडिया कंपनी का लगान जमा नहीं कर पाता, तो उसकी जमींदारी जब्त कर सार्वजनिक नीलामी द्वारा बेच दी जाती थी। इसके परिणामस्वरूप बंगाल की लगभग आधी पारंपरिक जमींदारियां महाजनों व व्यापारियों के हाथों में चली गईं।"}, {"num": 48, "section": "आधुनिक भारत (Modern India)", "type": "single_liner", "topic": "आधुनिक भारत", "pyq_source": "CUET-PG 2023 Q.48 एवं 2025 Q.49 रैयतवाड़ी बंदोबस्त डिस्ट्रेक्टर से निर्मित।", "q": "1820 ईस्वी में मद्रास प्रेसीडेंसी के तत्कालीन गवर्नर सर थॉमस मुनरो (Thomas Munro) तथा कैप्टन अलेक्जेंडर रीड द्वारा दक्षिण एवं पश्चिम भारत में लागू किए गए उस भू-राजस्व बंदोबस्त को क्या कहा जाता है, जिसमें किसी मध्यस्थ (ज़मींदार) के बिना सीधे वास्तविक किसान/काश्तकार के साथ लगान का समझौता किया गया?", "opts": ["महालवाड़ी बंदोबस्त (Mahalwari Settlement)", "रैयतवाड़ी बंदोबस्त (Ryotwari Settlement)", "तालुकेदारी बंदोबस्त (Talukdari Settlement)", "मालगुजारी बंदोबस्त (Malguzari Settlement)"], "ans": "B", "exp": "रैयतवाड़ी बंदोबस्त (Ryotwari Settlement) सर्वप्रथम 1792 में कैप्टन रीड द्वारा मद्रास के बारामहल जिले में लागू किया गया था और 1820 में सर थॉमस मुनरो ने इसे संपूर्ण मद्रास प्रेसीडेंसी में लागू किया। इसमें किसान (रैयत) को भूमि का स्वामी मानकर सीधे सरकार से अनुबंध किया गया। ब्रिटिश भारत के सर्वाधिक 51% भू-भाग (मद्रास, बंबई, असम) पर यही व्यवस्था लागू थी। महालवाड़ी 30% पर और स्थाई बंदोबस्त 19% पर था।"}, {"num": 49, "section": "आधुनिक भारत (Modern India)", "type": "single_liner", "topic": "आधुनिक भारत", "pyq_source": "CUET-PG 2022 Q.51 एवं 2024 Q.50 रिपन एवं इलबर्ट बिल डिस्ट्रेक्टर से निर्मित।", "q": "1883 ईस्वी में वायसराय लॉर्ड रिपन की कार्यकारिणी परिषद के विधि सदस्य सर सी.पी. इलबर्ट द्वारा प्रस्तुत उस विधेयक का मुख्य उद्देश्य क्या था, जिसने भारत में रहने वाले यूरोपीय और आंग्ल-भारतीय समुदाय में भारी आक्रोश और 'श्वेत विद्रोह' (White Mutiny) को जन्म दिया?", "opts": ["भारतीय समाचार पत्रों पर कड़ा सेंसरशिप लगाना", "सिविल सेवा परीक्षा की अधिकतम आयु सीमा घटाकर 19 वर्ष करना", "भारतीय जिला मजिस्ट्रेटों और सत्र न्यायाधीशों को यूरोपीय अपराधियों के मुकदमों की सुनवाई का समान न्यायिक अधिकार देना", "उच्च न्यायालयों में भारतीय भाषाओं के प्रयोग पर पूर्ण प्रतिबंध लगाना"], "ans": "C", "exp": "इलबर्ट बिल (Ilbert Bill, 1883) का उद्देश्य भारतीय और यूरोपीय जजों के बीच न्यायिक नस्लीय असमानता को समाप्त करना था। इसके तहत भारतीय जिला मजिस्ट्रेटों और सेशन जजों को यूरोपीय ब्रिटिश नागरिकों के आपराधिक मामलों की सुनवाई का अधिकार दिया गया। इसके विरोध में अंग्रेजों ने 'यूरोपीय एवं एंग्लो-इंडियन डिफेंस एसोसिएशन' बनाकर 'श्वेत विद्रोह' किया, जिसके दबाव में रिपन को संशोधन करना पड़ा (कि यूरोपीय अभियुक्त कम से कम 50% यूरोपीय जूरी की मांग कर सकते थे)।"}, {"num": 50, "section": "आधुनिक भारत (Modern India)", "type": "single_liner", "topic": "आधुनिक भारत", "pyq_source": "CUET-PG 2024 Q.51 विकल्प (D) 'अमृत बाजार पत्रिका' के डिस्ट्रेक्टर विश्लेषण से निर्मित।", "q": "1878 ईस्वी में लॉर्ड लिटन द्वारा पारित दमनकारी 'वर्नाक्युलर प्रेस एक्ट' (Gagging Act) की कानूनी कार्यवाहियों से बचने हेतु किस राष्ट्रवादी समाचार पत्र ने रातों-रात अपनी भाषा को बंगाली से पूर्णतः अंग्रेजी में परिवर्तित कर लिया था?", "opts": ["सोम प्रकाश (Som Prakash)", "भारत मिहिर (Bharat Mihir)", "हिंदू पैट्रियट (Hindu Patriot)", "अमृत बाजार पत्रिका (Amrita Bazar Patrika)"], "ans": "D", "exp": "'अमृत बाजार पत्रिका' की स्थापना 1868 में शिशिर कुमार घोष और मोतीलाल घोष ने बंगाली भाषा में की थी। जब 1878 में लिटन ने देशी भाषाओं (Vernacular) के समाचार पत्रों पर प्रतिबंध लगाने हेतु वर्नाक्युलर प्रेस एक्ट पारित किया (जिससे केवल अंग्रेजी पत्र मुक्त थे), तो अमृत बाजार पत्रिका ने रातों-रात अपना मुद्रण बंगाली से अंग्रेजी साप्ताहिक में बदल लिया और जब्ती से बच गई। ईश्वर चंद्र विद्यासागर का 'सोम प्रकाश' इस कानून का पहला शिकार बना था।"}, {"num": 51, "section": "आधुनिक भारत (Modern India)", "type": "single_liner", "topic": "आधुनिक भारत", "pyq_source": "CUET-PG 2023 Q.52 एवं 2025 Q.54 क्रांतिकारी संगठन डिस्ट्रेक्टर से निर्मित।", "q": "1913 ईस्वी में संयुक्त राज्य अमेरिका के सैन फ्रांसिस्को में लाला हरदयाल, सोहन सिंह भकना और भाई परमानंद द्वारा स्थापित 'पैसिफिक कोस्ट हिंदुस्तान एसोसिएशन' ने ब्रिटिश शासन को उखाड़ फेंकने हेतु किस विख्यात साप्ताहिक पत्रिका और क्रांतिकारी दल का सूत्रपात किया?", "opts": ["गदर (Ghadar / गदर पार्टी)", "तलवार (Talwar)", "इंडियन सोशियोलॉजिस्ट (The Indian Sociologist)", "फ्री हिंदुस्तान (Free Hindustan)"], "ans": "A", "exp": "1913 में सैन फ्रांसिस्को में स्थापित 'पैसिफिक कोस्ट हिंदुस्तान एसोसिएशन' (अध्यक्ष: सोहन सिंह भकना; महासचिव: लाला हरदयाल) ने 1 नवंबर 1913 से 'गदर' (विद्रोह) नामक साप्ताहिक पत्रिका का प्रकाशन शुरू किया, जिसके नाम पर यह आंदोलन 'गदर पार्टी' कहलाया। इसका मुख्यालय 'युगांतर आश्रम' था और इसका उद्देश्य सशस्त्र क्रांति द्वारा भारत को स्वाधीन कराना था। 'द इंडियन सोशियोलॉजिस्ट' श्यामजी कृष्ण वर्मा (लंदन) द्वारा प्रकाशित था।"}, {"num": 52, "section": "आधुनिक भारत (Modern India)", "type": "single_liner", "topic": "आधुनिक भारत", "pyq_source": "CUET-PG 2022 Q.56 एवं 2026 Q.58 नेहरू रिपोर्ट डिस्ट्रेक्टर से निर्मित।", "q": "1928 ईस्वी में लॉर्ड बर्केनहेड की चुनौती को स्वीकार करते हुए पंडित मोतीलाल नेहरू की अध्यक्षता में सर्वदलीय सम्मेलन द्वारा तैयार किए गए भारतीय संविधान के मसौदे 'नेहरू रिपोर्ट' (Nehru Report) में भारत के लिए किस राजनीतिक दर्जे की मुख्य मांग की गई थी?", "opts": ["पूर्ण स्वराज्य (Complete Independence)", "डोमिनियन स्टेटस / औपनिवेशिक स्वराज्य (Dominion Status within British Commonwealth)", "द्वि-राष्ट्र सिद्धांत पर आधारित संघ (Two-Nation Confederation)", "ब्रिटिश ताज के अधीन संरक्षित राज्य (Protectorate)"], "ans": "B", "exp": "नेहरू रिपोर्ट (1928) में भारत हेतु 'डोमिनियन स्टेटस' (औपनिवेशिक स्वराज्य) की मांग की गई थी, जिसके तहत भारत को कनाडा और ऑस्ट्रेलिया की भांति ब्रिटिश राष्ट्रमंडल के भीतर पूर्ण आंतरिक स्वशासन मिलना था। सुभाष चंद्र बोस और जवाहरलाल नेहरू ने डोमिनियन स्टेटस का विरोध कर 'पूर्ण स्वराज्य' की मांग उठाई और 'इंडिपेंडेंस फॉर इंडिया लीग' की स्थापना की। अंततः 1929 के लाहौर अधिवेशन में पूर्ण स्वराज्य को कांग्रेस का लक्ष्य घोषित किया गया।"}, {"num": 53, "section": "आधुनिक भारत (Modern India)", "type": "single_liner", "topic": "आधुनिक भारत", "pyq_source": "CUET-PG 2023 Q.67 विकल्प (B) एवं 2025 Q.66 पूना पैक्ट डिस्ट्रेक्टर से निर्मित।", "q": "24 सितंबर 1932 को यरवदा सेंट्रल जेल (पुणे) में महात्मा गांधी के आमरण अनशन के दबाव में डॉ. बी.आर. आंबेडकर और हिंदू नेताओं (मदन मोहन मालवीय) के मध्य हुए 'पूना पैक्ट' (Poona Pact) का मुख्य परिणाम क्या था?", "opts": ["दलित वर्ग को अलग मुस्लिम लीग जैसा पृथक राष्ट्र प्रदान किया गया", "दलित वर्ग हेतु पृथक निर्वाचन मंडल (Separate Electorates) समाप्त कर प्रांतीय विधानमंडलों में आरक्षित सीटें 71 से बढ़ाकर 147 कर दी गईं", "सांप्रदायिक पंचाट (Communal Award) को ब्रिटिश सरकार द्वारा पूर्णतः निरस्त कर दिया गया", "दलित वर्ग हेतु केवल केंद्रीय असेंबली में ही आरक्षण सीमित रखा गया"], "ans": "B", "exp": "ब्रिटिश प्रधानमंत्री रैमसे मैकडोनाल्ड ने 16 अगस्त 1932 को 'कम्युनल अवार्ड' जारी कर दलितों को पृथक निर्वाचक मंडल दिया था। गांधीजी ने इसके विरोध में यरवदा जेल में आमरण अनशन शुरू किया। 24 सितंबर 1932 को हुए 'पूना पैक्ट' के तहत दलित वर्ग ने पृथक निर्वाचक मंडल की मांग त्याग दी और बदले में प्रांतीय विधानमंडलों में दलितों हेतु आरक्षित सीटें 71 से बढ़ाकर 147 तथा केंद्रीय विधायिका में 18% सीटें आरक्षित की गईं।"}, {"num": 54, "section": "आधुनिक भारत (Modern India)", "type": "single_liner", "topic": "आधुनिक भारत", "pyq_source": "CUET-PG 2024 Q.65 एवं 2026 Q.67 नौसेना विद्रोह डिस्ट्रेक्टर से निर्मित।", "q": "18 फरवरी 1946 को बंबई बंदरगाह पर स्थित रॉयल इंडियन नेवी के किस नौसैनिक पोत (Signal Training Ship) के रेटिंग्स (भारतीय नौसैनिकों) ने नस्लीय भेदभाव, अखाद्य भोजन और बी.सी. दत्त की गिरफ्तारी के विरोध में ऐतिहासिक 'शाही नौसेना विद्रोह' (RIN Mutiny) प्रारंभ किया था?", "opts": ["एचएमआईएस हिंदुस्तान (HMIS Hindustan)", "एचएमआईएस विक्रमादित्य (HMIS Vikramaditya)", "एचएमआईएस बंगाल (HMIS Bengal)", "एचएमआईएस तलवार (HMIS Talwar)"], "ans": "D", "exp": "18 फरवरी 1946 को बंबई में सिग्नल प्रशिक्षण पोत 'एचएमआईएस तलवार' (HMIS Talwar) के 1100 भारतीय नाविकों ने खराब भोजन, नस्लीय दुर्व्यवहार तथा 'भारत छोड़ो' लिखने पर बी.सी. दत्त की गिरफ्तारी के विरोध में हड़ताल कर दी। उन्होंने पोत पर कांग्रेस का तिरंगा, मुस्लिम लीग का हरा झंडा और कम्युनिस्ट पार्टी का लाल झंडा एक साथ फहराया। बाद में सरदार वल्लभभाई पटेल और जिन्ना के आश्वासन पर 23 फरवरी 1946 को उन्होंने आत्मसमर्पण किया।"}, {"num": 55, "section": "आधुनिक भारत (Modern India)", "type": "match", "topic": "आधुनिक भारत", "pyq_source": "CUET-PG 2022 Q.45, 2024 Q.46 ब्रिटिश गवर्नर जनरल डिस्ट्रेक्टरों से निर्मित।", "q": "ब्रिटिश भारत के प्रमुख गवर्नर जनरलों/वायसरायों को उनकी युगांतरकारी नीतियों से सुमेलित कीजिए:<br/>\n<table style=\"width:100%; border-collapse:collapse; margin:10px 0;\">\n  <tr style=\"background:#f1f5f9;\"><th style=\"border:1px solid #cbd5e1; padding:6px; font-weight:700;\">सूची-I (गवर्नर जनरल / वायसराय)</th><th style=\"border:1px solid #cbd5e1; padding:6px; font-weight:700;\">सूची-II (प्रमुख नीति / ऐतिहासिक कार्य)</th></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">a) लॉर्ड वेलेजली (Lord Wellesley)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">1) सती प्रथा का वैधानिक उन्मूलन (नियम XVII, 1829)</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">b) लॉर्ड डलहौजी (Lord Dalhousie)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">2) बंगाल का विभाजन एवं पुरातत्व सर्वेक्षण का पुनर्गठन (1905)</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">c) लॉर्ड विलियम बेंटिक (Lord William Bentinck)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">3) व्यपगत का सिद्धांत / हड़प नीति (Doctrine of Lapse)</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">d) लॉर्ड कर्जन (Lord Curzon)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">4) सहायक संधि प्रणाली (Subsidiary Alliance System)</td></tr>\n</table>\nनीचे दिए गए कूट में से सही उत्तर चुनिए:", "opts": ["a-4, b-3, c-1, d-2", "a-3, b-4, c-1, d-2", "a-4, b-1, c-3, d-2", "a-1, b-3, c-4, d-2"], "ans": "A", "exp": "सही सुमेलन (4, 3, 1, 2) है:<br/>• लॉर्ड वेलेजली: सहायक संधि (हैदराबाद 1798, मैसूर 1799) (4)।<br/>• लॉर्ड डलहौजी: हड़प नीति (सतारा 1848, संभलपुर 1849, झांसी 1853, अवध 1856) (3)।<br/>• लॉर्ड विलियम बेंटिक: राजा राममोहन राय के सहयोग से सती प्रथा का उन्मूलन (1)।<br/>• लॉर्ड कर्जन: 1905 में बंगाल का विभाजन तथा प्राचीन स्मारक संरक्षण अधिनियम 1904 (2)।"}, {"num": 56, "section": "आधुनिक भारत (Modern India)", "type": "match", "topic": "आधुनिक भारत", "pyq_source": "CUET-PG 2023 Q.50, 2025 Q.51 सुधार आंदोलन डिस्ट्रेक्टरों से निर्मित।", "q": "19वीं शताब्दी के सामाजिक-धार्मिक सुधार आंदोलनों को उनके संस्थापकों से सुमेलित कीजिए:<br/>\n<table style=\"width:100%; border-collapse:collapse; margin:10px 0;\">\n  <tr style=\"background:#f1f5f9;\"><th style=\"border:1px solid #cbd5e1; padding:6px; font-weight:700;\">सूची-I (सुधार आंदोलन / संस्था)</th><th style=\"border:1px solid #cbd5e1; padding:6px; font-weight:700;\">सूची-II (संस्थापक)</th></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">a) सत्यशोधक समाज (Satyashodhak Samaj)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">1) स्वामी दयानंद सरस्वती (1875)</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">b) आर्य समाज (Arya Samaj)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">2) आत्माराम पांडुरंग एवं महादेव गोविंद रानाडे (1867)</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">c) रामकृष्ण मिशन (Ramakrishna Mission)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">3) महात्मा ज्योतिराव फुले (1873)</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">d) प्रार्थना समाज (Prarthana Samaj)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">4) स्वामी विवेकानंद (1897)</td></tr>\n</table>\nनीचे दिए गए कूट में से सही उत्तर चुनिए:", "opts": ["a-3, b-2, c-4, d-1", "a-3, b-1, c-4, d-2", "a-1, b-3, c-4, d-2", "a-4, b-1, c-3, d-2"], "ans": "B", "exp": "सही सुमेलन (3, 1, 4, 2) है:<br/>• सत्यशोधक समाज: 1873 में पुणे में ज्योतिराव फुले द्वारा निम्न जातियों के उद्धार हेतु स्थापित (3)।<br/>• आर्य समाज: 1875 में बंबई में स्वामी दयानंद सरस्वती द्वारा वेदों की पुनर्स्थापना हेतु स्थापित (1)।<br/>• रामकृष्ण मिशन: 1897 में स्वामी विवेकानंद द्वारा समाज सेवा व वेदांत प्रचार हेतु स्थापित (4)।<br/>• प्रार्थना समाज: 1867 में बंबई में केशवचंद्र सेन की प्रेरणा से आत्माराम पांडुरंग द्वारा स्थापित (2)।"}, {"num": 57, "section": "आधुनिक भारत (Modern India)", "type": "match", "topic": "आधुनिक भारत", "pyq_source": "CUET-PG 2022 Q.49, 2024 Q.49 जनजातीय व किसान विद्रोह डिस्ट्रेक्टरों से निर्मित।", "q": "आधुनिक भारत के प्रमुख जनजातीय एवं किसान विद्रोहों को उनके नेताओं से सुमेलित कीजिए:<br/>\n<table style=\"width:100%; border-collapse:collapse; margin:10px 0;\">\n  <tr style=\"background:#f1f5f9;\"><th style=\"border:1px solid #cbd5e1; padding:6px; font-weight:700;\">सूची-I (विद्रोह / आंदोलन)</th><th style=\"border:1px solid #cbd5e1; padding:6px; font-weight:700;\">सूची-II (प्रमुख नेतृत्वकर्ता)</th></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">a) संथाल विद्रोह (Santhal Hool)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">1) बिरसा मुंडा ('धरती आबा')</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">b) मुंडा उलगुलान (Munda Ulgulan)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">2) ईशान चंद्र राय एवं शंभू नाथ पाल</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">c) पाबना किसान विद्रोह (Pabna Agrarian League)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">3) सिद्धू, कान्हू, चांद और भैरव</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">d) मोपला विद्रोह (Moplah Rebellion)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">4) वरियामकुन्नाथ कुन्हम्मद हाजी एवं अली मुसलियार</td></tr>\n</table>\nनीचे दिए गए कूट में से सही उत्तर चुनिए:", "opts": ["a-3, b-1, c-4, d-2", "a-1, b-3, c-2, d-4", "a-3, b-1, c-2, d-4", "a-4, b-1, c-2, d-3"], "ans": "C", "exp": "सही सुमेलन (3, 1, 2, 4) है:<br/>• संथाल विद्रोह (1855-56): भागलपुर-राजमहल (दामिन-ए-कोह) में महाजनों व अंग्रेजों के विरुद्ध सिद्धू-कान्हू का नेतृत्व (3)।<br/>• मुंडा उलगुलान (1899-1900): छोटानागपुर में खूंटकट्टी व्यवस्था की बहाली हेतु बिरसा मुंडा का महाविद्रोह (1)।<br/>• पाबना किसान विद्रोह (1873-76): बंगाल के पाबना में जमींदारों की बेदखली के विरुद्ध कानूनी लड़ाई, ईशान चंद्र राय (2)।<br/>• मोपला विद्रोह (1921): केरल के मालाबार में हिंदू जमींदारों (जेनमी) और ब्रिटिश पुलिस के विरुद्ध मुस्लिम काश्तकारों का विद्रोह (4)।"}, {"num": 58, "section": "आधुनिक भारत (Modern India)", "type": "match", "topic": "आधुनिक भारत", "pyq_source": "CUET-PG 2024 Q.51, 2026 Q.55 राष्ट्रवादी समाचार पत्र डिस्ट्रेक्टरों से निर्मित।", "q": "आधुनिक भारत के राष्ट्रवादी समाचार पत्रों/पत्रिकाओं को उनके प्रसिद्ध संपादकों से सुमेलित कीजिए:<br/>\n<table style=\"width:100%; border-collapse:collapse; margin:10px 0;\">\n  <tr style=\"background:#f1f5f9;\"><th style=\"border:1px solid #cbd5e1; padding:6px; font-weight:700;\">सूची-I (समाचार पत्र / पत्रिका)</th><th style=\"border:1px solid #cbd5e1; padding:6px; font-weight:700;\">सूची-II (संपादक / प्रकाशक)</th></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">a) द बंगाली (The Bengalee)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">1) बाल गंगाधर तिलक</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">b) मराठा (The Mahratta - अंग्रेजी)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">2) सुरेंद्रनाथ बनर्जी</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">c) अल-हिलाल (Al-Hilal)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">3) डॉ. एनी बेसेंट</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">d) न्यू इंडिया एवं कॉमनवील (New India & Commonweal)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">4) मौलाना अबुल कलाम आजाद</td></tr>\n</table>\nनीचे दिए गए कूट में से सही उत्तर चुनिए:", "opts": ["a-2, b-4, c-1, d-3", "a-1, b-2, c-4, d-3", "a-2, b-3, c-4, d-1", "a-2, b-1, c-4, d-3"], "ans": "D", "exp": "सही सुमेलन (2, 1, 4, 3) है:<br/>• द बंगाली: सुरेंद्रनाथ बनर्जी (राष्ट्रवादी चेतना का मुखपत्र) (2)।<br/>• मराठा (अंग्रेजी) तथा केसरी (मराठी): बाल गंगाधर तिलक (1)।<br/>• अल-हिलाल: मौलाना अबुल कलाम आजाद द्वारा 1912 में कलकत्ता से प्रकाशित उर्दू साप्ताहिक (4)।<br/>• न्यू इंडिया एवं कॉमनवील: डॉ. एनी बेसेंट (होम रूल लीग का प्रचारक) (3)।"}, {"num": 59, "section": "आधुनिक भारत (Modern India)", "type": "match", "topic": "आधुनिक भारत", "pyq_source": "CUET-PG 2023 Q.53, 2025 Q.55 क्रांतिकारी संगठन डिस्ट्रेक्टरों से निर्मित।", "q": "भारतीय स्वतंत्रता संग्राम के गुप्त क्रांतिकारी संगठनों को उनके संस्थापकों से सुमेलित कीजिए:<br/>\n<table style=\"width:100%; border-collapse:collapse; margin:10px 0;\">\n  <tr style=\"background:#f1f5f9;\"><th style=\"border:1px solid #cbd5e1; padding:6px; font-weight:700;\">सूची-I (क्रांतिकारी संगठन)</th><th style=\"border:1px solid #cbd5e1; padding:6px; font-weight:700;\">सूची-II (संस्थापक / प्रमुख नेता)</th></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">a) अभिनव भारत समाज (Abhinav Bharat)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">1) शचींद्रनाथ सान्याल, रामप्रसाद बिस्मिल एवं योगेश चटर्जी</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">b) ढाका अनुशीलन समिति (Anushilan Samiti)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">2) विनायक दामोदर सावरकर (नासिक)</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">c) हिंदुस्तान रिपब्लिकन एसोसिएशन (HRA)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">3) सरदार अजीत सिंह एवं अंबा प्रसाद (पंजाब)</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">d) भारत माता सोसायटी (Bharat Mata Society)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">4) पुलिन बिहारी दास (बंगाल)</td></tr>\n</table>\nनीचे दिए गए कूट में से सही उत्तर चुनिए:", "opts": ["a-2, b-1, c-4, d-3", "a-4, b-2, c-1, d-3", "a-2, b-4, c-1, d-3", "a-1, b-4, c-2, d-3"], "ans": "C", "exp": "सही सुमेलन (2, 4, 1, 3) है:<br/>• अभिनव भारत: वी.डी. सावरकर द्वारा 1904 में नासिक में स्थापित गुप्त क्रांतिकारी समाज (2)।<br/>• ढाका अनुशीलन समिति: 1905 में पुलिन बिहारी दास द्वारा स्थापित (4)।<br/>• हिंदुस्तान रिपब्लिकन एसोसिएशन (HRA): 1924 में कानपुर में शचींद्रनाथ सान्याल व रामप्रसाद बिस्मिल द्वारा स्थापित (1)।<br/>• भारत माता सोसायटी: 1907 में पंजाब में सरदार अजीत सिंह (भगत सिंह के चाचा) व सूफी अंबा प्रसाद द्वारा स्थापित (3)।"}, {"num": 60, "section": "आधुनिक भारत (Modern India)", "type": "multi_statement", "topic": "आधुनिक भारत", "pyq_source": "CUET-PG 2023 Q.46, 2025 Q.47 1857 विद्रोह एवं पील कमीशन डिस्ट्रेक्टर से निर्मित।", "q": "1857 के प्रथम स्वतंत्रता संग्राम (महाविद्रोह) तथा उसके दूरगामी परिणामों के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br/>\nI. विद्रोह का तात्कालिक कारण 1853 की नई एनफील्ड राइफल में प्रयुक्त होने वाले कारतूसों पर गाय और सूअर की चर्बी होने का संदेह था।<br/>\nII. मेरठ के सैनिकों ने 11-12 मई 1857 को दिल्ली पहुंचकर अंतिम मुग़ल बादशाह बहादुर शाह जफर को 'शहंशाह-ए-हिंदुस्तान' घोषित कर क्रांति का नेतृत्व सौंपा।<br/>\nIII. विद्रोह के बाद सैन्य पुनर्गठन हेतु गठित 'पील कमीशन' (Peel Commission) ने ब्रिटिश सेना में भारतीय सैनिकों का अनुपात यूरोपीय सैनिकों की तुलना में दोगुना बढ़ाने की सिफारिश की थी।<br/>\nIV. 1 नवंबर 1858 को इलाहाबाद दरबार में महारानी विक्टोरिया की उद्घोषणा द्वारा भारत का शासन ईस्ट इंडिया कंपनी से ब्रिटिश क्राउन (ताज) को हस्तांतरित कर दिया गया।<br/>\nउपर्युक्त में से कौन-से कथन सही हैं?", "opts": ["केवल I, II और IV", "केवल I और III", "केवल II और IV", "I, II, III और IV सभी"], "ans": "A", "exp": "कथन I, II और IV ऐतिहासिक रूप से सत्य हैं।<br/>कथन III में ऐतिहासिक जाल (trap) है: 'पील कमीशन' (1859) ने भविष्य में विद्रोह रोकने हेतु यूरोपीय सैनिकों की संख्या बढ़ाने तथा भारतीय सैनिकों की संख्या घटाने की सिफारिश की थी। बंगाल में 1:2 और मद्रास/बंबई में 1:3 का अनुपात निर्धारित किया गया तथा सेना में लड़ाकू व गैर-लड़ाकू जातियों का कृत्रिम भेद पैदा किया गया।"}, {"num": 61, "section": "आधुनिक भारत (Modern India)", "type": "multi_statement", "topic": "आधुनिक भारत", "pyq_source": "CUET-PG 2024 Q.62, 2026 Q.63 सविनय अवज्ञा व दांडी मार्च डिस्ट्रेक्टर से निर्मित।", "q": "महात्मा गांधी के नेतृत्व में संचालित 'सविनय अवज्ञा आंदोलन' (Civil Disobedience Movement) के संबंध में निम्नलिखित कथनों पर विचार कीजिए:<br/>\nI. 12 मार्च 1930 को गांधीजी ने अपने 78 चुने हुए आश्रमवासियों के साथ साबरमती आश्रम से दांडी समुद्र तट हेतु ऐतिहासिक दांडी मार्च प्रारंभ किया।<br/>\nII. गांधीजी ने 240 मील की यह यात्रा मात्र 10 दिनों में पूरी की तथा उनके सभी 78 सत्याग्रही अमेरिकी एवं ब्रिटिश विदेशी पत्रकार थे।<br/>\nIII. 6 अप्रैल 1930 को गांधीजी ने दांडी में मुट्ठी भर नमक बनाकर ब्रिटिश नमक कानून का प्रतीकात्मक उल्लंघन किया, जिसके साथ संपूर्ण देश में आंदोलन प्रारंभ हो गया।<br/>\nIV. तमिलनाडु में सी. राजगोपालाचारी ने तिरुचिरापल्ली से वेदारण्यम तक तथा मालाबार में के. केलप्पन ने कालीकट से पय्यानूर तक नमक सत्याग्रह का नेतृत्व किया।<br/>\nउपर्युक्त में से कौन-से कथन सही हैं?", "opts": ["केवल I और III", "केवल I, III और IV", "केवल II और IV", "I, II, III और IV सभी"], "ans": "B", "exp": "कथन I, III और IV ऐतिहासिक रूप से सत्य हैं।<br/>कथन II में ऐतिहासिक जाल (trap) है: गांधीजी ने 240 मील (लगभग 385 किमी) की दांडी पदयात्रा 24 दिनों (12 मार्च से 5 अप्रैल 1930) में पूरी की थी, न कि 10 दिनों में। इसके अलावा उनके साथ पदयात्रा करने वाले सभी 78 सदस्य साबरमती आश्रम के निष्ठावान भारतीय कार्यकर्ता थे (यद्यपि अमेरिकी पत्रकार वेब मिलर धरसाना नमक डिपो पर हुए पुलिस अत्याचारों का प्रमुख गवाह था)।"}, {"num": 62, "section": "आधुनिक भारत (Modern India)", "type": "multi_statement", "topic": "आधुनिक भारत", "pyq_source": "CUET-PG 2023 Q.70, 2025 Q.67 भारत छोड़ो आंदोलन डिस्ट्रेक्टर से निर्मित।", "q": "1942 के 'भारत छोड़ो आंदोलन' (Quit India Movement / अगस्त क्रांति) के संदर्भ में निम्नलिखित कथनों पर विचार कीजिए:<br/>\nI. 8 अगस्त 1942 को बंबई के ऐतिहासिक ग्वालिया टैंक मैदान में अखिल भारतीय कांग्रेस कार्यसमिति ने भारत छोड़ो प्रस्ताव पारित किया तथा गांधीजी ने 'करो या मरो' (Do or Die) का मंत्र दिया।<br/>\nII. 9 अगस्त की प्रातः ब्रिटिश सरकार ने 'ऑपरेशन जीरो आवर' (Operation Zero Hour) चलाकर शीर्ष कांग्रेस नेताओं को रातों-रात गिरफ्तार कर लिया, जिसके बाद आंदोलन स्वतःस्फूर्त जन-क्रांति में बदल गया।<br/>\nIII. आंदोलन के दौरान जयप्रकाश नारायण (हजारीबाग जेल से फरार होकर), अरुणा आसफ अली, राममनोहर लोहिया और उषा मेहता (भूमिगत आजाद कांग्रेस रेडियो) ने भूमिगत प्रतिरोध का नेतृत्व किया।<br/>\nIV. मुहम्मद अली जिन्ना की मुस्लिम लीग तथा भारतीय कम्युनिस्ट पार्टी (CPI) ने भारत छोड़ो आंदोलन का पूर्ण समर्थन किया तथा अपने कार्यकर्ताओं को सरकारी संस्थाओं को ध्वस्त करने का आदेश दिया।<br/>\nउपर्युक्त में से कौन-से कथन सही हैं?", "opts": ["केवल I और II", "केवल II और III", "केवल I, II और III", "I, II, III और IV सभी"], "ans": "C", "exp": "कथन I, II और III ऐतिहासिक रूप से सत्य हैं।<br/>कथन IV सर्वथा असत्य है: मुस्लिम लीग ने भारत छोड़ो आंदोलन का बहिष्कार किया और मुसलमानों को इससे दूर रहने का निर्देश दिया (जिन्ना ने 'बांटो और भागो' का नारा दिया)। भारतीय कम्युनिस्ट पार्टी (CPI) ने सोवियत संघ के फासीवाद-विरोधी युद्ध प्रयासों के समर्थन के चलते आंदोलन का विरोध किया था। हिंदू महासभा और डॉ. बी.आर. आंबेडकर ने भी इस आंदोलन का समर्थन नहीं किया था।"}, {"num": 63, "section": "आधुनिक भारत (Modern India)", "type": "chronology", "topic": "आधुनिक भारत", "pyq_source": "CUET-PG 2023 Q.58, 2025 Q.59 क्रांतिकारी आंदोलन घटनाएं डिस्ट्रेक्टरों से निर्मित।", "q": "1920 के दशक में भारतीय क्रांतिकारियों (HRA एवं HSRA) द्वारा संचालित निम्नलिखित युगांतरकारी घटनाओं को सही कालक्रमानुसार व्यवस्थित कीजिए:<br/>\n1. काकोरी ट्रेन एक्शन (रामप्रसाद बिस्मिल, अशफाकउल्ला, रोशन सिंह)<br/>\n2. लाहौर में सहायक पुलिस अधीक्षक जॉन सॉन्डर्स का वध (भगत सिंह, राजगुरु, सुखदेव)<br/>\n3. दिल्ली केंद्रीय विधानसभा में भगत सिंह और बटुकेश्वर दत्त द्वारा बम विस्फोट<br/>\n4. फिरोजशाह कोटला (दिल्ली) में चंद्रशेखर आजाद व साथियों द्वारा HSRA की स्थापना<br/>\nनीचे दिए गए कूट का प्रयोग कर सही उत्तर चुनिए:", "opts": ["1, 2, 4, 3", "4, 1, 2, 3", "1, 4, 2, 3", "2, 1, 4, 3"], "ans": "C", "exp": "सही कालक्रम 1, 4, 2, 3 है:<br/>• 1. काकोरी ट्रेन एक्शन (9 अगस्त 1925 - 8-डाउन सहारनपुर-लखनऊ पैसेंजर से सरकारी खजाने की जब्ती)<br/>• 4. HSRA की स्थापना (सितंबर 1928 - फिरोजशाह कोटला दिल्ली में समाजवादी लक्ष्य स्वीकार किया गया)<br/>• 2. सॉन्डर्स का वध (17 दिसंबर 1928 - लाला लाजपत राय की हत्या का प्रतिशोध)<br/>• 3. सेंट्रल असेंबली बम कांड (8 अप्रैल 1929 - 'बहरों को सुनाने हेतु' ट्रेड डिस्प्यूट्स बिल व पब्लिक सेफ्टी बिल के विरोध में)"}, {"num": 64, "section": "आधुनिक भारत (Modern India)", "type": "chronology", "topic": "आधुनिक भारत", "pyq_source": "CUET-PG 2022 Q.54, 2024 Q.58 गांधीवादी जन-आंदोलन डिस्ट्रेक्टरों से निर्मित।", "q": "महात्मा गांधी के नेतृत्व एवं हस्तक्षेप से जुड़े निम्नलिखित युगांतरकारी राष्ट्रीय घटनाक्रमों को सही कालक्रमानुसार व्यवस्थित कीजिए:<br/>\n1. चौरी-चौरा की हिंसक घटना और असहयोग आंदोलन का स्थगन<br/>\n2. चंपारण का प्रथम सविनय अवज्ञा सत्याग्रह (तिनकठिया प्रणाली के विरुद्ध)<br/>\n3. अमृतसर में जालियांवाला बाग का नृशंस नरसंहार<br/>\n4. यरवदा जेल में गांधी-आंबेडकर ऐतिहासिक 'पूना पैक्ट' समझौता<br/>\nनीचे दिए गए कूट का प्रयोग कर सही उत्तर चुनिए:", "opts": ["2, 1, 3, 4", "3, 2, 1, 4", "2, 3, 1, 4", "4, 2, 3, 1"], "ans": "C", "exp": "सही कालक्रम 2, 3, 1, 4 है:<br/>• 2. चंपारण सत्याग्रह (अप्रैल 1917 - राजकुमार शुक्ल के आग्रह पर बिहार में तिनकठिया प्रथा की समाप्ति)<br/>• 3. जालियांवाला बाग नरसंहार (13 अप्रैल 1919 - रोलेट एक्ट व सत्यपाल/किचलू की गिरफ्तारी का विरोध)<br/>• 1. चौरी-चौरा की घटना (4/5 फरवरी 1922 - 12 फरवरी 1922 को बारदोली प्रस्ताव द्वारा असहयोग आंदोलन स्थगित)<br/>• 4. पूना पैक्ट (24 सितंबर 1932 - कम्युनल अवार्ड के विरोध में अनशन उपरांत गांधी-आंबेडकर समझौता)"}, {"num": 65, "section": "आधुनिक भारत (Modern India)", "type": "chronology", "topic": "आधुनिक भारत", "pyq_source": "CUET-PG 2023 Q.71, 2025 Q.68 संवैधानिक मिशन एवं योजनाएं डिस्ट्रेक्टरों से निर्मित।", "q": "1940 के दशक में भारतीय स्वतंत्रता एवं विभाजन से जुड़े निम्नलिखित ब्रिटिश संवैधानिक मिशनों एवं योजनाओं को सही कालक्रमानुसार व्यवस्थित कीजिए:<br/>\n1. सर स्टैफोर्ड क्रिप्स का 'क्रिप्स मिशन' प्रस्ताव<br/>\n2. वायसराय लॉर्ड लिनलिथगो द्वारा 'अगस्त प्रस्ताव' (August Offer) की घोषणा<br/>\n3. लॉर्ड माउंटबेटन की विभाजन एवं सत्ता हस्तांतरण की '3 जून योजना'<br/>\n4. पैथिक लॉरेंस, स्टैफोर्ड क्रिप्स और ए.वी. अलेक्जेंडर का 'कैबिनेट मिशन'<br/>\nनीचे दिए गए कूट का प्रयोग कर सही उत्तर चुनिए:", "opts": ["1, 2, 4, 3", "2, 4, 1, 3", "4, 2, 1, 3", "2, 1, 4, 3"], "ans": "D", "exp": "सही कालक्रम 2, 1, 4, 3 है:<br/>• 2. अगस्त प्रस्ताव (8 अगस्त 1940 - युद्धोपरांत संविधान सभा एवं डोमिनियन स्टेटस का आश्वासन)<br/>• 1. क्रिप्स मिशन (मार्च 1942 - गांधीजी द्वारा 'पोस्ट-डेटेड चेक' कहा गया)<br/>• 4. कैबिनेट मिशन (मार्च-मई 1946 - त्रि-स्तरीय संघ एवं अंतरिम सरकार/संविधान सभा की योजना)<br/>• 3. माउंटबेटन योजना (3 जून 1947 - भारत का विभाजन और 15 अगस्त 1947 को सत्ता हस्तांतरण)"}, {"num": 66, "section": "आधुनिक भारत (Modern India)", "type": "assertion_reason", "topic": "आधुनिक भारत", "pyq_source": "CUET-PG 2022 Q.48, 2024 Q.47 वि-औद्योगीकरण व दादाभाई नौरोजी डिस्ट्रेक्टर से निर्मित।", "q": "नीचे दो कथन दिए गए हैं, एक को अभिकथन (A) और दूसरे को कारण (R) कहा गया है:<br/>\nअभिकथन (A): 19वीं शताब्दी में ब्रिटिश आर्थिक नीतियों के परिणामस्वरूप भारत में सदियों पुराने पारंपरिक हस्तशिल्प और सूती वस्त्र उद्योग का अभूतपूर्व विनाश हुआ, जिसे आर्थिक इतिहासकारों ने 'वि-औद्योगीकरण' (De-industrialization) कहा है।<br/>\nकारण (R): इंग्लैंड की औद्योगिक क्रांति के बाद ब्रिटिश सरकार ने भारत को केवल इंग्लैंड के कारखानों हेतु सस्ते कच्चे माल (कपास, नील, जूट) का निर्यातक और ब्रिटेन में मशीन-निर्मित तैयार औद्योगिक उत्पादों का एक आयात-कर मुक्त विशाल बाजार (One-way free trade market) बना दिया।<br/>\nउपर्युक्त कथनों के आलोक में निम्नलिखित में से सही विकल्प का चयन कीजिए:", "opts": ["(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।", "(A) और (R) दोनों सही हैं परंतु (R), (A) की सही व्याख्या नहीं है।", "(A) सही है परंतु (R) गलत है।", "(A) गलत है परंतु (R) सही है।"], "ans": "A", "exp": "(A) और (R) दोनों सही हैं तथा (R), (A) की सही व्याख्या है। दादाभाई नौरोजी ('पॉवर्टी एंड अन-ब्रिटिश रूल इन इंडिया') और आर.सी. दत्त ('इकोनॉमिक हिस्ट्री ऑफ इंडिया') ने सिद्ध किया कि ब्रिटेन की एकतरफा मुक्त व्यापार नीति, भारतीय माल पर ब्रिटेन में भारी आयात शुल्क तथा ब्रिटिश मशीन-निर्मित सस्ते सूती वस्त्रों की भारतीय बाजार में बाढ़ ने भारत के ढाका, मुर्शिदाबाद और सूरत जैसे पारंपरिक वस्त्र विनिर्माण केंद्रों को नष्ट कर लाखों बुनकरों को भूमिहीन खेतिहर मजदूर बना दिया।"}, {"num": 67, "section": "आधुनिक भारत (Modern India)", "type": "assertion_reason", "topic": "आधुनिक भारत", "pyq_source": "CUET-PG 2023 Q.51, 2025 Q.53 सूरत विभाजन 1907 डिस्ट्रेक्टर से निर्मित।", "q": "नीचे दो कथन दिए गए हैं, एक को अभिकथन (A) और दूसरे को कारण (R) कहा गया है:<br/>\nअभिकथन (A): 1907 के ऐतिहासिक सूरत अधिवेशन में कांग्रेस के नरमपंथी (Moderates) और गरमपंथी (Extremists) दोनों धड़ों ने सर्वसम्मति से लोकमान्य बाल गंगाधर तिलक को भारतीय राष्ट्रीय कांग्रेस का अध्यक्ष निर्वाचित किया था।<br/>\nकारण (R): सूरत अधिवेशन में गरमपंथी नेता लाला लाजपत राय या बाल गंगाधर तिलक को अध्यक्ष बनाना चाहते थे तथा स्वदेशी व विदेशी माल के बहिष्कार आंदोलन को पूरे देश में फैलाना चाहते थे, जबकि नरमपंथी रास बिहारी घोष को अध्यक्ष बनाकर आंदोलन को केवल बंगाल तक सीमित रखना चाहते थे।<br/>\nउपर्युक्त कथनों के आलोक में निम्नलिखित में से सही विकल्प का चयन कीजिए:", "opts": ["(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।", "(A) और (R) दोनों सही हैं परंतु (R), (A) की सही व्याख्या नहीं है।", "(A) सही है परंतु (R) गलत है।", "(A) गलत है परंतु (R) सही है।"], "ans": "D", "exp": "अभिकथन (A) सर्वथा गलत है, क्योंकि 1907 के सूरत अधिवेशन में तिलक अध्यक्ष नहीं बने थे; नरमपंथियों ने डॉ. रास बिहारी घोष को अध्यक्ष चुना था जिसका गरमपंथियों ने कड़ा विरोध किया और अंततः भारी हंगामे के बीच कांग्रेस दो धड़ों में विभाजित हो गई।<br/>कारण (R) बिल्कुल सही है। दोनों गुटों में अध्यक्ष पद तथा स्वदेशी, बहिष्कार, राष्ट्रीय शिक्षा और स्वशासन के 1906 के कलकत्ता प्रस्तावों को लागू करने के दायरे को लेकर गहरा टकराव था। अतः (A) गलत है परंतु (R) सही है।"}, {"num": 68, "section": "आधुनिक भारत (Modern India)", "type": "assertion_reason", "topic": "आधुनिक भारत", "pyq_source": "CUET-PG 2024 Q.68, 2026 Q.68 कैबिनेट मिशन 1946 डिस्ट्रेक्टर से निर्मित।", "q": "नीचे दो कथन दिए गए हैं, एक को अभिकथन (A) और दूसरे को कारण (R) कहा गया है:<br/>\nअभिकथन (A): मार्च 1946 में भारत भेजे गए ब्रिटिश 'कैबिनेट मिशन' ने मुहम्मद अली जिन्ना की संपूर्ण संप्रभु 'पाकिस्तान' की मांग को पूर्णतः स्वीकार करते हुए दो पृथक संविधान सभाओं के गठन की आधिकारिक घोषणा की थी।<br/>\nकारण (R): कैबिनेट मिशन ने भारत की राजनीतिक एकता को बनाए रखने हेतु एक ढीले त्रि-स्तरीय परिसंघ (Three-tier Federation) तथा प्रांतों के तीन अनिवार्य समूहों (ग्रुप A, B, C) के गठन का प्रस्ताव दिया था, जिसमें केंद्र केवल रक्षा, विदेश और संचार मामलों तक सीमित था।<br/>\nउपर्युक्त कथनों के आलोक में निम्नलिखित में से सही विकल्प का चयन कीजिए:", "opts": ["(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।", "(A) और (R) दोनों सही हैं परंतु (R), (A) की सही व्याख्या नहीं है।", "(A) सही है परंतु (R) गलत है।", "(A) गलत है परंतु (R) सही है।"], "ans": "D", "exp": "अभिकथन (A) सर्वथा असत्य है, क्योंकि कैबिनेट मिशन ने जिन्ना की अलग पाकिस्तान और दो संविधान सभाओं की मांग को स्पष्ट रूप से खारिज कर दिया था। मिशन ने अखंड भारत के लिए केवल एक ही संविधान सभा की सिफारिश की थी।<br/>कारण (R) पूर्णतः सत्य है। कैबिनेट मिशन ने भारत की एकता की रक्षा हेतु तीन समूहों (Group A - हिंदू बहुल प्रांत; Group B - पश्चिमोत्तर मुस्लिम बहुल प्रांत; Group C - पूर्वी मुस्लिम बहुल प्रांत) और कमजोर केंद्र की त्रि-स्तरीय परिसंघीय योजना प्रस्तुत की थी। अतः (A) गलत है परंतु (R) सही है।"}, {"num": 69, "section": "इतिहास-दर्शन एवं आधुनिक विश्व इतिहास (Historiography & World History)", "type": "single_liner", "topic": "इतिहास-दर्शन एवं आधुनिक विश्व इतिहास", "pyq_source": "CUET-PG 2023 Q.72, 2024 Q.70 आधुनिक वैज्ञानिक इतिहास-लेखन डिस्ट्रेक्टर से निर्मित।", "q": "आधुनिक वैज्ञानिक इतिहास-लेखन (Modern Scientific Historiography) के जनक माने जाने वाले किस जर्मन इतिहासकार ने इतिहासकार का परम कर्तव्य 'अतीत का जैसा वास्तव में घटित हुआ वैसा ही निष्पक्ष पुनर्निर्माण' ('Wie es eigentlich gewesen' / As it actually happened) करना घोषित किया तथा प्राथमिक अभिलेखीय स्रोतों (Archival Sources) के कठोर समालोचनात्मक परीक्षण पर बल दिया?", "opts": ["लियोपोल्ड वॉन रांके (Leopold von Ranke)", "जॉर्ज विल्हेम फ्रेडरिक हीगल (G.W.F. Hegel)", "कार्ल मार्क्स (Karl Marx)", "अगस्ट कॉम्टे (Auguste Comte)"], "ans": "A", "exp": "19वीं सदी के महान जर्मन इतिहासकार लियोपोल्ड वॉन रांके ने इतिहास को दर्शन और साहित्य के प्रभाव से मुक्त कर एक स्वायत्त वैज्ञानिक अनुशासन बनाया। उन्होंने 1824 में प्रकाशित अपनी पुस्तक 'हिस्ट्री ऑफ द लैटिन एंड ट्यूटोनिक नेशंस' की भूमिका में घोषणा की कि इतिहासकार का कार्य अतीत का निर्णय करना या भविष्य को उपदेश देना नहीं है, बल्कि केवल यह दिखाना है कि 'वास्तव में क्या हुआ था' (Wie es eigentlich gewesen)। इसके लिए उन्होंने समकालीन प्राथमिक दस्तावेजों व अभिलेखागारों के कठोर वस्तुनिष्ठ परीक्षण की रांकेवादी पद्धति (Rankean Method) विकसित की।"}, {"num": 70, "section": "इतिहास-दर्शन एवं आधुनिक विश्व इतिहास (Historiography & World History)", "type": "single_liner", "topic": "इतिहास-दर्शन एवं आधुनिक विश्व इतिहास", "pyq_source": "CUET-PG 2023 Q.74, 2025 Q.71 अन्नाल्स संप्रदाय व इतिहास दर्शन डिस्ट्रेक्टर से निर्मित।", "q": "फ्रांसीसी अन्नाल्स संप्रदाय के किस मूर्धन्य इतिहासकार ने अपनी कालजयी कृति 'द मेडिटेरेनियन एंड द मेडिटेरेनियन वर्ल्ड इन द एज ऑफ फिलिप II' (The Mediterranean) में ऐतिहासिक समय को तीन स्तरों में विभाजित करते हुए सदियों तक अत्यंत धीमी गति से बदलने वाली भौगोलिक और पर्यावरणीय संरचनाओं के अध्ययन हेतु 'दीर्घ कालावधि' (Longue Durée) की युगांतरकारी अवधारणा प्रस्तुत की?", "opts": ["मार्क ब्लॉक (Marc Bloch)", "फर्नांड ब्रॉडेल (Fernand Braudel)", "ल्यूसियन फेब्रे (Lucien Febvre)", "इमैनुएल ले रॉय लादुरी (Emmanuel Le Roy Ladurie)"], "ans": "B", "exp": "फर्नांड ब्रॉडेल (Fernand Braudel) ने ऐतिहासिक समय की त्रिस्तरीय संरचना का प्रतिपादन किया:<br/>1. 'लॉन्ग दुरे' (Longue Durée / दीर्घ कालावधि): मनुष्य और पर्यावरण का संबंध, जो शताब्दियों में अत्यंत मंद गति से परिवर्तित होता है।<br/>2. 'कंजंक्चर' (Conjoncture / मध्यम कालावधि): 10 से 50 वर्षों के सामाजिक-आर्थिक चक्र, जनसांख्यिकी और व्यापारिक प्रवृत्तियां।<br/>3. 'इवेंट्स' (Événements / अल्पकालिक घटनाएं): राजनीतिक व कूटनीतिक घटनाएं, जिन्हें ब्रॉडेल ने 'इतिहास के गहरे समुद्र की सतह पर बनने वाले क्षणभंगुर बुलबुले' कहा।"}, {"num": 71, "section": "इतिहास-दर्शन एवं आधुनिक विश्व इतिहास (Historiography & World History)", "type": "single_liner", "topic": "इतिहास-दर्शन एवं आधुनिक विश्व इतिहास", "pyq_source": "CUET-PG 2022 Q.69, 2024 Q.74 सबआल्टर्न इतिहास-लेखन डिस्ट्रेक्टर से निर्मित।", "q": "1980 के दशक में भारतीय इतिहास-लेखन में 'सबाल्टर्न स्टडीज' (Subaltern Studies / निम्नवर्गीय प्रसंग) परियोजना की शुरुआत करने वाले तथा औपनिवेशिक भारत में किसान चेतना के स्वायत्त स्वरूप को उद्घाटित करने वाली प्रसिद्ध पुस्तक 'एलिमेंट्री आस्पेक्ट्स ऑफ पीजेंट इंसर्जेंसी इन कोलोनियल इंडिया' (1983) के रचयिता कौन हैं?", "opts": ["रामचंद्र गुहा (Ramachandra Guha)", "पार्थ चटर्जी (Partha Chatterjee)", "रणजीत गुहा (Ranajit Guha)", "दीपेश चक्रवर्ती (Dipesh Chakrabarty)"], "ans": "C", "exp": "प्रो. रणजीत गुहा ने इतालवी मार्क्सवादी एंटोनियो ग्राम्शी की सबाल्टर्न (निम्नवर्गीय) अवधारणा को भारतीय इतिहास-लेखन में स्थापित किया। उन्होंने 1982 से 'सबाल्टर्न स्टडीज' शृंखला का संपादन किया। उनकी 1983 की प्रसिद्ध पुस्तक 'एलिमेंट्री आस्पेक्ट्स ऑफ पीजेंट इंसर्जेंसी इन कोलोनियल इंडिया' में यह सिद्ध किया गया कि ब्रिटिश शासन के विरुद्ध किसानों और जनजातियों के विद्रोह अभिजात वर्ग (राष्ट्रवादी या औपनिवेशिक) के अनुगामी नहीं थे, बल्कि उनकी अपनी स्वतंत्र राजनीतिक चेतना, स्वदेशी संचार प्रणाली और प्रतिरोध के स्वायत्त रूप थे।"}, {"num": 72, "section": "इतिहास-दर्शन एवं आधुनिक विश्व इतिहास (Historiography & World History)", "type": "match", "topic": "इतिहास-दर्शन एवं आधुनिक विश्व इतिहास", "pyq_source": "CUET-PG 2022 Q.70, 2024 Q.71-72 इतिहास दर्शन ग्रंथ डिस्ट्रेक्टरों से निर्मित।", "q": "पाश्चात्य इतिहास-दर्शन एवं आधुनिक इतिहास-लेखन के महान विचारकों को उनकी विख्यात पुस्तकों से सुमेलित कीजिए:<br/>\n<table style=\"width:100%; border-collapse:collapse; margin:10px 0;\">\n  <tr style=\"background:#f1f5f9;\"><th style=\"border:1px solid #cbd5e1; padding:6px; font-weight:700;\">सूची-I (इतिहासकार / दार्शनिक)</th><th style=\"border:1px solid #cbd5e1; padding:6px; font-weight:700;\">सूची-II (प्रसिद्ध कृति)</th></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">a) ई.एच. कार (E.H. Carr)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">1) द आइडिया ऑफ हिस्ट्री (The Idea of History)</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">b) आर.जी. कॉलिंगवुड (R.G. Collingwood)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">2) ओरिएंटलिज्म (Orientalism)</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">c) मार्क ब्लॉक (Marc Bloch)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">3) व्हाट इज हिस्ट्री? (What is History?)</td></tr>\n  <tr><td style=\"border:1px solid #cbd5e1; padding:6px;\">d) एडवर्ड सईद (Edward Said)</td><td style=\"border:1px solid #cbd5e1; padding:6px;\">4) द हिस्टोरियंस क्राफ्ट (The Historian's Craft)</td></tr>\n</table>\nनीचे दिए गए कूट में से सही उत्तर चुनिए:", "opts": ["a-3, b-4, c-1, d-2", "a-1, b-3, c-4, d-2", "a-3, b-1, c-4, d-2", "a-4, b-1, c-2, d-3"], "ans": "C", "exp": "सही सुमेलन (3, 1, 4, 2) है:<br/>• ई.एच. कार: 'व्हाट इज हिस्ट्री?' (1961 - इतिहासकार और उसके तथ्यों के बीच निरंतर अंतःक्रिया, अतीत और वर्तमान का संवाद) (3)।<br/>• आर.जी. कॉलिंगवुड: 'द आइडिया ऑफ हिस्ट्री' (1946 - समस्त इतिहास विचारों का इतिहास है और इतिहासकार अतीत का अपने मन में पुनर्विधान करता है) (1)।<br/>• मार्क ब्लॉक: 'द हिस्टोरियंस क्राफ्ट' (1949 - इतिहास को 'समय के संदर्भ में मानव का विज्ञान' परिभाषित किया) (4)।<br/>• एडवर्ड सईद: 'ओरिएंटलिज्म' (1978 - प्राच्यवाद को पश्चिमी औपनिवेशिक प्रभुत्व की सांस्कृतिक व ज्ञानमीमांसीय संरचना बताया) (2)।"}, {"num": 73, "section": "इतिहास-दर्शन एवं आधुनिक विश्व इतिहास (Historiography & World History)", "type": "multi_statement", "topic": "इतिहास-दर्शन एवं आधुनिक विश्व इतिहास", "pyq_source": "CUET-PG 2023 Q.74, 2025 Q.72 अन्नाल्स संप्रदाय इतिहास-दृष्टि डिस्ट्रेक्टर से निर्मित।", "q": "20वीं शताब्दी के फ्रांस में विकसित हुए प्रसिद्ध 'अन्नाल्स संप्रदाय' (Annales School of Historiography) के संबंध में निम्नलिखित कथनों पर विचार कीजिए:<br/>\nI. इसकी स्थापना 1929 में स्ट्रासबर्ग विश्वविद्यालय के दो प्रोफेसरों- मार्क ब्लॉक (Marc Bloch) और ल्यूसियन फेब्रे (Lucien Febvre) द्वारा 'अन्नाल्स' पत्रिका के प्रकाशन के साथ हुई।<br/>\nII. इस संप्रदाय ने संकीर्ण राजनीतिक, कूटनीतिक और युद्ध-केंद्रित इतिहास (Histoire événementielle) के स्थान पर 'समग्र इतिहास' (Total History / Histoire totale) का समर्थन किया।<br/>\nIII. अन्नाल्स इतिहासकारों ने भूगोल, समाजशास्त्र, अर्थशास्त्र और नृविज्ञान जैसे अंतःविषयक (Interdisciplinary) दृष्टिकोणों का पूर्ण बहिष्कार किया और केवल राजाओं की व्यक्तिगत जीवनियों पर ध्यान केंद्रित किया।<br/>\nIV. इस परंपरा में जन-साधारण की सामूहिक मानसिकताओं, विश्वासों और दैनिक जीवन के अध्ययन हेतु 'मानसिकताओं का इतिहास' (Histoire des mentalités) विकसित हुआ।<br/>\nउपर्युक्त में से कौन-से कथन सही हैं?", "opts": ["केवल I, II और IV", "केवल I और III", "केवल II और IV", "I, II, III और IV सभी"], "ans": "A", "exp": "कथन I, II और IV सत्य हैं।<br/>कथन III में ऐतिहासिक जाल (trap) है: अन्नाल्स संप्रदाय की सबसे क्रांतिकारी देन ही इतिहास को समाजशास्त्र, भूगोल, मनोविज्ञान, अर्थशास्त्र और जनसांख्यिकी के साथ जोड़कर एक 'समग्र सामाजिक विज्ञान' बनाना था। उन्होंने 19वीं सदी के केवल राजनीतिक व युद्ध-आधारित इतिहास को खारिज किया था।"}, {"num": 74, "section": "इतिहास-दर्शन एवं आधुनिक विश्व इतिहास (Historiography & World History)", "type": "chronology", "topic": "इतिहास-दर्शन एवं आधुनिक विश्व इतिहास", "pyq_source": "CUET-PG 2022 Q.73-75, 2024 Q.75 आधुनिक विश्व इतिहास क्रांतियां डिस्ट्रेक्टरों से निर्मित।", "q": "आधुनिक विश्व इतिहास को क्रांतिकारी रूप से बदलने वाली निम्नलिखित युगांतरकारी घटनाओं को सही कालक्रमानुसार व्यवस्थित कीजिए:<br/>\n1. फ्रांस की राज्यक्रांति और मानवाधिकारों की घोषणा (बास्तील का पतन)<br/>\n2. वेस्टफेलिया की ऐतिहासिक शांति संधि (यूरोप में संप्रभु राष्ट्र-राज्यों की प्रणाली की शुरुआत)<br/>\n3. रूस में लेनिन के नेतृत्व में बोल्शेविक समाजवादी क्रांति (अक्टूबर क्रांति)<br/>\n4. फिलाडेल्फिया में थॉमस जेफरसन द्वारा तैयार अमेरिकी स्वतंत्रता की घोषणा<br/>\nनीचे दिए गए कूट का प्रयोग कर सही उत्तर चुनिए:", "opts": ["2, 1, 4, 3", "2, 4, 1, 3", "4, 2, 1, 3", "1, 2, 4, 3"], "ans": "B", "exp": "सही कालक्रम 2, 4, 1, 3 है:<br/>• 2. वेस्टफेलिया की संधि (1648 - तीस वर्षीय युद्ध की समाप्ति, आधुनिक अंतरराष्ट्रीय संबंध व संप्रभुता की नींव)<br/>• 4. अमेरिकी स्वतंत्रता की घोषणा (4 जुलाई 1776 - फिलाडेल्फिया कांग्रेस, 'जीवन, स्वतंत्रता और सुख की खोज')<br/>• 1. फ्रांसीसी क्रांति (14 जुलाई 1789 - बास्तील का पतन, स्वतंत्रता, समानता और बंधुत्व का नारा)<br/>• 3. रूसी बोल्शेविक क्रांति (7 नवंबर / 25 अक्टूबर 1917 - जारशाही का पतन व विश्व का प्रथम समाजवादी राज्य)"}, {"num": 75, "section": "इतिहास-दर्शन एवं आधुनिक विश्व इतिहास (Historiography & World History)", "type": "assertion_reason", "topic": "इतिहास-दर्शन एवं आधुनिक विश्व इतिहास", "pyq_source": "CUET-PG 2022 Q.71, 2025 Q.75 यूरोपीय प्रबोधन एवं बौद्धिक चिंतन डिस्ट्रेक्टर से निर्मित।", "q": "नीचे दो कथन दिए गए हैं, एक को अभिकथन (A) और दूसरे को कारण (R) कहा गया है:<br/>\nअभिकथन (A): 18वीं शताब्दी के यूरोपीय प्रबोधन (Enlightenment / Age of Reason) के विचारकों ने चर्च के अंधविश्वासों, धार्मिक कट्टरता और सामंती विशेषाधिकारों का दृढ़ता से समर्थन किया तथा वैज्ञानिक तर्कवाद का विरोध किया।<br/>\nकारण (R): प्रबोधनकालीन दार्शनिकों जैसे वॉल्टेयर, मोंटेस्क्यू, रूसो और जॉन लॉक ने मानव विवेक (Reason), व्यक्तिगत स्वतंत्रता, कानून के समक्ष समानता और शक्ति पृथक्करण के प्राकृतिक अधिकारों की वकालत की।<br/>\nउपर्युक्त कथनों के आलोक में निम्नलिखित में से सही विकल्प का चयन कीजिए:", "opts": ["(A) और (R) दोनों सही हैं और (R), (A) की सही व्याख्या है।", "(A) और (R) दोनों सही हैं परंतु (R), (A) की सही व्याख्या नहीं है।", "(A) सही है परंतु (R) गलत है।", "(A) गलत है परंतु (R) सही है।"], "ans": "D", "exp": "अभिकथन (A) सर्वथा गलत है, क्योंकि प्रबोधनकालीन दार्शनिकों ने चर्च के रूढ़िवाद, धार्मिक असहिष्णुता, पाखंड और राजाओं के निरंकुश दैवीय अधिकारों पर भीषण बौद्धिक प्रहार किया था तथा वैज्ञानिक दृष्टिकोण एवं बुद्धिवाद को प्रतिष्ठित किया था।<br/>कारण (R) पूर्णतः सत्य है। वॉल्टेयर ने विचार व अभिव्यक्ति की स्वतंत्रता, मोंटेस्क्यू ने शक्ति के पृथक्करण (विधायिका, कार्यपालिका, न्यायपालिका) तथा रूसो ने जन-संप्रभुता (General Will) के माध्यम से आधुनिक लोकतांत्रिक क्रांति की वैचारिक नींव रखी थी। अतः (A) गलत है परंतु (R) सही है।"}];
+let curQ = 0;
+let userAnswers = new Array(75).fill(null);
+let qStatus = new Array(75).fill('not-vis'); // not-vis, not-ans, ans, marked
+let timeSeconds = 105 * 60;
+let timerInterval = null;
+let reviewMode = false;
+
+function init() {
+  renderPalette();
+  loadQuestion(0);
+  startTimer();
+}
+
+function startTimer() {
+  timerInterval = setInterval(() => {
+    if (timeSeconds <= 0) {
+      clearInterval(timerInterval);
+      alert("समय समाप्त हो गया है! आपका टेस्ट स्वतः सबमिट किया जा रहा है।");
+      finishTest();
+      return;
+    }
+    timeSeconds--;
+    const m = Math.floor(timeSeconds / 60);
+    const s = timeSeconds % 60;
+    document.getElementById("timeDisplay").textContent = 
+      String(m).padStart(2, '0') + ":" + String(s).padStart(2, '0');
+  }, 1000);
+}
+
+function renderPalette() {
+  const grid = document.getElementById("paletteGrid");
+  grid.innerHTML = "";
+  for (let i = 0; i < 75; i++) {
+    const btn = document.createElement("button");
+    btn.className = "p-btn not-vis";
+    btn.id = "pbtn-" + i;
+    btn.textContent = i + 1;
+    btn.onclick = () => loadQuestion(i);
+    grid.appendChild(btn);
+  }
+}
+
+function updatePaletteUI() {
+  for (let i = 0; i < 75; i++) {
+    const btn = document.getElementById("pbtn-" + i);
+    if (!reviewMode) {
+      btn.className = "p-btn " + qStatus[i];
+      if (i === curQ) btn.classList.add("active");
+    } else {
+      btn.className = "p-btn";
+      const uA = userAnswers[i];
+      const cA = QUESTIONS[i].ans;
+      if (uA === cA) {
+        btn.classList.add("rev-correct");
+      } else if (uA !== null) {
+        btn.classList.add("rev-wrong");
+      } else {
+        btn.classList.add("rev-unans");
+      }
+      if (i === curQ) btn.classList.add("active");
+    }
+  }
+}
+
+function loadQuestion(idx) {
+  if (!reviewMode && qStatus[curQ] === 'not-vis') {
+    qStatus[curQ] = 'not-ans';
+  }
+  curQ = idx;
+  if (!reviewMode && qStatus[curQ] === 'not-vis') {
+    qStatus[curQ] = 'not-ans';
+  }
+
+  const q = QUESTIONS[idx];
+  document.getElementById("qBadgeNum").textContent = "प्रश्न " + (idx + 1) + " / 75 (" + q.type.toUpperCase() + ")";
+  document.getElementById("qSectionName").textContent = q.section;
+  document.getElementById("qTextContainer").innerHTML = q.q;
+
+  const optsBox = document.getElementById("optsContainer");
+  optsBox.innerHTML = "";
+  const labels = ['A', 'B', 'C', 'D'];
+
+  q.opts.forEach((optText, oIdx) => {
+    const lblVal = labels[oIdx];
+    const labelElem = document.createElement("label");
+    labelElem.className = "opt-label";
+    if (userAnswers[idx] === lblVal) {
+      labelElem.classList.add("selected");
+    }
+
+    if (reviewMode) {
+      if (lblVal === q.ans) {
+        labelElem.style.borderColor = "#16a34a";
+        labelElem.style.background = "#dcfce7";
+        labelElem.style.fontWeight = "700";
+      } else if (userAnswers[idx] === lblVal && lblVal !== q.ans) {
+        labelElem.style.borderColor = "#dc2626";
+        labelElem.style.background = "#fee2e2";
+        labelElem.style.fontWeight = "700";
+      }
+    }
+
+    const radio = document.createElement("input");
+    radio.type = "radio";
+    radio.name = "cbtOption";
+    radio.value = lblVal;
+    radio.checked = (userAnswers[idx] === lblVal);
+    if (reviewMode) radio.disabled = true;
+
+    radio.onchange = () => {
+      document.querySelectorAll(".opt-label").forEach(l => l.classList.remove("selected"));
+      labelElem.classList.add("selected");
+      userAnswers[idx] = lblVal;
+    };
+
+    const txtSpan = document.createElement("span");
+    txtSpan.innerHTML = "<strong>(" + lblVal + ")</strong> " + optText;
+
+    labelElem.appendChild(radio);
+    labelElem.appendChild(txtSpan);
+    optsBox.appendChild(labelElem);
+  });
+
+  const expCard = document.getElementById("expCard");
+  if (reviewMode) {
+    expCard.classList.add("show");
+    document.getElementById("pyqSourceBadge").innerHTML = "🎯 <strong>PYQ स्रोत आधार:</strong> " + (q.pyq_source || 'विगत 5-वर्षीय डिस्ट्रेक्टर विश्लेषण');
+    document.getElementById("expText").innerHTML = q.exp;
+  } else {
+    expCard.classList.remove("show");
+  }
+
+  updatePaletteUI();
+  document.getElementById("qScrollArea").scrollTop = 0;
+}
+
+function handleSaveAndNext() {
+  if (userAnswers[curQ] !== null) {
+    qStatus[curQ] = 'ans';
+  } else {
+    qStatus[curQ] = 'not-ans';
+  }
+  if (curQ < 74) loadQuestion(curQ + 1);
+  else updatePaletteUI();
+}
+
+function handleSaveAndMarkReview() {
+  if (userAnswers[curQ] !== null) {
+    qStatus[curQ] = 'marked';
+  } else {
+    qStatus[curQ] = 'marked';
+  }
+  if (curQ < 74) loadQuestion(curQ + 1);
+  else updatePaletteUI();
+}
+
+function handleClearResponse() {
+  userAnswers[curQ] = null;
+  qStatus[curQ] = 'not-ans';
+  document.querySelectorAll(".opt-label").forEach(l => l.classList.remove("selected"));
+  const checked = document.querySelector("input[name='cbtOption']:checked");
+  if (checked) checked.checked = false;
+  updatePaletteUI();
+}
+
+function handleMarkForReviewOnly() {
+  qStatus[curQ] = 'marked';
+  if (curQ < 74) loadQuestion(curQ + 1);
+  else updatePaletteUI();
+}
+
+function handleSubmitConfirmation() {
+  let ansCount = userAnswers.filter(a => a !== null).length;
+  let markedCount = qStatus.filter(s => s === 'marked').length;
+  let confirmMsg = `क्या आप वास्तव में टेस्ट सबमिट करना चाहते हैं?
+
+कुल प्रश्न: 75
+उत्तर दिए: ${ansCount}
+पुनर्विचार हेतु: ${markedCount}
+अनुत्तरित: ${75 - ansCount}`;
+  if (confirm(confirmMsg)) {
+    finishTest();
+  }
+}
+
+function finishTest() {
+  clearInterval(timerInterval);
+  let correct = 0;
+  let wrong = 0;
+  let skipped = 0;
+
+  for (let i = 0; i < 75; i++) {
+    if (userAnswers[i] === null) {
+      skipped++;
+    } else if (userAnswers[i] === QUESTIONS[i].ans) {
+      correct++;
+    } else {
+      wrong++;
+    }
+  }
+
+  let totalScore = (correct * 4) - (wrong * 1);
+  let attempted = correct + wrong;
+  let acc = attempted > 0 ? ((correct / attempted) * 100).toFixed(1) : 0;
+
+  document.getElementById("resScore").textContent = totalScore + " / 300";
+  document.getElementById("resCorrect").textContent = correct;
+  document.getElementById("resWrong").textContent = wrong;
+  document.getElementById("resSkipped").textContent = skipped;
+  document.getElementById("resAcc").textContent = acc + "%";
+
+  let badgeText = "";
+  if (totalScore >= 240) {
+    badgeText = "🏆 उत्कृष्ट प्रदर्शन! JNU / DU टॉप रैंक निश्चित!";
+    document.getElementById("resBadge").style.color = "#16a34a";
+  } else if (totalScore >= 180) {
+    badgeText = "🎯 बहुत अच्छा! BHU / HCUE में चयन सुनिश्चित!";
+    document.getElementById("resBadge").style.color = "#2563eb";
+  } else if (totalScore >= 120) {
+    badgeText = "⚠️ सामान्य प्रयास! कमजोर अध्यायों की व्याख्या पुनः पढ़ें।";
+    document.getElementById("resBadge").style.color = "#d97706";
+  } else {
+    badgeText = "🚨 गहन पुनरीक्षण की आवश्यकता! नोट्स और PYQ तुरंत दोहराएं।";
+    document.getElementById("resBadge").style.color = "#dc2626";
+  }
+  document.getElementById("resBadge").textContent = badgeText;
+
+  openScoreModal();
+}
+
+function openScoreModal() {
+  document.getElementById("scoreModal").style.display = "flex";
+}
+
+function closeScoreModal() {
+  document.getElementById("scoreModal").style.display = "none";
+}
+
+function enterFullScreenReview() {
+  reviewMode = true;
+  closeScoreModal();
+
+  document.getElementById("actionBarExam").style.display = "none";
+  document.getElementById("actionBarReview").style.display = "flex";
+  document.getElementById("timerBox").style.display = "none";
+  document.getElementById("reviewHeaderBadge").style.display = "flex";
+
+  document.getElementById("paletteTitle").textContent = "समाधान समीक्षा पैलेट (Mock 14)";
+  document.getElementById("paletteLegend").innerHTML = `
+    <div class="legend-item"><span class="legend-icon lg-ans"></span> सही उत्तर (+4)</div>
+    <div class="legend-item"><span class="legend-icon lg-not-ans"></span> गलत उत्तर (-1)</div>
+    <div class="legend-item"><span class="legend-icon" style="background:#94a3b8;"></span> अनुत्तरित (0)</div>
+    <div class="legend-item"><span class="legend-icon" style="border:2px solid #7c3aed; background:#fff;"></span> वर्तमान प्रश्न</div>
+  `;
+
+  document.getElementById("qMarksInfo").innerHTML = "<span style='color:#7c3aed; font-weight:700;'>पूर्ण स्क्रीन समीक्षा</span>";
+
+  loadQuestion(0);
+  updatePaletteUI();
+}
+
+function handlePrevQ() {
+  if (curQ > 0) loadQuestion(curQ - 1);
+}
+
+function handleNextQ() {
+  if (curQ < 74) loadQuestion(curQ + 1);
+}
+
+window.onload = init;
+</script>
+</body>
+</html>
